@@ -6,9 +6,13 @@ Runs in the GitHub Action every 30 minutes. Same rules as check.js; keep them in
 Env:
   STATUS_BASE     site to check (default https://bluequad070.github.io/agent-status/)
   PAUSE_SECONDS   gap between check one and check two (30 to 60, default 45)
-  INDEX_TXT_URL   optional. A plain-text export URL of the Project Index. When set,
-                  chat agents' status files get last_session_log_date from their
-                  newest dated log line. When unset, that step is skipped.
+  GOOGLE_SA_KEY   optional. A Google service account's JSON key. With INDEX_DOC_ID,
+  INDEX_DOC_ID    the Action reads the private Project Index (shared view-only with
+                  that service account) and gives chat agents' status files the
+                  date of their newest dated log line. Only dates are written out;
+                  Index text is never printed or saved.
+  INDEX_TXT_URL   optional fallback: a plain-text export URL of the Index.
+  Neither set: the Index step is skipped.
 """
 import json
 import os
@@ -174,6 +178,27 @@ def update_chat_agents(text, now):
     return changed
 
 
+def read_index_text():
+    """Index as plain text, or None when no access is configured."""
+    key = os.environ.get("GOOGLE_SA_KEY", "").strip()
+    doc_id = os.environ.get("INDEX_DOC_ID", "").strip()
+    if key and doc_id:
+        from google.oauth2 import service_account  # installed by the workflow
+        from google.auth.transport.requests import AuthorizedSession
+        creds = service_account.Credentials.from_service_account_info(
+            json.loads(key), scopes=["https://www.googleapis.com/auth/drive.readonly"])
+        r = AuthorizedSession(creds).get(
+            "https://www.googleapis.com/drive/v3/files/%s/export" % doc_id,
+            params={"mimeType": "text/plain"}, timeout=30)
+        if r.status_code != 200:
+            raise RuntimeError("Drive export HTTP %d" % r.status_code)
+        return r.text
+    url = os.environ.get("INDEX_TXT_URL", "").strip()
+    if url:
+        return fetch(url, timeout=30)[1].decode("utf-8", "replace")
+    return None
+
+
 # --- main ----------------------------------------------------------------------
 
 def main():
@@ -188,15 +213,14 @@ def main():
     except (OSError, ValueError):
         previous = {}
 
-    index_note = "skipped: INDEX_TXT_URL not set"
-    index_url = os.environ.get("INDEX_TXT_URL", "").strip()
-    if index_url:
-        try:
-            code, body = fetch(index_url, timeout=30)
-            changed = update_chat_agents(body.decode("utf-8", "replace"), now_utc())
+    index_note = "skipped: no Index access configured"
+    try:
+        text = read_index_text()
+        if text is not None:
+            changed = update_chat_agents(text, now_utc())
             index_note = "ok: updated %s" % (", ".join(changed) if changed else "nothing")
-        except Exception as e:  # noqa: BLE001
-            index_note = "failed: %s" % (getattr(e, "code", None) or type(e).__name__)
+    except Exception as e:  # noqa: BLE001 - never print Index content, only the error type
+        index_note = "failed: %s" % (getattr(e, "code", None) or type(e).__name__)
 
     first = {a: check_once(base, a) for a in AGENTS}
     time.sleep(pause)
