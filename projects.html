@@ -84,7 +84,30 @@
     border-left: 2px solid var(--accent);
   }
   .flyout a { color: var(--accent); text-decoration: none; }
-  .flyout a:hover { text-decoration: underline; }
+  .next-actions {
+    margin: 8px 0 4px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .next-btn {
+    display: block;
+    background: #1e2a3a;
+    color: var(--accent);
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    border: 1px solid #2a3a4a;
+  }
+  .next-btn:hover { background: #243044; }
+  .next-desc {
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 1px;
+    font-weight: 400;
+  }
   .evolution {
     margin: 4px 0 0 16px;
     font-size: 0.75rem;
@@ -96,7 +119,7 @@
 </head>
 <body>
   <h1>Idea Map</h1>
-  <div class="subtitle">Your projects · Expand for steps, docs, and design notes · Hop in anytime</div>
+  <div class="subtitle">Tap a what’s-next to jump straight into the doc or app · Expand for full context</div>
   <div class="nav"><a href="/">← Agent status dashboard</a></div>
 
   <div class="pipeline">
@@ -106,51 +129,39 @@
         <span style="font-weight:400;color:var(--muted);font-size:0.8rem">widget + shared decisions</span>
       </summary>
       <div class="milestones">
-        <div class="milestone">
-          <div class="milestone-title"><span class="status-dot done"></span> Native app on James’s phone</div>
-          <div class="meta">Catch me up, Gmail lookup, choice buttons installed and verified</div>
-          <details>
-            <summary style="padding:6px 0;font-weight:500;font-size:0.82rem">Docs &amp; attachments</summary>
-            <div class="flyout">
-              Handoff: <a href="https://docs.google.com/document/d/1ftEJhhk6WUMHcGFbEFa4RpFLx6h_hf62xNWLUSDNdEI/edit" target="_blank">Family Agenda — Claude Coding Handoff</a><br>
-              Code: /Users/preston/Documents/Codex/.../FamilyAgenda (FamilyAgenda.xcodeproj)<br>
-              Shared sheet: <a href="https://docs.google.com/spreadsheets/d/1GhIavEVX6i1W51iCjKNG7_ox1lG4OaPlEpsb58_COws/edit" target="_blank">Family Agenda decisions</a>
-            </div>
-          </details>
+        <div class="next-actions">
+          <a class="next-btn" href="https://docs.google.com/document/d/1ftEJhhk6WUMHcGFbEFa4RpFLx6h_hf62xNWLUSDNdEI/edit" target="_blank">
+            Open handoff doc
+            <div class="next-desc">Last session notes + next concrete steps for the native app</div>
+          </a>
+          <a class="next-btn" href="https://docs.google.com/spreadsheets/d/1GhIavEVX6i1W51iCjKNG7_ox1lG4OaPlEpsb58_COws/edit" target="_blank">
+            Open shared decisions sheet
+            <div class="next-desc">Set up / test the Google Sheet both parents can edit</div>
+          </a>
+          <a class="next-btn" href="https://github.com/Bluequad070/family-agenda-config" target="_blank">
+            Open widget config repo
+            <div class="next-desc">widget.json that the lock-screen widget reads</div>
+          </a>
         </div>
         <div class="milestone">
-          <div class="milestone-title"><span class="status-dot done"></span> Shared decisions (Google Sheet)</div>
-          <div class="meta">First claim wins · choices stored per decision row</div>
+          <div class="milestone-title"><span class="status-dot done"></span> Native app on James’s phone</div>
+          <div class="meta">Catch me up, Gmail lookup, choice buttons installed</div>
           <details>
-            <summary style="padding:6px 0;font-weight:500;font-size:0.82rem">Docs &amp; attachments</summary>
+            <summary style="padding:6px 0;font-weight:500;font-size:0.82rem">More context</summary>
             <div class="flyout">
-              Sheet: one row per decision (Decision, Choice, By, Email, Updated)<br>
-              Files: SharedDecisions.swift, SharedDecisionsView.swift<br>
-              OAuth / Sheets API still needs final setup for wife’s phone
+              Code path: /Users/preston/Documents/Codex/.../FamilyAgenda (FamilyAgenda.xcodeproj)<br>
+              Handoff has the exact next phone checks
             </div>
           </details>
         </div>
         <div class="milestone">
           <div class="milestone-title"><span class="status-dot progress"></span> Config-driven lock-screen widget</div>
-          <div class="meta">JSON settings + 3 chips · not compiled yet · points at GitHub raw</div>
-          <details>
-            <summary style="padding:6px 0;font-weight:500;font-size:0.82rem">Docs &amp; design evolution</summary>
-            <div class="flyout">
-              Settings: work/widget.json (hosted at github.com/Bluequad070/family-agenda-config)<br>
-              Widget rewritten to be config-driven (inline, circular, rectangular)<br>
-              Original backed up in FamilyAgenda/work/backup
-            </div>
-            <div class="evolution">Design evolution: 9 layouts → 3 experiments (Seamless Twin, Quiet Companion, Pop Card) → 27-combination live combiner → quiet always-on baseline under the clock</div>
-          </details>
+          <div class="meta">JSON + 3 chips · not compiled yet</div>
+          <div class="evolution">9 layouts → 3 experiments → quiet always-on under the clock</div>
         </div>
         <div class="milestone">
-          <div class="milestone-title"><span class="status-dot pending"></span> Live Activity</div>
-          <div class="meta">Attention-only (NBA-score style) · spec’d, not started</div>
-          <div class="evolution">Mockups included weather-vs-event alert, countdown, combined scorecard variants</div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-title"><span class="status-dot pending"></span> Wife’s phone install + test</div>
-          <div class="meta">Xcode build + OAuth test user still open</div>
+          <div class="milestone-title"><span class="status-dot pending"></span> Live Activity + wife’s phone</div>
+          <div class="meta">Attention-only Live Activity not started · OAuth for wife still open</div>
         </div>
       </div>
     </details>
@@ -163,25 +174,19 @@
         <span style="font-weight:400;color:var(--muted);font-size:0.8rem">touch controller</span>
       </summary>
       <div class="milestones">
+        <div class="next-actions">
+          <a class="next-btn" href="https://docs.google.com/document/d/1Am5BiIIgh12GFPNFuCpGFH6kZSHaoW48jllAcG6FhEw/edit" target="_blank">
+            Open Slashplayed handoff
+            <div class="next-desc">6-item rebuild queue from the battleground test</div>
+          </a>
+        </div>
         <div class="milestone">
           <div class="milestone-title"><span class="status-dot done"></span> Touch controller base</div>
-          <div class="meta">HANDOFF.md is source of truth</div>
-          <details>
-            <summary style="padding:6px 0;font-weight:500;font-size:0.82rem">Docs &amp; attachments</summary>
-            <div class="flyout">
-              Shared handoff: <a href="https://docs.google.com/document/d/1Am5BiIIgh12GFPNFuCpGFH6kZSHaoW48jllAcG6FhEw/edit" target="_blank">HANDOFF - Slashplayed touch controller</a><br>
-              Code: ~/Downloads/slashplayed-controller<br>
-              MEDIA.md indexes media assets
-            </div>
-          </details>
+          <div class="meta">Code in ~/Downloads/slashplayed-controller · HANDOFF.md is source of truth</div>
         </div>
         <div class="milestone">
-          <div class="milestone-title"><span class="status-dot progress"></span> 6-item rebuild queue</div>
-          <div class="meta">Logged after battleground test 2026-11-19 · next concrete work</div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-title"><span class="status-dot pending"></span> Media / polish</div>
-          <div class="meta">MEDIA.md exists · further iteration open</div>
+          <div class="milestone-title"><span class="status-dot progress"></span> Rebuild queue</div>
+          <div class="meta">Logged 2026-11-19 · next concrete work</div>
         </div>
       </div>
     </details>
@@ -194,32 +199,27 @@
         <span style="font-weight:400;color:var(--muted);font-size:0.8rem">cross-agent health</span>
       </summary>
       <div class="milestones">
-        <div class="milestone">
-          <div class="milestone-title"><span class="status-dot done"></span> Spec v0.1</div>
-          <div class="meta">Phase 1 endpoints + Phase 2 macOS widget (instruments, genre reactivity)</div>
-          <details>
-            <summary style="padding:6px 0;font-weight:500;font-size:0.82rem">Docs</summary>
-            <div class="flyout">
-              Spec: <a href="https://docs.google.com/document/d/12mxjY-HQnBPbqMRubVDIvhEKduhXmDIpznSK4KZXNk4/edit" target="_blank">Agent Status System — Spec v0.1</a><br>
-              Dashboard: <a href="https://bluequad070.github.io/agent-status/" target="_blank">agent-status site</a>
-            </div>
-          </details>
+        <div class="next-actions">
+          <a class="next-btn" href="https://docs.google.com/document/d/12mxjY-HQnBPbqMRubVDIvhEKduhXmDIpznSK4KZXNk4/edit" target="_blank">
+            Open spec v0.1
+            <div class="next-desc">Phase 1 + Phase 2 design (widget, instruments, genre)</div>
+          </a>
+          <a class="next-btn" href="https://bluequad070.github.io/agent-status/" target="_blank">
+            Open live dashboard
+            <div class="next-desc">Current agent health · most still red/pending</div>
+          </a>
+          <a class="next-btn" href="https://github.com/Bluequad070/agent-status" target="_blank">
+            Open GitHub repo
+            <div class="next-desc">Service-account commit is ready to push + setup</div>
+          </a>
         </div>
         <div class="milestone">
-          <div class="milestone-title"><span class="status-dot done"></span> Phase 1 milestone 1</div>
-          <div class="meta">claude-code status live and verified</div>
+          <div class="milestone-title"><span class="status-dot done"></span> Spec + Phase 1 milestone 1</div>
+          <div class="meta">claude-code status live</div>
         </div>
         <div class="milestone">
-          <div class="milestone-title"><span class="status-dot progress"></span> Dashboard + Action checks</div>
-          <div class="meta">GitHub Action running · most agents still pending their status files</div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-title"><span class="status-dot pending"></span> Service account for Index access</div>
-          <div class="meta">Commit ready · James to push + ~10 min Google Cloud setup</div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-title"><span class="status-dot pending"></span> Remaining agents report</div>
-          <div class="meta">codex, chatgpt, gemini, grok, claude-chat</div>
+          <div class="milestone-title"><span class="status-dot pending"></span> Service account + remaining agents</div>
+          <div class="meta">James to push 9778193 and do the Google Cloud setup</div>
         </div>
       </div>
     </details>
@@ -233,12 +233,8 @@
       </summary>
       <div class="milestones">
         <div class="milestone">
-          <div class="milestone-title"><span class="status-dot done"></span> Idea queue 1–7</div>
-          <div class="meta">Captured 2026-11-16 · idea list doc exists</div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-title"><span class="status-dot pending"></span> Core prototype</div>
-          <div class="meta">Code folder exists · not yet prioritized</div>
+          <div class="milestone-title"><span class="status-dot done"></span> Idea queue 1–7 captured</div>
+          <div class="meta">Idea list doc exists · core prototype not started</div>
         </div>
       </div>
     </details>
@@ -252,22 +248,13 @@
       </summary>
       <div class="milestones">
         <div class="milestone">
-          <div class="milestone-title"><span class="status-dot pending"></span> Aftertone</div>
-          <div class="meta">Watch capture → iPhone → Mac agent concept</div>
-          <div class="flyout">See Personal Handoff in Drive for details</div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-title"><span class="status-dot pending"></span> WoW addons</div>
-          <div class="meta">Zip layout fix needed for CurseForge uploads</div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-title"><span class="status-dot pending"></span> Home WiFi manager / iPod Classic helper / Native Mac Switch ports</div>
-          <div class="meta">Idea stage only</div>
+          <div class="milestone-title"><span class="status-dot pending"></span> Aftertone · WoW addons · WiFi manager · iPod helper · Mac Switch ports</div>
+          <div class="meta">All still idea stage</div>
         </div>
       </div>
     </details>
   </div>
 
-  <div class="footer">Green = done · Amber = in progress · Gray = pending<br>Expand any step for docs, attachments, and design notes.<br>This is your idea map — bookmark for quick hop-in.</div>
+  <div class="footer">Tap any what’s-next button to land in the right document or repo.<br>Expand a project for the full milestone + design notes.<br>Bookmark this page as your idea map.</div>
 </body>
 </html>
