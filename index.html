@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Status</title>
+<style>
+  :root { color-scheme: light dark; --bg:#fff; --fg:#1a1a1a; --muted:#666; --line:#ddd; --bad:#c62828; --badbg:#fdecea; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#121212; --fg:#eee; --muted:#999; --line:#333; --bad:#ff6b6b; --badbg:#3a1414; } }
+  body { margin:0; padding:16px; background:var(--bg); color:var(--fg); font:15px/1.4 -apple-system, system-ui, sans-serif; }
+  h1 { font-size:20px; margin:0 0 4px; }
+  p.sub { margin:0 0 16px; color:var(--muted); font-size:13px; }
+  .wrap { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; min-width:520px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); }
+  td.ts { white-space:nowrap; font-variant-numeric:tabular-nums; }
+  tr.unreachable td { color:var(--bad); background:var(--badbg); font-weight:600; }
+  code { font-size:12px; color:var(--muted); }
+</style>
+</head>
+<body>
+<h1>Agent Status</h1>
+<p class="sub">Phase 1 · times shown in America/Chicago · <span id="loaded"></span></p>
+<div class="wrap">
+<table>
+  <thead><tr><th>agent</th><th>surface</th><th>last_seen</th><th>current_project</th><th>note</th></tr></thead>
+  <tbody id="rows"></tbody>
+</table>
+</div>
+<script>
+  var AGENTS = ["claude-code"];
+
+  function cell(tr, text, cls) {
+    var td = document.createElement("td");
+    td.textContent = text == null ? "" : String(text);
+    if (cls) td.className = cls;
+    tr.appendChild(td);
+    return td;
+  }
+
+  function central(iso) {
+    var d = new Date(iso);
+    if (isNaN(d)) return iso + " (unparsed)";
+    return d.toLocaleString("en-US", {
+      timeZone: "America/Chicago", year: "numeric", month: "short", day: "numeric",
+      hour: "numeric", minute: "2-digit", second: "2-digit", timeZoneName: "short"
+    });
+  }
+
+  function addRow(id, s) {
+    var tr = document.createElement("tr");
+    cell(tr, s.agent || id);
+    cell(tr, s.surface);
+    var ts = cell(tr, central(s.last_seen), "ts");
+    var raw = document.createElement("div");
+    raw.innerHTML = "<code></code>";
+    raw.firstChild.textContent = s.last_seen;
+    ts.appendChild(raw);
+    cell(tr, s.current_project);
+    cell(tr, s.note);
+    document.getElementById("rows").appendChild(tr);
+  }
+
+  function addUnreachable(id, why) {
+    var tr = document.createElement("tr");
+    tr.className = "unreachable";
+    cell(tr, id);
+    var td = cell(tr, "unreachable: status/" + id + ".json (" + why + ")");
+    td.colSpan = 4;
+    document.getElementById("rows").appendChild(tr);
+  }
+
+  AGENTS.forEach(function (id) {
+    fetch("status/" + id + ".json", { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (s) { addRow(id, s); })
+      .catch(function (e) { addUnreachable(id, e.message || "fetch failed"); });
+  });
+
+  document.getElementById("loaded").textContent = "loaded " + central(new Date().toISOString());
+</script>
+</body>
+</html>

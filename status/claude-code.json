@@ -1,0 +1,18 @@
+{
+  "agent": "claude-code",
+  "surface": "code",
+  "owner": "James Neal",
+  "writer": "claude-code",
+  "last_seen": "2026-11-22T07:35:11Z",
+  "last_session_log_date": "2026-11-21",
+  "current_project": "Agent Status System",
+  "handoff_doc": "https://docs.google.com/document/d/12mxjY-HQnBPbqMRubVDIvhEKduhXmDIpznSK4KZXNk4/edit",
+  "handoff_authority": "CANONICAL",
+  "checks": [
+    { "id": "read_index", "ok": true, "at": "2026-11-22T07:30:00Z" },
+    { "id": "wrote_session_log", "ok": false, "at": "2026-11-22T07:35:11Z" },
+    { "id": "can_fetch_dashboard", "ok": false, "at": "2026-11-22T07:35:11Z" }
+  ],
+  "note": "Phase 1 milestone 1: first status file; today's log line and dashboard pending at write time",
+  "version": "0.1"
+}
