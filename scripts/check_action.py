@@ -1,0 +1,244 @@
+#!/usr/bin/env python3
+"""Twice-check every agent endpoint and write results.json (spec v0.1, section c).
+
+Runs in the GitHub Action every 30 minutes. Same rules as check.js; keep them in step.
+
+Env:
+  STATUS_BASE     site to check (default https://bluequad070.github.io/agent-status/)
+  PAUSE_SECONDS   gap between check one and check two (30 to 60, default 45)
+  INDEX_TXT_URL   optional. A plain-text export URL of the Project Index. When set,
+                  chat agents' status files get last_session_log_date from their
+                  newest dated log line. When unset, that step is skipped.
+"""
+import json
+import os
+import re
+import sys
+import time
+import urllib.request
+from datetime import datetime, timedelta, timezone
+
+AGENTS = ["claude-chat", "claude-code", "codex", "chatgpt", "gemini", "grok"]
+CHAT_AGENTS = ["claude-chat", "chatgpt", "gemini", "grok"]
+FRESH_HOURS, STALE_HOURS, LOG_DAYS, FLAP_WINDOW_MIN = 24, 72, 7, 60
+HISTORY_KEEP_HOURS = 3
+RANK = {"x": 0, "flapping": 0, "red": 1, "pending": 2, "green": 3, "double-green": 4}
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def now_utc():
+    return datetime.now(timezone.utc)
+
+
+def iso(dt):
+    return dt.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def parse_iso(s):
+    try:
+        return datetime.strptime(s, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    except (TypeError, ValueError):
+        return None
+
+
+def evaluate(s, now):
+    """One check of one status object -> {ok, stale, reasons}."""
+    if not isinstance(s, dict):
+        return {"ok": False, "stale": False, "reasons": ["not a JSON object"]}
+    reasons, stale = [], False
+    seen = parse_iso(s.get("last_seen"))
+    if seen is None:
+        reasons.append("last_seen missing")
+    else:
+        age = now - seen
+        if age > timedelta(hours=STALE_HOURS):
+            stale = True
+            reasons.append("last_seen older than %dh (stale)" % STALE_HOURS)
+        elif age > timedelta(hours=FRESH_HOURS):
+            reasons.append("last_seen older than %dh" % FRESH_HOURS)
+    try:
+        log = datetime.strptime(s.get("last_session_log_date") or "", "%Y-%m-%d").replace(tzinfo=timezone.utc)
+        # +1 day: a date means the whole day, so 7 days back still counts.
+        if now - log > timedelta(days=LOG_DAYS + 1):
+            reasons.append("session log older than %d days" % LOG_DAYS)
+    except ValueError:
+        reasons.append("no session log date")
+    if s.get("handoff_authority") != "CANONICAL":
+        reasons.append("handoff_authority is %s, not CANONICAL" % (s.get("handoff_authority") or "missing"))
+    return {"ok": not reasons, "stale": stale, "reasons": reasons}
+
+
+def fetch(url, timeout=20):
+    req = urllib.request.Request(url, headers={"User-Agent": "agent-status-check", "Cache-Control": "no-cache"})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.status, r.read()
+
+
+def check_once(base, agent):
+    url = "%sstatus/%s.json?t=%d" % (base, agent, int(time.time()))
+    try:
+        code, body = fetch(url)
+        if code != 200:
+            raise ValueError("HTTP %d" % code)
+        try:
+            s = json.loads(body)
+        except ValueError:
+            raise ValueError("JSON did not parse")
+        v = evaluate(s, now_utc())
+        v["status"] = s
+    except Exception as e:  # noqa: BLE001 - any failure is a failed check
+        msg = getattr(e, "code", None)
+        v = {"ok": False, "stale": False, "status": None,
+             "reasons": ["unreachable: %s" % ("HTTP %d" % msg if msg else e)]}
+    v["at"] = iso(now_utc())
+    return v
+
+
+def combine(first, second):
+    if not first:
+        return "pending"
+    if not second:
+        return "green" if first["ok"] else "red"
+    if first["ok"] and second["ok"]:
+        return "double-green"
+    if not first["ok"] and second["ok"]:
+        return "flapping"
+    return "x"
+
+
+def is_flapping(history, now):
+    recent = [h["state"] for h in history
+              if now - parse_iso(h["at"]) <= timedelta(minutes=FLAP_WINDOW_MIN)]
+    return any(recent[i:i + 3] == ["double-green", "x", "double-green"] for i in range(len(recent) - 2))
+
+
+def overall(states):
+    if not states:
+        return "pending"
+    worst = min(states, key=lambda s: RANK[s])
+    return "x" if worst == "flapping" else worst
+
+
+# --- Index log parsing (chat agents) -------------------------------------------
+
+LOG_LINE = re.compile(r"(\d{4}-\d{2}-\d{2})\s*(?:—|–|-|:)\s*([^:\n]{1,60}?):")
+
+
+def agent_for_name(name):
+    n = name.lower()
+    if "code" in n or "codex" in n:
+        return None  # code agents write their own files
+    if "chatgpt" in n:
+        return "chatgpt"
+    if "gemini" in n:
+        return "gemini"
+    if "grok" in n:
+        return "grok"
+    if "claude" in n:
+        return "claude-chat"
+    return None
+
+
+def newest_log_dates(text):
+    newest = {}
+    for date, name in LOG_LINE.findall(text):
+        agent = agent_for_name(name)
+        if agent and date > newest.get(agent, ""):
+            newest[agent] = date
+    return newest
+
+
+def update_chat_agents(text, now):
+    """Write newer log dates into chat agents' status files. Returns changed ids."""
+    changed = []
+    for agent, date in sorted(newest_log_dates(text).items()):
+        path = os.path.join(ROOT, "status", agent + ".json")
+        try:
+            with open(path) as f:
+                s = json.load(f)
+        except (OSError, ValueError):
+            continue
+        if date <= (s.get("last_session_log_date") or ""):
+            continue
+        s["last_session_log_date"] = date
+        s["last_seen"] = iso(now)  # when the Action first saw the new log line
+        s["writer"] = "action"
+        s["checks"] = [c for c in s.get("checks", []) if c.get("id") != "wrote_session_log"]
+        s["checks"].append({"id": "wrote_session_log", "ok": True, "at": iso(now)})
+        s["note"] = "Action saw an Index log line dated %s." % date
+        with open(path, "w") as f:
+            json.dump(s, f, indent=2)
+            f.write("\n")
+        changed.append(agent)
+    return changed
+
+
+# --- main ----------------------------------------------------------------------
+
+def main():
+    base = os.environ.get("STATUS_BASE", "https://bluequad070.github.io/agent-status/")
+    if not base.endswith("/"):
+        base += "/"
+    pause = min(60, max(30, int(os.environ.get("PAUSE_SECONDS", "45"))))
+    results_path = os.path.join(ROOT, "results.json")
+    try:
+        with open(results_path) as f:
+            previous = json.load(f)
+    except (OSError, ValueError):
+        previous = {}
+
+    index_note = "skipped: INDEX_TXT_URL not set"
+    index_url = os.environ.get("INDEX_TXT_URL", "").strip()
+    if index_url:
+        try:
+            code, body = fetch(index_url, timeout=30)
+            changed = update_chat_agents(body.decode("utf-8", "replace"), now_utc())
+            index_note = "ok: updated %s" % (", ".join(changed) if changed else "nothing")
+        except Exception as e:  # noqa: BLE001
+            index_note = "failed: %s" % (getattr(e, "code", None) or type(e).__name__)
+
+    first = {a: check_once(base, a) for a in AGENTS}
+    time.sleep(pause)
+    second = {a: check_once(base, a) for a in AGENTS}
+    now = now_utc()
+
+    history = previous.get("history", {})
+    agents_out = {}
+    for a in AGENTS:
+        state = combine(first[a], second[a])
+        h = [x for x in history.get(a, []) if now - parse_iso(x["at"]) <= timedelta(hours=HISTORY_KEEP_HOURS)]
+        h.append({"state": state, "at": iso(now)})
+        history[a] = h
+        if is_flapping(h, now):
+            state = "flapping"
+        s = second[a].get("status") or first[a].get("status") or {}
+        agents_out[a] = {
+            "state": state,
+            "first": {k: first[a][k] for k in ("ok", "stale", "reasons", "at")},
+            "second": {k: second[a][k] for k in ("ok", "stale", "reasons", "at")},
+            "last_seen": s.get("last_seen", ""),
+            "current_project": s.get("current_project", ""),
+        }
+
+    out = {
+        "checked_at": iso(now),
+        "base": base,
+        "pause_seconds": pause,
+        "overall": overall([v["state"] for v in agents_out.values()]),
+        "index_parse": index_note,
+        "agents": agents_out,
+        "history": history,
+        "version": "0.1",
+    }
+    with open(results_path, "w") as f:
+        json.dump(out, f, indent=2)
+        f.write("\n")
+    print("overall:", out["overall"], "|", index_note)
+    for a in AGENTS:
+        print(" ", a, agents_out[a]["state"], "; ".join(agents_out[a]["second"]["reasons"]))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

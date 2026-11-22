@@ -1,0 +1,30 @@
+{
+  "agent": "gemini",
+  "surface": "chat",
+  "owner": "James Neal",
+  "writer": "claude-code",
+  "last_seen": "",
+  "last_session_log_date": "",
+  "current_project": "none",
+  "handoff_doc": "",
+  "handoff_authority": "UNKNOWN",
+  "checks": [
+    {
+      "id": "read_index",
+      "ok": false,
+      "at": "2026-11-22T09:02:43Z"
+    },
+    {
+      "id": "wrote_session_log",
+      "ok": false,
+      "at": "2026-11-22T09:02:43Z"
+    },
+    {
+      "id": "can_fetch_dashboard",
+      "ok": false,
+      "at": "2026-11-22T09:02:43Z"
+    }
+  ],
+  "note": "Starter file from Claude Code. Not reported yet; the Action fills this from the Index log.",
+  "version": "0.1"
+}
