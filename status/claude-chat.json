@@ -3,28 +3,28 @@
   "surface": "chat",
   "owner": "James Neal",
   "writer": "claude-code",
-  "last_seen": "",
-  "last_session_log_date": "",
+  "last_seen": "2026-11-22T22:59:53Z",
+  "last_session_log_date": "2026-11-22",
   "current_project": "none",
   "handoff_doc": "",
   "handoff_authority": "UNKNOWN",
   "checks": [
     {
       "id": "read_index",
-      "ok": false,
-      "at": "2026-11-22T09:02:43Z"
+      "ok": true,
+      "at": "2026-11-22T22:59:53Z"
     },
     {
       "id": "wrote_session_log",
-      "ok": false,
-      "at": "2026-11-22T09:02:43Z"
+      "ok": true,
+      "at": "2026-11-22T22:59:53Z"
     },
     {
       "id": "can_fetch_dashboard",
-      "ok": false,
-      "at": "2026-11-22T09:02:43Z"
+      "ok": true,
+      "at": "2026-11-22T22:59:53Z"
     }
   ],
-  "note": "Starter file from Claude Code. Not reported yet; the Action fills this from the Index log.",
+  "note": "Roll call check-in logged in the Index 2026-11-22 (read/write Drive, loaded the board). Written by Claude Code from the Index.",
   "version": "0.1"
 }
