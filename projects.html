@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — James</title>
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --card: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #e8e8e8;
+    --muted: #888;
+    --accent: #4f8cff;
+    --done: #3dd68c;
+    --progress: #f5a623;
+    --pending: #666;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 16px;
+    line-height: 1.45;
+  }
+  h1 { font-size: 1.35rem; margin: 0 0 4px; }
+  .subtitle { color: var(--muted); font-size: 0.82rem; margin-bottom: 16px; }
+  .nav { margin-bottom: 16px; font-size: 0.85rem; }
+  .nav a { color: var(--accent); text-decoration: none; }
+  .pipeline {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  details > summary {
+    padding: 13px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::after {
+    content: "▸";
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  details[open] > summary::after { content: "▾"; }
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+  }
+  .done { background: var(--done); }
+  .progress { background: var(--progress); }
+  .pending { background: var(--pending); }
+  .milestones {
+    padding: 0 16px 12px 28px;
+    border-top: 1px solid var(--border);
+  }
+  .milestone {
+    padding: 9px 0;
+    border-bottom: 1px solid #222;
+    font-size: 0.9rem;
+  }
+  .milestone:last-child { border-bottom: none; }
+  .milestone-title { display: flex; align-items: center; gap: 8px; }
+  .meta { color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
+  .footer { margin-top: 20px; color: var(--muted); font-size: 0.75rem; text-align: center; }
+</style>
+</head>
+<body>
+  <h1>Projects</h1>
+  <div class="subtitle">Where things stand · Expand for milestones · Updated from PROJECT INDEX</div>
+  <div class="nav"><a href="/">← Agent status dashboard</a></div>
+
+  <div class="pipeline">
+    <details open>
+      <summary>
+        <span><span class="status-dot progress"></span> Family Agenda</span>
+        <span style="font-weight:400;color:var(--muted);font-size:0.8rem">widget + shared decisions</span>
+      </summary>
+      <div class="milestones">
+        <div class="milestone"><div class="milestone-title"><span class="status-dot done"></span> Native app on James’s phone</div><div class="meta">Catch me up, Gmail, choice buttons installed</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot done"></span> Shared decisions (Google Sheet)</div><div class="meta">First claim wins · OAuth setup still needed for wife’s phone</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot progress"></span> Config-driven lock-screen widget</div><div class="meta">JSON + 3 chips · not compiled yet</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot pending"></span> Live Activity</div><div class="meta">Attention-only · spec’d, not started</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot pending"></span> Wife’s phone install + test</div><div class="meta">Build + OAuth test user open</div></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="pipeline">
+    <details>
+      <summary>
+        <span><span class="status-dot progress"></span> /played (Slashplayed)</span>
+        <span style="font-weight:400;color:var(--muted);font-size:0.8rem">touch controller</span>
+      </summary>
+      <div class="milestones">
+        <div class="milestone"><div class="milestone-title"><span class="status-dot done"></span> Touch controller base</div><div class="meta">HANDOFF.md is source of truth</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot progress"></span> 6-item rebuild queue</div><div class="meta">Logged after battleground test 2026-11-19</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot pending"></span> Media / polish</div><div class="meta">MEDIA.md exists</div></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="pipeline">
+    <details open>
+      <summary>
+        <span><span class="status-dot progress"></span> Agent Status System</span>
+        <span style="font-weight:400;color:var(--muted);font-size:0.8rem">cross-agent health</span>
+      </summary>
+      <div class="milestones">
+        <div class="milestone"><div class="milestone-title"><span class="status-dot done"></span> Spec v0.1</div><div class="meta">Phase 1 + Phase 2 (widget, instruments, genre)</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot done"></span> Phase 1 milestone 1</div><div class="meta">claude-code status live</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot progress"></span> Dashboard + Action checks</div><div class="meta">Most agents still red / pending their files</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot pending"></span> Service account for Index</div><div class="meta">Commit ready · James to push + Google Cloud setup</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot pending"></span> Other agents report</div><div class="meta">codex, chatgpt, gemini, grok, claude-chat</div></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="pipeline">
+    <details>
+      <summary>
+        <span><span class="status-dot pending"></span> Phone Remote</span>
+        <span style="font-weight:400;color:var(--muted);font-size:0.8rem">iPhone as keyboard/mouse</span>
+      </summary>
+      <div class="milestones">
+        <div class="milestone"><div class="milestone-title"><span class="status-dot done"></span> Idea queue 1–7</div><div class="meta">Captured 2026-11-16</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot pending"></span> Core prototype</div><div class="meta">Folder exists · not prioritized</div></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="pipeline">
+    <details>
+      <summary>
+        <span><span class="status-dot pending"></span> Other ideas</span>
+        <span style="font-weight:400;color:var(--muted);font-size:0.8rem">no code yet</span>
+      </summary>
+      <div class="milestones">
+        <div class="milestone"><div class="milestone-title"><span class="status-dot pending"></span> Aftertone</div><div class="meta">Watch → iPhone → Mac concept</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot pending"></span> WoW addons</div><div class="meta">Zip layout fix for CurseForge</div></div>
+        <div class="milestone"><div class="milestone-title"><span class="status-dot pending"></span> WiFi manager / iPod / Mac Switch ports</div><div class="meta">Idea stage</div></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="footer">Green = done · Amber = in progress · Gray = pending<br>Bookmark this page for a quick hop-in glance.</div>
+</body>
+</html>
