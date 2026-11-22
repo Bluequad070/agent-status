@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-22T17:12:50Z",
+  "checked_at": "2026-11-22T18:07:01Z",
   "base": "https://bluequad070.github.io/agent-status/",
   "pause_seconds": 45,
   "overall": "x",
@@ -15,7 +15,7 @@
           "no session log date",
           "handoff_authority is UNKNOWN, not CANONICAL"
         ],
-        "at": "2026-11-22T17:12:04Z"
+        "at": "2026-11-22T18:06:15Z"
       },
       "second": {
         "ok": false,
@@ -25,7 +25,7 @@
           "no session log date",
           "handoff_authority is UNKNOWN, not CANONICAL"
         ],
-        "at": "2026-11-22T17:12:49Z"
+        "at": "2026-11-22T18:07:00Z"
       },
       "last_seen": "",
       "current_project": "none"
@@ -36,13 +36,13 @@
         "ok": true,
         "stale": false,
         "reasons": [],
-        "at": "2026-11-22T17:12:04Z"
+        "at": "2026-11-22T18:06:15Z"
       },
       "second": {
         "ok": true,
         "stale": false,
         "reasons": [],
-        "at": "2026-11-22T17:12:49Z"
+        "at": "2026-11-22T18:07:01Z"
       },
       "last_seen": "2026-11-22T09:02:43Z",
       "current_project": "Agent Status System"
@@ -57,15 +57,17 @@
           "no session log date",
           "handoff_authority is UNKNOWN, not CANONICAL"
         ],
-        "at": "2026-11-22T17:12:04Z"
+        "at": "2026-11-22T18:06:15Z"
       },
       "second": {
         "ok": false,
         "stale": false,
         "reasons": [
-          "unreachable: <urlopen error [Errno 104] Connection reset by peer>"
+          "last_seen missing",
+          "no session log date",
+          "handoff_authority is UNKNOWN, not CANONICAL"
         ],
-        "at": "2026-11-22T17:12:49Z"
+        "at": "2026-11-22T18:07:01Z"
       },
       "last_seen": "",
       "current_project": "none"
@@ -80,7 +82,7 @@
           "no session log date",
           "handoff_authority is UNKNOWN, not CANONICAL"
         ],
-        "at": "2026-11-22T17:12:04Z"
+        "at": "2026-11-22T18:06:15Z"
       },
       "second": {
         "ok": false,
@@ -90,7 +92,7 @@
           "no session log date",
           "handoff_authority is UNKNOWN, not CANONICAL"
         ],
-        "at": "2026-11-22T17:12:50Z"
+        "at": "2026-11-22T18:07:01Z"
       },
       "last_seen": "",
       "current_project": "none"
@@ -105,7 +107,7 @@
           "no session log date",
           "handoff_authority is UNKNOWN, not CANONICAL"
         ],
-        "at": "2026-11-22T17:12:04Z"
+        "at": "2026-11-22T18:06:15Z"
       },
       "second": {
         "ok": false,
@@ -115,7 +117,7 @@
           "no session log date",
           "handoff_authority is UNKNOWN, not CANONICAL"
         ],
-        "at": "2026-11-22T17:12:50Z"
+        "at": "2026-11-22T18:07:01Z"
       },
       "last_seen": "",
       "current_project": "none"
@@ -128,7 +130,7 @@
         "reasons": [
           "handoff_authority is UNKNOWN, not CANONICAL"
         ],
-        "at": "2026-11-22T17:12:04Z"
+        "at": "2026-11-22T18:06:15Z"
       },
       "second": {
         "ok": false,
@@ -136,7 +138,7 @@
         "reasons": [
           "handoff_authority is UNKNOWN, not CANONICAL"
         ],
-        "at": "2026-11-22T17:12:50Z"
+        "at": "2026-11-22T18:07:01Z"
       },
       "last_seen": "2026-11-22T09:02:43Z",
       "current_project": "none"
@@ -146,10 +148,6 @@
     "claude-chat": [
       {
         "state": "x",
-        "at": "2026-11-22T14:22:15Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-22T15:14:19Z"
       },
       {
@@ -159,15 +157,15 @@
       {
         "state": "x",
         "at": "2026-11-22T17:12:50Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-22T18:07:01Z"
       }
     ],
     "claude-code": [
       {
         "state": "double-green",
-        "at": "2026-11-22T14:22:15Z"
-      },
-      {
-        "state": "double-green",
         "at": "2026-11-22T15:14:19Z"
       },
       {
@@ -177,15 +175,15 @@
       {
         "state": "double-green",
         "at": "2026-11-22T17:12:50Z"
+      },
+      {
+        "state": "double-green",
+        "at": "2026-11-22T18:07:01Z"
       }
     ],
     "codex": [
       {
         "state": "x",
-        "at": "2026-11-22T14:22:15Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-22T15:14:19Z"
       },
       {
@@ -195,15 +193,15 @@
       {
         "state": "x",
         "at": "2026-11-22T17:12:50Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-22T18:07:01Z"
       }
     ],
     "chatgpt": [
       {
         "state": "x",
-        "at": "2026-11-22T14:22:15Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-22T15:14:19Z"
       },
       {
@@ -213,15 +211,15 @@
       {
         "state": "x",
         "at": "2026-11-22T17:12:50Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-22T18:07:01Z"
       }
     ],
     "gemini": [
       {
         "state": "x",
-        "at": "2026-11-22T14:22:15Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-22T15:14:19Z"
       },
       {
@@ -231,15 +229,15 @@
       {
         "state": "x",
         "at": "2026-11-22T17:12:50Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-22T18:07:01Z"
       }
     ],
     "grok": [
       {
         "state": "x",
-        "at": "2026-11-22T14:22:15Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-22T15:14:19Z"
       },
       {
@@ -249,6 +247,10 @@
       {
         "state": "x",
         "at": "2026-11-22T17:12:50Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-22T18:07:01Z"
       }
     ]
   },
