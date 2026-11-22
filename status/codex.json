@@ -3,21 +3,21 @@
   "surface": "code",
   "owner": "James Neal",
   "writer": "claude-code",
-  "last_seen": "",
-  "last_session_log_date": "",
+  "last_seen": "2026-11-22T20:21:41Z",
+  "last_session_log_date": "2026-11-22",
   "current_project": "none",
   "handoff_doc": "",
   "handoff_authority": "UNKNOWN",
   "checks": [
     {
       "id": "read_index",
-      "ok": false,
-      "at": "2026-11-22T09:02:43Z"
+      "ok": true,
+      "at": "2026-11-22T20:21:41Z"
     },
     {
       "id": "wrote_session_log",
-      "ok": false,
-      "at": "2026-11-22T09:02:43Z"
+      "ok": true,
+      "at": "2026-11-22T20:21:41Z"
     },
     {
       "id": "can_fetch_dashboard",
@@ -25,6 +25,6 @@
       "at": "2026-11-22T09:02:43Z"
     }
   ],
-  "note": "Starter file from Claude Code. Codex should overwrite this at its next session end.",
+  "note": "Codex Work Mode logged in the Index 2026-11-22: verified Google Docs read/write and code execution; no Mac access in that session. Written by Claude Code from the Index.",
   "version": "0.1"
 }
