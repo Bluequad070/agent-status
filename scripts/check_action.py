@@ -68,7 +68,9 @@ def evaluate(s, now):
             reasons.append("session log older than %d days" % LOG_DAYS)
     except ValueError:
         reasons.append("no session log date")
-    if s.get("handoff_authority") != "CANONICAL":
+    # An agent with no current project has no handoff to be canonical about.
+    no_project = (s.get("current_project") or "none").strip().lower() == "none"
+    if not no_project and s.get("handoff_authority") != "CANONICAL":
         reasons.append("handoff_authority is %s, not CANONICAL" % (s.get("handoff_authority") or "missing"))
     return {"ok": not reasons, "stale": stale, "reasons": reasons}
 

@@ -52,7 +52,9 @@
       // +1 day: a date means the whole day, so 7 days back still counts.
       reasons.push("session log older than " + RULES.logDays + " days");
     }
-    if (s.handoff_authority !== "CANONICAL") {
+    // An agent with no current project has no handoff to be canonical about.
+    var noProject = String(s.current_project || "none").trim().toLowerCase() === "none";
+    if (!noProject && s.handoff_authority !== "CANONICAL") {
       reasons.push("handoff_authority is " + (s.handoff_authority || "missing") + ", not CANONICAL");
     }
     return { ok: reasons.length === 0, stale: stale, reasons: reasons, ageMs: ageMs };
