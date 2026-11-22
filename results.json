@@ -1,0 +1,186 @@
+{
+  "checked_at": "2026-11-22T09:13:53Z",
+  "base": "https://bluequad070.github.io/agent-status/",
+  "pause_seconds": 45,
+  "overall": "x",
+  "index_parse": "skipped: INDEX_TXT_URL not set",
+  "agents": {
+    "claude-chat": {
+      "state": "x",
+      "first": {
+        "ok": false,
+        "stale": false,
+        "reasons": [
+          "last_seen missing",
+          "no session log date",
+          "handoff_authority is UNKNOWN, not CANONICAL"
+        ],
+        "at": "2026-11-22T09:13:07Z"
+      },
+      "second": {
+        "ok": false,
+        "stale": false,
+        "reasons": [
+          "last_seen missing",
+          "no session log date",
+          "handoff_authority is UNKNOWN, not CANONICAL"
+        ],
+        "at": "2026-11-22T09:13:53Z"
+      },
+      "last_seen": "",
+      "current_project": "none"
+    },
+    "claude-code": {
+      "state": "double-green",
+      "first": {
+        "ok": true,
+        "stale": false,
+        "reasons": [],
+        "at": "2026-11-22T09:13:08Z"
+      },
+      "second": {
+        "ok": true,
+        "stale": false,
+        "reasons": [],
+        "at": "2026-11-22T09:13:53Z"
+      },
+      "last_seen": "2026-11-22T09:02:43Z",
+      "current_project": "Agent Status System"
+    },
+    "codex": {
+      "state": "x",
+      "first": {
+        "ok": false,
+        "stale": false,
+        "reasons": [
+          "last_seen missing",
+          "no session log date",
+          "handoff_authority is UNKNOWN, not CANONICAL"
+        ],
+        "at": "2026-11-22T09:13:08Z"
+      },
+      "second": {
+        "ok": false,
+        "stale": false,
+        "reasons": [
+          "last_seen missing",
+          "no session log date",
+          "handoff_authority is UNKNOWN, not CANONICAL"
+        ],
+        "at": "2026-11-22T09:13:53Z"
+      },
+      "last_seen": "",
+      "current_project": "none"
+    },
+    "chatgpt": {
+      "state": "x",
+      "first": {
+        "ok": false,
+        "stale": false,
+        "reasons": [
+          "last_seen missing",
+          "no session log date",
+          "handoff_authority is UNKNOWN, not CANONICAL"
+        ],
+        "at": "2026-11-22T09:13:08Z"
+      },
+      "second": {
+        "ok": false,
+        "stale": false,
+        "reasons": [
+          "last_seen missing",
+          "no session log date",
+          "handoff_authority is UNKNOWN, not CANONICAL"
+        ],
+        "at": "2026-11-22T09:13:53Z"
+      },
+      "last_seen": "",
+      "current_project": "none"
+    },
+    "gemini": {
+      "state": "x",
+      "first": {
+        "ok": false,
+        "stale": false,
+        "reasons": [
+          "last_seen missing",
+          "no session log date",
+          "handoff_authority is UNKNOWN, not CANONICAL"
+        ],
+        "at": "2026-11-22T09:13:08Z"
+      },
+      "second": {
+        "ok": false,
+        "stale": false,
+        "reasons": [
+          "last_seen missing",
+          "no session log date",
+          "handoff_authority is UNKNOWN, not CANONICAL"
+        ],
+        "at": "2026-11-22T09:13:53Z"
+      },
+      "last_seen": "",
+      "current_project": "none"
+    },
+    "grok": {
+      "state": "x",
+      "first": {
+        "ok": false,
+        "stale": false,
+        "reasons": [
+          "handoff_authority is UNKNOWN, not CANONICAL"
+        ],
+        "at": "2026-11-22T09:13:08Z"
+      },
+      "second": {
+        "ok": false,
+        "stale": false,
+        "reasons": [
+          "handoff_authority is UNKNOWN, not CANONICAL"
+        ],
+        "at": "2026-11-22T09:13:53Z"
+      },
+      "last_seen": "2026-11-22T09:02:43Z",
+      "current_project": "none"
+    }
+  },
+  "history": {
+    "claude-chat": [
+      {
+        "state": "x",
+        "at": "2026-11-22T09:13:53Z"
+      }
+    ],
+    "claude-code": [
+      {
+        "state": "double-green",
+        "at": "2026-11-22T09:13:53Z"
+      }
+    ],
+    "codex": [
+      {
+        "state": "x",
+        "at": "2026-11-22T09:13:53Z"
+      }
+    ],
+    "chatgpt": [
+      {
+        "state": "x",
+        "at": "2026-11-22T09:13:53Z"
+      }
+    ],
+    "gemini": [
+      {
+        "state": "x",
+        "at": "2026-11-22T09:13:53Z"
+      }
+    ],
+    "grok": [
+      {
+        "state": "x",
+        "at": "2026-11-22T09:13:53Z"
+      }
+    ]
+  },
+  "version": "0.1"
+}
