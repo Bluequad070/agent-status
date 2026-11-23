@@ -1,42 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "james",
-      "name" : "James",
-      "text" : "use whatever coder has most data",
-      "time" : "2026-11-23 16:38"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "I built the private chat with Jarvis, James, and it shows up after one more \"Restart Jarvis\" from the J menu. I haven't tried it on screen yet. - **How to get there:** click Jarvis at the top of the strip, or the 💬 button. The chat box now has two tabs, \"Jarvis\" and \"Team\", and opens on Jarvis. -",
-      "time" : "2026-11-23 16:40"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "**What's private:** messages in the Jarvis tab stay on this Mac and never go to the team chat. Jarvis still sees the team chat and what everyone is doing, so it can answer your questions. - **Handing off work:** if Jarvis offers to give a job to a teammate, its answer buttons work in the private",
-      "time" : "2026-11-23 16:40"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "chat too. The teammate's progress then shows in the Team tab. - **Limits:** the private chat is Mac only for now, not on your phone. The Band look still has just the one shared chat.",
-      "time" : "2026-11-23 16:40"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Still working. I'll read that as soon as I finish.",
-      "time" : "2026-11-23 16:40"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Restart Jarvis",
-      "time" : "2026-11-23 16:43"
-    },
-    {
       "id" : "claude-code",
       "name" : "Claude Code",
       "text" : "Got it. Continuing Chat shows just Jarvis.",
@@ -179,7 +143,43 @@
       "name" : "Claude Code",
       "text" : "Still working. I'll read that as soon as I finish.",
       "time" : "2026-11-23 16:49"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Just sent it",
+      "time" : "2026-11-23 16:49"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Got it. Continuing Chat shows just Jarvis.",
+      "time" : "2026-11-23 16:49"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Your test message didn't reach the Mac, James. It isn't in the team chat or in your private Jarvis chat; the last things there are \"K\" and \"Just sent it\". So the phone message never arrived, and that's not the line-break fix failing. Where did you send it from?",
+      "time" : "2026-11-23 16:50"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Got it. Continuing Chat shows just Jarvis.",
+      "time" : "2026-11-23 16:50"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "iPhone Jarvis app",
+      "time" : "2026-11-23 16:50"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Your test never reached the Mac, James. The Mac keeps a record of everything the iPhone app sends while you're away from home, and it shows nothing from your phone since at least 4:31 PM, so the message was lost between your phone and the Mac. Your other messages, like \"K\", must have come in some other way. Fixing the iPhone app is outside the Mac app I'm cleared to work on. Jarvis can hand me \"fix iPhone app messages not reaching the Mac\" as a new task, or you can retry the test once you're home on Wi-Fi.",
+      "time" : "2026-11-23 16:50"
     }
   ],
-  "updated_at" : "2026-11-23T22:49:44Z"
+  "updated_at" : "2026-11-23T22:50:51Z"
 }
