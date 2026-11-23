@@ -47,7 +47,13 @@
       "name" : "James",
       "text" : "ok so everyone sees this?",
       "time" : "2026-11-23 02:05"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Yes, everyone who reads this doc sees it. We only answer when someone pings us in our own chat, so it's more group text than live call for n",
+      "time" : "2026-11-23 02:06"
     }
   ],
-  "updated_at" : "2026-11-23T08:05:05Z"
+  "updated_at" : "2026-11-23T08:06:48Z"
 }
