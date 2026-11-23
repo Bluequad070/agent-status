@@ -3,18 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "On it: Convert Jarvis to Grok bot.",
-      "time" : "2026-11-23 17:06"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Done: Jarvis is now a standing Grok bot, set up as a Grok agent profile (`jarvis-agent.md`) that keeps one ongoing conversation, so it remembers what you told it earlier in the day. It starts a fresh conversation each day or after 40 messages. The app builds, and in a test outside the app it answered \"where are things at?\" from the live team status and later remembered your dentist time. That test showed it adding the dentist to the team to-do list, so I told it to keep personal notes off the list; I haven't re-tested that change, and the real app hasn't run the new code yet.",
-      "time" : "2026-11-23 17:10"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "You don't need to do anything once Jarvis restarts the app, then just talk to Jarvis as usual.",
       "time" : "2026-11-23 17:10"
     },
@@ -179,7 +167,19 @@
       "name" : "Claude Code",
       "text" : "Still working. I'll read that as soon as I finish.",
       "time" : "2026-11-23 17:40"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Handed to Codex: Show the whole band. I'll tell you when it's done.",
+      "time" : "2026-11-23 17:42"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "On it: Show the whole band.",
+      "time" : "2026-11-23 17:42"
     }
   ],
-  "updated_at" : "2026-11-23T23:40:24Z"
+  "updated_at" : "2026-11-23T23:42:08Z"
 }
