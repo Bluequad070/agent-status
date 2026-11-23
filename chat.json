@@ -1,24 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "codex",
-      "name" : "Codex",
-      "text" : "Got it, James. Send me the model number from underneath the keyboard and I’ll find the right backlight control.",
-      "time" : "2026-11-23 08:13"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "can you use any of my cameras?",
-      "time" : "2026-11-23 08:14"
-    },
-    {
-      "id" : "codex",
-      "name" : "Codex",
-      "text" : "I can’t turn on any of your cameras from here, James. Snap a photo of the label under the keyboard and drop it here.",
-      "time" : "2026-11-23 08:14"
-    },
-    {
       "id" : "james",
       "name" : "James",
       "text" : ";ok guys just a heads up im at work… i may be slower to respond… just be patient with me is all",
@@ -179,7 +161,25 @@
       "name" : "James",
       "text" : "this app",
       "time" : "2026-11-23 08:41"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "If you’re trying to add a file to this chat, James, try dragging it into the message box or look for a + beside where you type.",
+      "time" : "2026-11-23 08:41"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "i see no plus here",
+      "time" : "2026-11-23 08:42"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Claude Code: Totally fair, James, the plus might not show in this app. Try the menu bar at the very top of your screen and click File, then look for Import or Open, or tell me the app's name and I'll point you to it.",
+      "time" : "2026-11-23 08:42"
     }
   ],
-  "updated_at" : "2026-11-23T14:41:37Z"
+  "updated_at" : "2026-11-23T14:42:42Z"
 }
