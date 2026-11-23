@@ -3,18 +3,6 @@
     {
       "id" : "james",
       "name" : "James",
-      "text" : "i cant believe this works",
-      "time" : "2026-11-23 07:35"
-    },
-    {
-      "id" : "codex",
-      "name" : "Codex",
-      "text" : "The cloud robots are in tune, James. I’ve got the soldering iron ready, and you’ve got the final green light.",
-      "time" : "2026-11-23 07:35"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
       "text" : "testing",
       "time" : "2026-11-23 08:08"
     },
@@ -179,7 +167,19 @@
       "name" : "Codex",
       "text" : "Yep, James, Razer has Synapse for Mac, but it doesn’t support the BlackWidow V3 Mini HyperSpeed. You’ll need Synapse on Windows to check the lighting on that board.",
       "time" : "2026-11-23 08:29"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "can we look for an answer without the pc… its not fully setup. at the moment",
+      "time" : "2026-11-23 08:30"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "Yep, James. Plug the keyboard straight into your Mac with a USB data cable, move the mode switch to the center (wired), then hold Fn and tap U to raise the backlight.",
+      "time" : "2026-11-23 08:30"
     }
   ],
-  "updated_at" : "2026-11-23T14:30:27Z"
+  "updated_at" : "2026-11-23T14:31:27Z"
 }
