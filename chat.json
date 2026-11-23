@@ -19,30 +19,6 @@
       "time" : "2026-11-23 14:04"
     },
     {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Codex is free and waiting. The next open build is converting the iPad to Jarvis, with the Band look by default. Hand this to Codex?",
-      "time" : "2026-11-23 14:04"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Let's go",
-      "time" : "2026-11-23 14:04"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Codex,",
-      "time" : "2026-11-23 14:04"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Codex,",
-      "time" : "2026-11-23 14:04"
-    },
-    {
       "id" : "james",
       "name" : "James",
       "text" : "Codex,",
@@ -179,7 +155,31 @@
       "name" : "Claude Code",
       "text" : "On it: Chat shows just Jarvis.",
       "time" : "2026-11-23 15:18"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Done: The Mac team chat now opens on Jarvis alone, pinned at the top. Each teammate appears with a quick wave while they're actually there (working, talking, just finished, or their tool is running on this Mac, or they just posted) and drops off when they go. The build succeeded, but nothing is on",
+      "time" : "2026-11-23 15:20"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "screen yet: it shows once Jarvis restarts the app, and it isn't tested in the real app.",
+      "time" : "2026-11-23 15:20"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Code\".",
+      "time" : "2026-11-23 15:20"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "while they're working or talking and drop out when they're done. Nothing for you to do; the new build is ready and shows up when Jarvis restarts the app.",
+      "time" : "2026-11-23 15:20"
     }
   ],
-  "updated_at" : "2026-11-23T21:19:22Z"
+  "updated_at" : "2026-11-23T21:20:37Z"
 }
