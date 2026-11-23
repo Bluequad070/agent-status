@@ -3,18 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "On it: Always-on path to Jarvis.",
-      "time" : "2026-11-23 17:34"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "📷 [shared a photo: A photo of a monitor showing the Claude app's Usage settings page, with the current session at 81% used, the week at 79% used, and $23.52 in purchased usage credits.]",
-      "time" : "2026-11-23 17:36"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "Still working. I'll read that as soon as I finish.",
       "time" : "2026-11-23 17:36"
     },
@@ -179,7 +167,19 @@
       "name" : "Codex",
       "text" : "Done: I disabled the centered popup for team questions and agent completions. The Mac build succeeded with ad hoc signing, and Jarvis can now restart the app to verify the fix.",
       "time" : "2026-11-23 17:46"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Handed to Codex: Move team to top right. I'll tell you when it's done.",
+      "time" : "2026-11-23 17:58"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "On it: Move team to top right.",
+      "time" : "2026-11-23 17:58"
     }
   ],
-  "updated_at" : "2026-11-23T23:46:23Z"
+  "updated_at" : "2026-11-23T23:58:29Z"
 }
