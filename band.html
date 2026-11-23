@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent Band</title>
+<style>
+:root{--bg:#1d1838;--fg:#fff;--muted:rgba(255,255,255,.7)}
+html,body{margin:0;background:radial-gradient(120% 90% at 20% 0%,#5a3f9a 0%,transparent 55%),linear-gradient(135deg,#2b2350,#0f2a3a);
+  background-attachment:fixed;color:var(--fg);font-family:-apple-system,system-ui,"Segoe UI",sans-serif;min-height:100%}
+.wrap{max-width:980px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-left)) 40px}
+h1{font-size:clamp(1.8rem,5vw,2.6rem);margin:0}
+.sub{color:var(--muted);margin:.3rem 0 1.2rem}
+.band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end}
+@media (max-width:560px){.band{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.bar button,.bar select{font:inherit;font-size:14px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;padding:8px 12px;cursor:pointer}
+.bar button.primary{background:#fff;color:#1b1a24;font-weight:600}
+.cap-line{min-height:1.6em;margin-top:14px;font-weight:600}
+.foot{margin-top:26px;color:var(--muted);font-size:13px}
+.foot a{color:#fff}
+
+/* The band strip. Transparent page; the Mac app gives it a 150px window on the right edge. */
+:root{--strip:rgba(20,18,32,.62);--line:rgba(255,255,255,.16);--ok:#22b573;--work:#3b82f6;--bad:#e5484d;--duck:1}
+
+.fig{position:relative;flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:transform .35s ease,opacity .35s;cursor:pointer}
+.fig svg{height:100%;max-height:96px;width:auto;overflow:visible}
+.cap{font-size:10px;line-height:1.15;opacity:.85;white-space:nowrap;text-align:center}
+.cap small{display:block;opacity:.7;font-size:9px}
+.hidebtn{position:absolute;top:2px;left:4px;width:18px;height:18px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;
+  font-size:12px;line-height:18px;padding:0;cursor:pointer;opacity:0;transition:opacity .2s}
+.fig:hover .hidebtn{opacity:1}
+.note{display:none;margin-top:3px;max-width:118px;background:#fff;color:#1b1a24;font-size:10px;line-height:1.25;padding:4px 7px;
+  border-radius:8px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.fig[data-state="ready"] .note{display:block}
+.fig[data-state="disconnected"][data-agent="gemini"] .note{display:block;font-style:italic}
+
+.char,.inst,.gag,.mouth,.lid,.zz{transform-box:fill-box;transform-origin:50% 100%}
+.gag,.lid{display:none}
+/* idle: still tapping along, very quietly */
+.fig[data-state="idle"]{opacity:.7}
+.fig[data-state="idle"] .char{animation:nod 1.6s ease-in-out infinite}
+.fig[data-state="idle"] .inst{animation:tapalong .8s ease-in-out infinite}
+@keyframes nod{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(1.2px) rotate(-1.2deg)}}
+@keyframes tapalong{0%,60%,100%{transform:translateY(0)}20%{transform:translateY(1px) rotate(.8deg)}}
+.fig[data-state="working"] .char{animation:bob .32s ease-in-out infinite alternate}
+.fig[data-state="working"] .inst{animation:jig .16s linear infinite alternate}
+.fig[data-state="speaking"] .char{animation:bob 1.2s ease-in-out infinite alternate}
+.fig[data-state="speaking"] .inst{opacity:calc(.25 + .5 * (1 - var(--duck)))}
+.fig[data-state="speaking"] .mouth{animation:talk .22s steps(2) infinite}
+.fig[data-state="ready"]{transform:translateX(-6px)}
+.fig[data-state="ready"] .char{animation:hop .7s cubic-bezier(.3,1.6,.5,1) infinite}
+.fig[data-state="ready"] svg{filter:drop-shadow(0 0 8px rgba(255,255,255,.55))}
+.fig[data-state="disconnected"] .gag,.fig[data-state="disconnected"] .lid{display:inline}
+.fig[data-state="disconnected"] .eye{display:none}
+.fig[data-agent="grok"][data-state="disconnected"] .char{transform:rotate(22deg) translate(6px,10px)}
+.fig[data-agent="grok"][data-state="disconnected"] .zz{animation:float 2.4s ease-in infinite}
+.fig[data-agent="grok"][data-state="disconnected"] .cymbal{animation:wobble 3s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+.fig[data-agent="claude"][data-state="disconnected"] .char{transform:rotate(-8deg)}
+.fig[data-agent="claude"][data-state="disconnected"] .spark{animation:spark 1.6s steps(1) infinite}
+.fig[data-agent="chatgpt"][data-state="disconnected"] .inst{opacity:0;transition:opacity 1.2s 1s}
+.fig[data-agent="chatgpt"][data-state="disconnected"] .char{animation:strum .25s ease-in-out infinite alternate}
+.fig[data-agent="chatgpt"][data-state="disconnected"] .huh{animation:appear 3s steps(1) infinite}
+.fig[data-agent="gemini"][data-state="disconnected"] .inst{animation:tap .9s ease-in-out infinite}
+.fig[data-agent="gemini"][data-state="disconnected"] .lid{display:none}
+.fig[data-agent="gemini"][data-state="disconnected"] .eye{display:inline}
+.fig[data-agent="claude-code"][data-state="disconnected"] .ball{animation:spin 1s linear infinite;transform-box:fill-box;transform-origin:50% 50%}
+.fig[data-agent="codex"][data-state="disconnected"] .ring{animation:smoke 2.4s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+.fig[data-state="disconnected"]{opacity:.85}
+.fig.shake{animation:shake .6s ease}
+@keyframes breathe{50%{transform:scale(1.04,.97)}}
+@keyframes bob{to{transform:translateY(-4px) rotate(-3deg)}}
+@keyframes jig{to{transform:rotate(4deg)}}
+@keyframes talk{50%{transform:scaleY(2.2)}}
+@keyframes hop{0%,100%{transform:translateY(0)}40%{transform:translateY(-9px) scale(1.03,.97)}}
+@keyframes float{0%{opacity:0;transform:translate(0,0)}30%{opacity:1}100%{opacity:0;transform:translate(6px,-14px)}}
+@keyframes wobble{0%{transform:rotate(14deg)}20%{transform:rotate(-10deg)}40%{transform:rotate(6deg)}60%,100%{transform:rotate(0)}}
+@keyframes spark{0%,100%{opacity:0}10%{opacity:1}20%{opacity:0}}
+@keyframes strum{to{transform:rotate(6deg) translateY(-2px)}}
+@keyframes appear{0%,40%{opacity:0}41%,100%{opacity:1}}
+@keyframes tap{0%,100%{transform:translateY(0)}20%{transform:translateY(-3px)}40%{transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes smoke{0%{opacity:0;transform:translateY(0) scale(.4)}20%{opacity:.9}100%{opacity:0;transform:translateY(-16px) scale(1.5)}}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-5px) rotate(-6deg)}40%{transform:translateX(5px) rotate(6deg)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+
+/* Minimal mode */
+.dotline{display:none;width:12px;flex:1 1 auto;max-height:46px;border-radius:6px;background:#77758a;position:relative}
+.minimal .fig svg{display:none}
+.minimal .fig .dotline{display:block}
+.minimal .fig{transform:none!important;animation:none!important;opacity:1}
+.minimal .fig[data-state="idle"] .dotline{opacity:.6}
+.minimal .fig[data-state="working"] .dotline{background:var(--work)}
+.minimal .fig[data-state="speaking"] .dotline{background:var(--work);opacity:.4}
+.minimal .fig[data-state="ready"] .dotline{background:var(--ok);box-shadow:0 0 0 3px rgba(34,181,115,.35)}
+.minimal .fig[data-state="disconnected"] .dotline{background:var(--bad)}
+.minimal .fig[data-state="disconnected"] .dotline:after{content:"×";position:absolute;inset:0;font-size:12px;text-align:center;line-height:1}
+.minimal .fig[data-state="disconnected"][data-agent="gemini"] .note{display:none}
+@media (prefers-reduced-motion:reduce){.fig *{animation:none!important}}
+
+.fig{flex:none;height:auto}
+.fig svg{max-height:none;width:100%;height:auto}
+.cap{font-size:14px} .cap small{font-size:12px}
+.note{font-size:12px;max-width:none}
+.hidebtn,.dotline{display:none!important}
+</style></head>
+<body><div class="wrap">
+<h1>Agent Band</h1>
+<p class="sub">James's AI agents as a band, live from the <a href="./" style="color:#fff">status board</a>. Tap a member to open its chat.</p>
+<div class="band" id="strip"></div>
+<div class="cap-line" id="caption" aria-live="polite"></div>
+<div class="bar">
+  <button class="primary" id="demo" type="button">Play the demo</button>
+  <label>Genre <select id="genre"></select></label>
+  <button id="sound" type="button" aria-pressed="false">Chimes off</button>
+</div>
+<p class="foot">Checks every 45 seconds; a change shows after two reads agree. Same rules as the board.</p>
+</div>
+<script>
+const AGENTS=[
+  {id:"grok",name:"Grok",color:"#d9d9e3",dark:"#4a4a5c",glow:"#ffffff",eyes:"slash",role:0},
+  {id:"claude",name:"Claude",color:"#e08a68",dark:"#8a3f22",glow:"#ffb48f",eyes:"arc",role:1},
+  {id:"chatgpt",name:"ChatGPT",color:"#3cc49b",dark:"#11674e",glow:"#7dffd6",eyes:"dot",role:2},
+  {id:"gemini",name:"Gemini",color:"#7f9bff",dark:"#2c3f9e",glow:"#c7d3ff",eyes:"star",role:3,tap:"is this thing on?"},
+  {id:"claude-code",name:"Claude Code",color:"#e08a68",dark:"#8a3f22",glow:"#ffb48f",eyes:"prompt",role:1,acc:"keyboard"},
+  {id:"codex",name:"Codex",color:"#3cc49b",dark:"#11674e",glow:"#7dffd6",eyes:"prompt",role:2,acc:"iron"}
+];
+const EYES={
+  slash:'<path d="M38 55 l5 -6 M56 55 l5 -6"/>',
+  arc:'<path d="M37 54 q4 -5 8 0 M55 54 q4 -5 8 0"/>',
+  dot:'<path d="M41 51 h0.1 M59 51 h0.1" stroke-width="6"/>',
+  star:'<path d="M41 47 v8 M37 51 h8 M59 47 v8 M55 51 h8"/>',
+  prompt:'<path d="M37 47 l5 4 l-5 4 M50 56 h12"/>'
+};
+const GENRES={
+  "Rock":[["drum kit","kit"],["electric bass","bass"],["electric guitar","guitar"],["lead vocals","mic"]],
+  "Jazz":[["brushed kit","kit"],["upright bass","upright"],["saxophone","horn"],["jazz vocals","mic"]],
+  "Classical":[["timpani","timp"],["cello","upright"],["violin","violin"],["soprano","mic"]],
+  "Hip-Hop/Rap":[["turntables","pads"],["808 bass synth","keys"],["keys","keys"],["rapper","mic"]],
+  "Country":[["drum kit","kit"],["upright bass","upright"],["banjo","banjo"],["vocals","mic","cowboy"]],
+  "Electronic":[["drum pads","pads"],["bass synth","keys"],["synth","keys"],["headset vocals","mic"]],
+  "R&B/Soul":[["drum kit","kit"],["electric bass","bass"],["electric piano","keys"],["soul vocals","mic"]],
+  "Latin":[["congas","timp"],["bass guitar","bass"],["Spanish guitar","guitar"],["vocals + maracas","mic"]],
+  "Metal":[["double-kick kit","kit"],["5-string bass","bass"],["flying-V guitar","guitar"],["screaming vocals","mic"]],
+  "Blues":[["drum kit","kit"],["upright bass","upright"],["slide guitar","guitar"],["vocals + harmonica","mic"]],
+  "Reggae":[["one-drop kit","kit"],["bass guitar","bass"],["skank guitar","guitar"],["vocals","mic"]],
+  "Holiday":[["sleigh bells","bells"],["tuba","horn"],["glockenspiel","keys"],["carols","mic","santa"]]
+};
+// Apple Music genre tag -> band genre. Unknown falls back to Rock.
+function bandGenre(tag){
+  const t=(tag||"").toLowerCase();
+  const rules=[["holiday","Holiday"],["christmas","Holiday"],["jazz","Jazz"],["classical","Classical"],["soundtrack","Classical"],["score","Classical"],
+    ["hip","Hip-Hop/Rap"],["rap","Hip-Hop/Rap"],["country","Country"],["electronic","Electronic"],["dance","Electronic"],["house","Electronic"],
+    ["r&b","R&B/Soul"],["soul","R&B/Soul"],["latin","Latin"],["metal","Metal"],["hard rock","Metal"],["blues","Blues"],["reggae","Reggae"]];
+  for(const [k,g] of rules) if(t.includes(k)) return g;
+  return "Rock";
+}
+function inst(fam){
+  const s='stroke="#1b1a24" stroke-width="1.5"';
+  switch(fam){
+    case "kit": return `<g class="inst"><ellipse cx="50" cy="84" rx="20" ry="7" fill="#c9374a" ${s}/><rect x="30" y="84" width="40" height="10" fill="#c9374a" ${s}/><ellipse cx="50" cy="94" rx="20" ry="5" fill="#a62a3b" ${s}/><g class="cymbal"><line x1="80" y1="74" x2="80" y2="96" ${s}/><ellipse cx="80" cy="73" rx="11" ry="2.5" fill="#e8c34a" ${s}/></g></g>`;
+    case "timp": return `<g class="inst"><path d="M30 80 h40 l-6 16 h-28z" fill="#b8762e" ${s}/><ellipse cx="50" cy="80" rx="20" ry="5" fill="#f1e6cf" ${s}/><g class="cymbal"></g></g>`;
+    case "bells": return `<g class="inst"><path d="M28 86 q22 -14 44 0" fill="none" stroke="#8a5a2b" stroke-width="4"/>${[32,42,52,62].map(x=>`<circle cx="${x+4}" cy="${86-(x===42||x===52?6:2)}" r="4" fill="#e8c34a" ${s}/>`).join("")}<g class="cymbal"></g></g>`;
+    case "bass": return `<g class="inst"><line x1="38" y1="88" x2="86" y2="50" stroke="#3b2a1a" stroke-width="4"/><path d="M22 84 q4 -14 18 -10 q10 4 6 16 q-6 12 -18 8 q-10 -4 -6 -14z" fill="#2d6cdf" ${s}/></g>`;
+    case "guitar": return `<g class="inst"><line x1="40" y1="86" x2="84" y2="56" stroke="#3b2a1a" stroke-width="3"/><path d="M24 82 q2 -12 14 -10 q10 2 8 12 q-2 12 -14 10 q-10 -2 -8 -12z" fill="#e2502f" ${s}/><circle cx="35" cy="83" r="3" fill="#1b1a24"/></g>`;
+    case "banjo": return `<g class="inst"><line x1="42" y1="84" x2="86" y2="56" stroke="#3b2a1a" stroke-width="3"/><circle cx="34" cy="86" r="11" fill="#f4ecd8" stroke="#8a5a2b" stroke-width="3"/></g>`;
+    case "upright": return `<g class="inst"><line x1="62" y1="40" x2="62" y2="70" stroke="#3b2a1a" stroke-width="3"/><path d="M50 70 q-6 8 0 14 q-8 6 0 14 h24 q8 -8 0 -14 q6 -6 0 -14z" fill="#9c5a25" ${s}/><line x1="40" y1="78" x2="84" y2="92" stroke="#ddd" stroke-width="1.5"/></g>`;
+    case "violin": return `<g class="inst"><path d="M30 80 q-4 6 0 10 q-4 6 2 10 h14 q6 -4 2 -10 q4 -4 0 -10z" fill="#b5652a" ${s} transform="rotate(-25 38 90)"/><line x1="24" y1="70" x2="70" y2="98" stroke="#ddd" stroke-width="1.5"/></g>`;
+    case "horn": return `<g class="inst"><path d="M40 60 q-4 24 6 30 q10 6 18 -4 l10 -12" fill="none" stroke="#e8c34a" stroke-width="5" stroke-linecap="round"/><path d="M70 70 l12 -12 l4 8z" fill="#e8c34a" ${s}/></g>`;
+    case "keys": return `<g class="inst"><rect x="20" y="80" width="60" height="14" rx="2" fill="#1b1a24"/>${[24,31,38,45,52,59,66,73].map(x=>`<rect x="${x}" y="82" width="5.5" height="10" fill="#fff"/>`).join("")}</g>`;
+    case "pads": return `<g class="inst"><rect x="22" y="78" width="56" height="18" rx="3" fill="#24232f" ${s}/>${[0,1,2,3].map(i=>`<rect x="${26+i*13}" y="82" width="10" height="10" rx="2" fill="${["#ff5fa2","#5bd1ff","#ffd24a","#7cff8a"][i]}"/>`).join("")}</g>`;
+    case "mic": return `<g class="inst"><line x1="74" y1="54" x2="74" y2="98" stroke="#555" stroke-width="2.5"/><line x1="66" y1="98" x2="82" y2="98" stroke="#555" stroke-width="2.5"/><circle cx="72" cy="52" r="5" fill="#2b2a33" ${s}/></g>`;
+  }
+  return "";
+}
+function hat(kind){
+  if(kind==="cowboy") return `<path d="M26 26 q24 -8 48 0 q-6 4 -10 2 q-2 -12 -14 -12 q-12 0 -14 12 q-4 2 -10 -2z" fill="#a0672c" stroke="#1b1a24" stroke-width="1.5"/>`;
+  if(kind==="santa") return `<path d="M32 24 q18 -26 38 -4 l-38 4z" fill="#d6283a"/><rect x="30" y="22" width="42" height="6" rx="3" fill="#fff"/><circle cx="72" cy="18" r="4" fill="#fff"/>`;
+  return "";
+}
+function acc(kind){
+  if(kind==="keyboard") return `<g><rect x="2" y="70" width="34" height="14" rx="2" fill="#2b2a33" stroke="#fff" stroke-width="1"/>${[0,1,2,3,4].map(i=>`<rect x="${5+i*6}" y="73" width="4" height="3" fill="#ccc"/>`).join("")}<rect x="8" y="78" width="22" height="3" fill="#ccc"/>
+    <g class="gag"><g class="ball"><path d="M19 52 l0 -9 a9 9 0 0 1 9 9z" fill="#ff5f57"/><path d="M19 52 l9 0 a9 9 0 0 1 -9 9z" fill="#febc2e"/><path d="M19 52 l0 9 a9 9 0 0 1 -9 -9z" fill="#28c840"/><path d="M19 52 l-9 0 a9 9 0 0 1 9 -9z" fill="#2f7cf6"/></g></g></g>`;
+  if(kind==="iron") return `<g><line x1="6" y1="60" x2="30" y2="80" stroke="#666" stroke-width="5" stroke-linecap="round"/><line x1="2" y1="56" x2="8" y2="62" stroke="#c0c0c0" stroke-width="2"/>
+    <g class="gag"><circle class="ring" cx="4" cy="46" r="6" fill="none" stroke="#ddd" stroke-width="2.5"/></g></g>`;
+  return "";
+}
+function gag(id){
+  if(id==="grok") return `<g class="gag"><text class="zz" x="70" y="30" fill="#fff" font-size="14" font-weight="700">Z<tspan font-size="10">z</tspan></text></g>`;
+  if(id==="claude") return `<g class="gag"><path d="M28 80 q-14 10 -6 18 q8 6 14 -2" fill="none" stroke="#111" stroke-width="2.5"/><g class="spark"><path d="M38 92 l3 -6 l1 5 l5 -2 l-4 5 l4 3 l-6 0z" fill="#ffd24a"/></g></g>`;
+  if(id==="chatgpt") return `<g class="gag"><path d="M70 50 q6 6 0 10 q-6 4 2 10" fill="none" stroke="#ddd" stroke-width="1.5"/><text class="huh" x="76" y="34" fill="#fff" font-size="18" font-weight="700">?</text></g>`;
+  if(id==="gemini") return `<g class="gag"><path d="M64 40 q4 -6 8 0 q4 6 8 0" fill="none" stroke="#ffd24a" stroke-width="2"/></g>`;
+  return "";
+}
+function figure(a,g){
+  const twin=!!a.acc;
+  return `<svg viewBox="0 0 100 100" aria-hidden="true">
+    <ellipse cx="50" cy="98" rx="26" ry="3" fill="rgba(0,0,0,.35)"/>
+    <g class="char">
+      <rect x="38" y="70" width="7" height="10" rx="3.5" fill="${a.dark}"/><rect x="55" y="70" width="7" height="10" rx="3.5" fill="${a.dark}"/>
+      <g fill="${a.color}" stroke="${a.dark}" stroke-width="2"><circle cx="34" cy="50" r="13"/><circle cx="66" cy="50" r="13"/><circle cx="50" cy="38" r="15"/><circle cx="40" cy="62" r="11"/><circle cx="60" cy="62" r="11"/></g>
+      <g fill="${a.color}"><circle cx="34" cy="50" r="11.5"/><circle cx="66" cy="50" r="11.5"/><circle cx="50" cy="38" r="13.5"/><circle cx="40" cy="62" r="9.5"/><circle cx="60" cy="62" r="9.5"/><rect x="30" y="42" width="40" height="22"/></g>
+      <rect x="31" y="40" width="38" height="24" rx="9" fill="#14121f" stroke="${a.dark}" stroke-width="1.5"/>
+      <g class="eye" fill="none" stroke="${a.glow}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">${EYES[a.eyes]}</g>
+      <path class="lid" d="M38 52 h7 M55 52 h7" stroke="${a.glow}" stroke-width="2.4" stroke-linecap="round"/>
+      <rect class="mouth" x="46" y="57" width="8" height="2.4" rx="1.2" fill="${a.glow}"/>
+      ${!twin&&g[2]?hat(g[2]):""}
+    </g>
+    ${inst(g[1])}
+    ${twin?acc(a.acc):gag(a.id)}
+  </svg>`;
+}
+
+
+const CHAT={grok:"https://grok.com/",claude:"https://claude.ai/new","claude-code":"https://claude.ai/new",chatgpt:"https://chatgpt.com/",codex:"https://chatgpt.com/",gemini:"https://gemini.google.com/app"};
+const BAND=[{base:"grok"},{base:"claude",code:"claude-code"},{base:"chatgpt",code:"codex"},{base:"gemini"}];
+const RANKS={ready:4,speaking:3,working:2,idle:1,disconnected:0};
+const byId=Object.fromEntries(AGENTS.map(a=>[a.id,a]));
+let states={}, genre="Rock", demoOn=false, sound=false, lastRead={};
+const strip=document.getElementById("strip"), capEl=document.getElementById("caption");
+function esc(t){return String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function member(m){
+  const chat=states[m.base]||{state:"idle"}, code=m.code?(states[m.code]||{state:"disconnected"}):null;
+  const useCode=code&&RANKS[code.state]>RANKS[chat.state];
+  const look=Object.assign({},byId[m.base]);
+  if(useCode){const c=byId[m.code];look.eyes=c.eyes;look.acc=c.acc;look.name=c.name;look.target=m.code} else look.target=m.base;
+  look.id=m.base; return [look,useCode?code:chat];
+}
+function render(prev){
+  strip.innerHTML="";
+  BAND.forEach(m=>{
+    const [a,s]=member(m), st=s.state||"idle", g=GENRES[genre][a.role];
+    const f=document.createElement("a"); f.className="fig"; f.dataset.agent=a.id; f.dataset.state=st;
+    f.href=CHAT[a.target]; f.target="_blank"; f.rel="noopener"; f.style.color="#fff"; f.style.textDecoration="none";
+    const n= st==="disconnected"&&a.tap ? a.tap : (s.note||"Ready for you");
+    f.innerHTML=`${figure(a,g)}<span class="cap">${a.name}<small>${a.acc?(a.acc==="keyboard"?"+ keyboard":"+ soldering iron"):g[0]}</small></span><span class="note">${esc(n)}</span>`;
+    strip.appendChild(f);
+    const was=prev&&prev[a.target]&&prev[a.target].state;
+    if(was==="disconnected"&&st!=="disconnected"){f.classList.add("shake");setTimeout(()=>f.classList.remove("shake"),650)}
+  });
+}
+function show(s,g,text){
+  const prev=states; states=s;
+  for(const id in s) if(s[id].state==="ready"&&(!prev[id]||prev[id].state!=="ready")) chime(id);
+  if(g) genre=g; document.getElementById("genre").value=genre;
+  capEl.textContent=text||""; render(prev);
+}
+// Same rules as the apps: stale after 24 h, stuck "working" after 2 h shows idle.
+function figState(s){
+  const now=Date.now(), seen=Date.parse(s.last_seen||"");
+  if(!seen||now-seen>24*3600e3) return {state:"disconnected"};
+  let st={working:"working",ready:"ready"}[s.activity]||"idle";
+  if(st==="working"){const u=Date.parse(s.updated_at||""); if(u&&now-u>2*3600e3) st="idle"}
+  if(s.speaking===true) st="speaking";
+  return {state:st,note:s.ready_note||""};
+}
+async function poll(){
+  const ids=AGENTS.map(a=>a.id), next=Object.assign({},states); let changed=false;
+  await Promise.all(ids.map(async id=>{
+    let r={state:"disconnected"};
+    try{const res=await fetch(`status/${id}.json?t=${Date.now()}`,{cache:"no-store"}); if(res.ok) r=figState(await res.json())}catch(e){}
+    const key=r.state+"|"+(r.note||"");
+    if(!states[id]||lastRead[id]===key){ if(!states[id]||(states[id].state+"|"+(states[id].note||""))!==key){next[id]=r;changed=true} }
+    lastRead[id]=key;
+  }));
+  if(changed&&!demoOn) show(next,null,"");
+  else if(demoOn) liveStates=next;
+}
+let ctx; const CH={grok:[196,247,294],claude:[262,330,392],chatgpt:[294,370,440],gemini:[392,494,587],"claude-code":[330,415,494],codex:[349,440,523]};
+function chime(id){ if(!sound) return; try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();const t0=ctx.currentTime;
+  (CH[id]||CH.claude).forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type="triangle";o.frequency.value=f*2;
+  g.gain.setValueAtTime(0,t0+i*.09);g.gain.linearRampToValueAtTime(.18,t0+i*.09+.01);g.gain.exponentialRampToValueAtTime(.001,t0+i*.09+.5);
+  o.connect(g).connect(ctx.destination);o.start(t0+i*.09);o.stop(t0+i*.09+.55)})}catch(e){} }
+let liveStates=null, liveGenre="Rock";
+function playDemo(){
+  if(demoOn) return; demoOn=true; liveStates=states; liveGenre=genre;
+  const all=st=>Object.fromEntries(AGENTS.map(a=>[a.id,{state:st}])), w=o=>Object.assign(all("working"),o||{});
+  const duck=v=>document.documentElement.style.setProperty("--duck",String(v));
+  [[0,()=>show(w(),"Rock","The band is jamming")],
+   [4000,()=>{duck(.85);show(w({claude:{state:"speaking"}}),null,"Claude is talking to you, so the music dips")}],
+   [9000,()=>{duck(0);show(w({chatgpt:{state:"ready",note:"Done! Your summary is ready."}}),null,"ChatGPT finished a job")}],
+   [13500,()=>show(w({grok:{state:"disconnected"}}),null,"Uh oh. Grok lost Wi-Fi")],
+   [19000,()=>show(w(),null,"Grok is back!")],
+   [21500,()=>show(w(),"Jazz","Jazz comes on")],
+   [25500,()=>show(w(),"Country","Now country")],
+   [29500,()=>show(w({gemini:{state:"disconnected"}}),"Country","Gemini lost signal")],
+   [34500,()=>show(w(),"Holiday","Holiday music!")],
+   [38500,()=>show(w({claude:{state:"idle"},"claude-code":{state:"ready",note:"Build passed!"}}),"Holiday","Claude Code finished a build")],
+   [43000,()=>show(all("idle"),"Rock","Waiting for you, tapping along")],
+   [48000,()=>{demoOn=false;show(liveStates||{},liveGenre,"")}]
+  ].forEach(([ms,fn])=>setTimeout(fn,ms));
+}
+const gs=document.getElementById("genre"); gs.innerHTML=Object.keys(GENRES).map(g=>`<option>${g}</option>`).join("");
+gs.addEventListener("change",e=>{genre=e.target.value;render()});
+document.getElementById("demo").addEventListener("click",playDemo);
+const sb=document.getElementById("sound");
+sb.addEventListener("click",()=>{sound=!sound;sb.setAttribute("aria-pressed",String(sound));sb.textContent=sound?"Chimes on":"Chimes off";if(sound)chime("claude")});
+render(); poll(); setInterval(poll,45000);
+</script></body></html>
