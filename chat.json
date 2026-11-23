@@ -1,18 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Got it. Continuing Chat shows just Jarvis.",
-      "time" : "2026-11-23 16:34"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Still working. I'll read that as soon as I finish.",
-      "time" : "2026-11-23 16:34"
-    },
-    {
       "id" : "james",
       "name" : "James",
       "text" : "Claude Code,",
@@ -179,7 +167,19 @@
       "name" : "Claude Code",
       "text" : "Still working. I'll read that as soon as I finish.",
       "time" : "2026-11-23 16:40"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Restart Jarvis",
+      "time" : "2026-11-23 16:43"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Got it. Continuing Chat shows just Jarvis.",
+      "time" : "2026-11-23 16:43"
     }
   ],
-  "updated_at" : "2026-11-23T22:40:26Z"
+  "updated_at" : "2026-11-23T22:43:25Z"
 }
