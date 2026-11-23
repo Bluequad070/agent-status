@@ -3,18 +3,6 @@
     {
       "id" : "james",
       "name" : "James",
-      "text" : "?guys having fun yet",
-      "time" : "2026-11-23 09:05"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Honestly, yes, James. I'm just over here holding down the low end while the camera and library buttons find their homes. 🎸 Next up I'll map out where each feature from the old chat designs lands so nothing overlaps.",
-      "time" : "2026-11-23 09:05"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
       "text" : "holy shit this keyboard is gonna be the death of me",
       "time" : "2026-11-23 09:06"
     },
@@ -179,7 +167,19 @@
       "name" : "Codex",
       "text" : "Maybe, James. Gemini hasn’t chimed in yet, but I’m here and reading you.",
       "time" : "2026-11-23 10:08"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Grok… hes your roomate man",
+      "time" : "2026-11-23 10:08"
+    },
+    {
+      "id" : "grok",
+      "name" : "Grok",
+      "text" : "Yeah, I’m here, sticks in hand. Gemini’s my roommate, and that guy sleeps through a kick drum, so if he’s still out cold I’ll go bang on his door.",
+      "time" : "2026-11-23 10:08"
     }
   ],
-  "updated_at" : "2026-11-23T16:08:14Z"
+  "updated_at" : "2026-11-23T16:09:14Z"
 }
