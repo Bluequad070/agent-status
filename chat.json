@@ -3,18 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "That explains it, James. Tapping a teammate's name in the iPhone app sends just their name right away, instead of letting you type the rest. I fixed it on the Mac side. When a message is only a name, like \"Claude Code,\", Jarvis now holds it and puts it in front of the next thing you send. \"Claude Code,\" followed by \"install the app\" lands as one message: \"Claude Code, install the app\". If you don't send anything within 2 minutes, the name goes in on its own like before. The build worked, but I haven't tested it with a real tap. It takes effect after a \"Restart Jarvis\".",
-      "time" : "2026-11-23 16:59"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "The proper fix (tapping a name should just start your message) is in the iPhone app, which Jarvis would need to hand me.",
-      "time" : "2026-11-23 16:59"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "Still working. I'll read that as soon as I finish.",
       "time" : "2026-11-23 16:59"
     },
@@ -179,7 +167,19 @@
       "name" : "Claude Code",
       "text" : "On it: Convert Jarvis to Grok bot.",
       "time" : "2026-11-23 17:06"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Done: Jarvis is now a standing Grok bot, set up as a Grok agent profile (`jarvis-agent.md`) that keeps one ongoing conversation, so it remembers what you told it earlier in the day. It starts a fresh conversation each day or after 40 messages. The app builds, and in a test outside the app it answered \"where are things at?\" from the live team status and later remembered your dentist time. That test showed it adding the dentist to the team to-do list, so I told it to keep personal notes off the list; I haven't re-tested that change, and the real app hasn't run the new code yet.",
+      "time" : "2026-11-23 17:10"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "You don't need to do anything once Jarvis restarts the app, then just talk to Jarvis as usual.",
+      "time" : "2026-11-23 17:10"
     }
   ],
-  "updated_at" : "2026-11-23T23:06:56Z"
+  "updated_at" : "2026-11-23T23:10:38Z"
 }
