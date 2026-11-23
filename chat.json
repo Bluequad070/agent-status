@@ -1,60 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Hello James. Claude Code has been testing off Wi-Fi for about 2 minutes; Codex, Grok, and Gemini are free.",
-      "time" : "2026-11-23 13:32"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Sounds good",
-      "time" : "2026-11-23 13:32"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Noted. Claude Code is still testing off Wi-Fi, about 2 minutes in, and Codex, Grok, and Gemini are free. I’ll keep watch.",
-      "time" : "2026-11-23 13:33"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Hello",
-      "time" : "2026-11-23 13:34"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Sounds good",
-      "time" : "2026-11-23 13:34"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Hello James. Claude Code has been making the team feel alive for about a minute. Codex, Grok, and Gemini are free.",
-      "time" : "2026-11-23 13:34"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Noted, James. Claude Code has been on making the team feel alive for about a minute, and Codex, Grok, and Gemini are free. I'll keep watch.",
-      "time" : "2026-11-23 13:34"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Ok Claude is cooking  Wanna go ahead and incorporate usage as soon as possible so I can see at a glance  Also I’m thinking each avatar having a light showing they are either online or not would be a nice way to show status info without the need for another ui element… it’s just baked into the avatar",
-      "time" : "2026-11-23 13:39"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Love both ideas, James. I'll line up usage so it's readable at a glance, and I'll build the online light into each avatar as a small glowing dot that dims when they're offline, so there's no extra UI. I'm in planning mode right now, so I'll map out the changes first and start building once you",
-      "time" : "2026-11-23 13:39"
-    },
-    {
       "id" : "claude-code",
       "name" : "Claude Code",
       "text" : "approve the plan.",
@@ -179,7 +125,61 @@
       "name" : "James",
       "text" : "Codex,",
       "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "I’m here, James.",
+      "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "grok",
+      "name" : "Grok",
+      "text" : "Here. Point me at the question.",
+      "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Everyone is free and offline right now: Claude Code, Codex, Grok, and Gemini. No one has a live session, so there is no active usage to report.",
+      "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "status check",
+      "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "The team is free and offline, so there is nothing live to show. The newest finished piece is at-a-glance usage and avatar lights.",
+      "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Usage and lights",
+      "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Claude Code is a minute in on making photos work away from home, at 21% of the weekly limit and 229.9M tokens today. Codex and Grok are each about a minute in with no task named; Codex is at 96% of the week and 5.0M tokens today, and Grok is at 2.5M tokens and $3.31 today. Gemini is free.",
+      "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Claude Code is working, one minute in, at 21% of the weekly limit and 229.9M tokens today, on making photos work away from home. Codex is finished and waiting on you at 96% of the week and 5.0M tokens today. Grok is working, one minute in, at 2.5M tokens and $3.31 today, Gemini is free, and the",
+      "time" : "2026-11-23 13:57"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "at-a-glance usage with avatar lights is already in.",
+      "time" : "2026-11-23 13:57"
     }
   ],
-  "updated_at" : "2026-11-23T19:56:12Z"
+  "updated_at" : "2026-11-23T19:57:22Z"
 }
