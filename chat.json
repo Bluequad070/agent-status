@@ -3,54 +3,6 @@
     {
       "id" : "jarvis",
       "name" : "Jarvis",
-      "text" : "Approved. Claude Code has been converting the iPad for about 3 minutes, and Codex, Grok, and Gemini are free. Hand this to Claude Code?",
-      "time" : "2026-11-23 13:41"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Hand it off",
-      "time" : "2026-11-23 13:41"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Handed to Claude Code: At-a-glance usage and avatar lights. I'll tell you when it's done.",
-      "time" : "2026-11-23 13:41"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "On it: At-a-glance usage and avatar lights.",
-      "time" : "2026-11-23 13:41"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Claude Code finished At-a-glance usage and avatar lights: plan usage shows on each teammate (Claude Code wk 21%, Codex wk 96%, Grok $3.20 today) and each avatar has an online light. Its own report got lost when the Mac app restarted mid-task; that's fixed now.",
-      "time" : "2026-11-23 13:50"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Let me see it",
-      "time" : "2026-11-23 13:54"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Grok,",
-      "time" : "2026-11-23 13:54"
-    },
-    {
-      "id" : "grok",
-      "name" : "Grok",
-      "text" : "You rang. Codex is at 96% this week while I'm only $3.20 in today, so the glance view is doing its job. Want me on the usage readout or the avatar lights?",
-      "time" : "2026-11-23 13:54"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
       "text" : "It's ready on the Mac app. Each teammate shows usage at a glance — Claude Code at 21% of the week, Codex at 96%, Grok at $3.20 today — and each avatar has an online light. Claude Code has been on making replies reach the real sessions for about a minute. Codex, Grok, and Gemini are free.",
       "time" : "2026-11-23 13:55"
     },
@@ -179,7 +131,55 @@
       "name" : "Codex",
       "text" : "I’m here, James. At-a-glance usage and avatar lights are in, and I’m ready for the next task.",
       "time" : "2026-11-23 14:03"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Let's go",
+      "time" : "2026-11-23 14:04"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Codex,",
+      "time" : "2026-11-23 14:04"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Codex,",
+      "time" : "2026-11-23 14:04"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Codex is free and waiting. The next open build is converting the iPad to Jarvis, with the Band look by default. Hand this to Codex?",
+      "time" : "2026-11-23 14:04"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Let's go",
+      "time" : "2026-11-23 14:04"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Codex,",
+      "time" : "2026-11-23 14:04"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Codex,",
+      "time" : "2026-11-23 14:04"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Codex,",
+      "time" : "2026-11-23 14:04"
     }
   ],
-  "updated_at" : "2026-11-23T20:04:03Z"
+  "updated_at" : "2026-11-23T20:04:48Z"
 }
