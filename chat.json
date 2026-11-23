@@ -3,18 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "Still working. I'll read that as soon as I finish.",
-      "time" : "2026-11-23 16:59"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Sounds good",
-      "time" : "2026-11-23 16:59"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "Good, James. The name fix is built but waits for your next \"Restart Jarvis\". Still open for later: the iPhone app's own fixes, which Jarvis can hand me as a new task.",
       "time" : "2026-11-23 16:59"
     },
@@ -179,7 +167,19 @@
       "name" : "Claude Code",
       "text" : "You don't need to do anything once Jarvis restarts the app, then just talk to Jarvis as usual.",
       "time" : "2026-11-23 17:10"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Handed to Gemini: Clean public chat copy. I'll tell you when it's done.",
+      "time" : "2026-11-23 17:11"
+    },
+    {
+      "id" : "gemini",
+      "name" : "Gemini",
+      "text" : "On it: Clean public chat copy.",
+      "time" : "2026-11-23 17:11"
     }
   ],
-  "updated_at" : "2026-11-23T23:10:38Z"
+  "updated_at" : "2026-11-23T23:11:41Z"
 }
