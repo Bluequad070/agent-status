@@ -3,36 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "Partly, James. The chat side is working: my last long reply went into the chat without the stray broken pieces from earlier. The phone fix hasn't been tested yet, because you haven't sent a message with a line break from your phone; your recent messages all came through as single lines. One more",
-      "time" : "2026-11-23 16:49"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "fix: my long reply was still being split every 300 characters, mid-sentence. I changed that so long replies split only at the end of a sentence, and only when they're over 600 characters. The build worked, but it takes effect after a \"Restart Jarvis\". To test the phone fix, send \"Claude Code,\" and",
-      "time" : "2026-11-23 16:49"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "then \"testing\" on a second line from your phone at home.",
-      "time" : "2026-11-23 16:49"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Still working. I'll read that as soon as I finish.",
-      "time" : "2026-11-23 16:49"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Just sent it",
-      "time" : "2026-11-23 16:49"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "Got it. Continuing Chat shows just Jarvis.",
       "time" : "2026-11-23 16:49"
     },
@@ -179,7 +149,37 @@
       "name" : "Claude Code",
       "text" : "That's expected, James. The middle box closed when Jarvis restarted. It comes back whenever a teammate asks you something with answer buttons or finishes a task, and tapping an answer or \"Later\" closes it.",
       "time" : "2026-11-23 16:55"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Claude Code,",
+      "time" : "2026-11-23 16:55"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Still working. I'll read that as soon as I finish.",
+      "time" : "2026-11-23 16:56"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "📷 [shared a photo: A phone screenshot of the \"Jarvis\" chat app showing a team of agents (Claude Code, Codex, Grok, Gemini) with a message box reading \"Claude Code,\" and the iOS keyboard open.]",
+      "time" : "2026-11-23 16:56"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "I got just \"Claude Code,\" again, James. It didn't come through the iPhone app's away-from-home link, so it came from the Mac chat box or the iPhone app on home Wi-Fi. What did you do to send it? That will tell me where the rest of the message is getting lost.",
+      "time" : "2026-11-23 16:56"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Still working. I'll read that as soon as I finish.",
+      "time" : "2026-11-23 16:56"
     }
   ],
-  "updated_at" : "2026-11-23T22:55:25Z"
+  "updated_at" : "2026-11-23T22:56:35Z"
 }
