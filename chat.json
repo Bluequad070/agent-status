@@ -3,24 +3,6 @@
     {
       "id" : "james",
       "name" : "James",
-      "text" : "Let’s get rid of this box that keeps popping up tho",
-      "time" : "2026-11-23 16:52"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Still working. I'll read that as soon as I finish.",
-      "time" : "2026-11-23 16:52"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Still working. I'll read that as soon as I finish.",
-      "time" : "2026-11-23 16:52"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
       "text" : "It’s adding to confusion",
       "time" : "2026-11-23 16:52"
     },
@@ -179,7 +161,25 @@
       "name" : "James",
       "text" : "Let's do it",
       "time" : "2026-11-23 17:00"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "On it. This one's taking a minute.",
+      "time" : "2026-11-23 17:00"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "The Mac half of the private chat on the iPhone is done, James. The phone screen itself still needs building, and it's in the iPhone app's folder, which Jarvis has to hand me. - **Done on the Mac:** the Mac now accepts private messages for Jarvis from the phone, both at home and away, using the same conversation as the Mac's Jarvis tab. It also sends the private chat, Jarvis's answer buttons and a \"thinking\" signal back to the phone.",
+      "time" : "2026-11-23 17:01"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "The build worked, and it takes effect after a \"Restart Jarvis\". - **Still to do on the phone:** a Jarvis tab in the iPhone app, plus the earlier phone fixes (tapping a name should start your message, and missing messages). To get that started, say in your private Jarvis chat: \"Hand Claude Code the iPhone Jarvis tab and phone message fixes\".",
+      "time" : "2026-11-23 17:01"
     }
   ],
-  "updated_at" : "2026-11-23T23:00:45Z"
+  "updated_at" : "2026-11-23T23:01:27Z"
 }
