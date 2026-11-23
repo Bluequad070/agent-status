@@ -3,24 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "On it: Add poke command button.",
-      "time" : "2026-11-23 17:27"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Done: I added a 👉 Poke button to the Mac team chat and a pointing-hand button next to the photo button on the iPhone. One tap pokes every teammate at once, and each reply comes back with its time, like \"On it (replied in 3.4 s)\". Jarvis then posts everyone's times, fastest first, and lists anyone who didn't answer within 3 minutes. Both apps build, but I haven't tried a real poke yet. After Jarvis restarts the Mac app, tap Poke once to check it, and install the new iPhone build from Xcode to get the button there.",
-      "time" : "2026-11-23 17:29"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Handed to Claude Code: Always-on path to Jarvis. I'll tell you when it's done.",
-      "time" : "2026-11-23 17:34"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "On it: Always-on path to Jarvis.",
       "time" : "2026-11-23 17:34"
     },
@@ -179,7 +161,25 @@
       "name" : "Jarvis",
       "text" : "Got it. Codex is free and waiting, so the middle popup hotfix starts when you tap Hand it off.",
       "time" : "2026-11-23 17:45"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "You got it. Codex is free and can remove that middle popup now. Hand this to Codex?",
+      "time" : "2026-11-23 17:45"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Got it. That was a test, so I'm not handing the popup to anyone. Your messages came through.",
+      "time" : "2026-11-23 17:45"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "Done: I disabled the centered popup for team questions and agent completions. The Mac build succeeded with ad hoc signing, and Jarvis can now restart the app to verify the fix.",
+      "time" : "2026-11-23 17:46"
     }
   ],
-  "updated_at" : "2026-11-23T23:45:23Z"
+  "updated_at" : "2026-11-23T23:46:23Z"
 }
