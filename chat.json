@@ -3,18 +3,6 @@
     {
       "id" : "james",
       "name" : "James",
-      "text" : "should be in photos",
-      "time" : "2026-11-23 07:31"
-    },
-    {
-      "id" : "codex",
-      "name" : "Codex",
-      "text" : "Got it, James. Attach the Wi‑Fi screenshot from Photos and I’ll check for signs of Roblox activity in the last 48 hours.",
-      "time" : "2026-11-23 07:31"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
       "text" : "hmm does anyone have access to photos",
       "time" : "2026-11-23 07:32"
     },
@@ -179,7 +167,19 @@
       "name" : "Codex",
       "text" : "I can’t turn on any of your cameras from here, James. Snap a photo of the label under the keyboard and drop it here.",
       "time" : "2026-11-23 08:14"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : ";ok guys just a heads up im at work… i may be slower to respond… just be patient with me is all",
+      "time" : "2026-11-23 08:16"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "Take your time, James. I’ll keep the soldering iron on standby.",
+      "time" : "2026-11-23 08:16"
     }
   ],
-  "updated_at" : "2026-11-23T14:15:07Z"
+  "updated_at" : "2026-11-23T14:16:17Z"
 }
