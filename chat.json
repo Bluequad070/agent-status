@@ -1,12 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "james",
-      "name" : "James",
-      "text" : "its a black widow without a keypad",
-      "time" : "2026-11-23 08:11"
-    },
-    {
       "id" : "codex",
       "name" : "Codex",
       "text" : "Sounds like a Razer BlackWidow Tenkeyless, James. Try holding Fn and tapping F12 to turn up the backlight.",
@@ -179,7 +173,13 @@
       "name" : "Codex",
       "text" : "Take your time, James. Give me a shout if the backlight flickers or comes on.",
       "time" : "2026-11-23 08:32"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Where is my import button?",
+      "time" : "2026-11-23 08:37"
     }
   ],
-  "updated_at" : "2026-11-23T14:32:37Z"
+  "updated_at" : "2026-11-23T14:37:27Z"
 }
