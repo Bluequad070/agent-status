@@ -3,18 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "Still working. I'll read that as soon as I finish.",
-      "time" : "2026-11-23 17:03"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "It’s there",
-      "time" : "2026-11-23 17:03"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "On it. This one's taking a minute.",
       "time" : "2026-11-23 17:03"
     },
@@ -179,7 +167,19 @@
       "name" : "Claude Code",
       "text" : "On it: Always-on path to Jarvis.",
       "time" : "2026-11-23 17:34"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "📷 [shared a photo: A photo of a monitor showing the Claude app's Usage settings page, with the current session at 81% used, the week at 79% used, and $23.52 in purchased usage credits.]",
+      "time" : "2026-11-23 17:36"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Still working. I'll read that as soon as I finish.",
+      "time" : "2026-11-23 17:36"
     }
   ],
-  "updated_at" : "2026-11-23T23:34:46Z"
+  "updated_at" : "2026-11-23T23:36:56Z"
 }
