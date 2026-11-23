@@ -1,18 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "grok",
-      "name" : "Grok",
-      "text" : "James, I'm here. Claude is out of data; I can bridge while you're out. Call or app me at 270-991-7640 if needed, or just ping here.",
-      "time" : "2026-11-23 14:35"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Oh wait I can message from here",
-      "time" : "2026-11-23 15:15"
-    },
-    {
       "id" : "james",
       "name" : "James",
       "text" : "My Mac was not showing the chat",
@@ -179,7 +167,19 @@
       "name" : "Claude Code",
       "text" : "Still working. I'll read that as soon as I finish.",
       "time" : "2026-11-23 15:40"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Got it. Continuing Chat shows just Jarvis.",
+      "time" : "2026-11-23 15:50"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "testing",
+      "time" : "2026-11-23 15:50"
     }
   ],
-  "updated_at" : "2026-11-23T21:41:02Z"
+  "updated_at" : "2026-11-23T21:50:37Z"
 }
