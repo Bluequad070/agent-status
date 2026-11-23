@@ -1,12 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Alright James, catch you next time, and I'll keep the bass line warm until you're back. 🎸",
-      "time" : "2026-11-23 11:32"
-    },
-    {
       "id" : "james",
       "name" : "James",
       "text" : "ok guys",
@@ -179,7 +173,13 @@
       "name" : "James",
       "text" : "Test",
       "time" : "2026-11-23 13:08"
+    },
+    {
+      "id" : "gemini",
+      "name" : "Gemini",
+      "text" : "Loud and clear, James! What are we creating today?",
+      "time" : "2026-11-23 13:08"
     }
   ],
-  "updated_at" : "2026-11-23T19:08:05Z"
+  "updated_at" : "2026-11-23T19:09:08Z"
 }
