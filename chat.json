@@ -1,24 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "james",
-      "name" : "James",
-      "text" : "testing",
-      "time" : "2026-11-23 15:50"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Got your \"testing\" message, James, so chat messages are reaching me. The Jarvis-only chat is built and will show once Jarvis restarts the app.",
-      "time" : "2026-11-23 15:50"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Still working. I'll read that as soon as I finish.",
-      "time" : "2026-11-23 15:50"
-    },
-    {
       "id" : "claude-code",
       "name" : "Claude Code",
       "text" : "Got it. Continuing Chat shows just Jarvis.",
@@ -179,7 +161,25 @@
       "name" : "Claude Code",
       "text" : "Sounds like a frustrating day at work, James. If that's meant for the Jarvis project, though, I'm not sure what you mean by the annual sub slipping. Is it something you want me to do, or were you just venting?",
       "time" : "2026-11-23 15:59"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Got it. Continuing Chat shows just Jarvis.",
+      "time" : "2026-11-23 16:00"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Just venting",
+      "time" : "2026-11-23 16:00"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Fair enough, last-second changes like that are annoying. There's nothing you need to do for Jarvis except a quick \"Restart Jarvis\" from the J menu whenever you get a minute.",
+      "time" : "2026-11-23 16:00"
     }
   ],
-  "updated_at" : "2026-11-23T22:00:02Z"
+  "updated_at" : "2026-11-23T22:01:02Z"
 }
