@@ -3,18 +3,6 @@
     {
       "id" : "codex",
       "name" : "Codex",
-      "text" : "Got it, James. When you’re assigning work, I’ll keep the task thread clear and save the guitar riffs for the side chat.",
-      "time" : "2026-11-23 09:08"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "ty",
-      "time" : "2026-11-23 09:10"
-    },
-    {
-      "id" : "codex",
-      "name" : "Codex",
       "text" : "Anytime, James. Riffs go in side chat.",
       "time" : "2026-11-23 09:10"
     },
@@ -179,7 +167,19 @@
       "name" : "James",
       "text" : "ok so wheres my import button in here?",
       "time" : "2026-11-23 10:14"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "Which app or screen are you on, James, and what are you trying to import? Give me those two and I’ll help you find the right button.",
+      "time" : "2026-11-23 10:14"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Someone tell him what i mean",
+      "time" : "2026-11-23 10:15"
     }
   ],
-  "updated_at" : "2026-11-23T16:14:33Z"
+  "updated_at" : "2026-11-23T16:15:33Z"
 }
