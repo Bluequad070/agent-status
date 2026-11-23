@@ -1,30 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "It's ready on the Mac app. Each teammate shows usage at a glance — Claude Code at 21% of the week, Codex at 96%, Grok at $3.20 today — and each avatar has an online light. Claude Code has been on making replies reach the real sessions for about a minute. Codex, Grok, and Gemini are free.",
-      "time" : "2026-11-23 13:55"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Check the usage",
-      "time" : "2026-11-23 13:55"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Codex,",
-      "time" : "2026-11-23 13:55"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Grok,",
-      "time" : "2026-11-23 13:55"
-    },
-    {
       "id" : "codex",
       "name" : "Codex",
       "text" : "I’m at 96% of my weekly usage. Claude Code was at 21% for the week, and Grok was at $3.20 today, per Jarvis’s last readout.",
@@ -179,7 +155,31 @@
       "name" : "James",
       "text" : "Codex,",
       "time" : "2026-11-23 14:04"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "I’m here, James. Ready to get to work on Jarvis.",
+      "time" : "2026-11-23 14:04"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Ok I’m bout to head out for  run",
+      "time" : "2026-11-23 14:05"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Everyone's free and offline. The next open item is converting the iPad to Jarvis, Band look by default. Hand this to Claude Code?",
+      "time" : "2026-11-23 14:05"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Enjoy the run. Claude Code is on the watch widget, Codex is free and waiting, and the iPad conversion is still the next open build.",
+      "time" : "2026-11-23 14:05"
     }
   ],
-  "updated_at" : "2026-11-23T20:04:48Z"
+  "updated_at" : "2026-11-23T20:05:58Z"
 }
