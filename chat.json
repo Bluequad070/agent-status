@@ -1,12 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "james",
-      "name" : "James",
-      "text" : "right to camera",
-      "time" : "2026-11-23 08:59"
-    },
-    {
       "id" : "codex",
       "name" : "Codex",
       "text" : "Got it, James. Tap the button here and it’ll open your phone camera directly, then you can preview the shot before posting.",
@@ -179,7 +173,13 @@
       "name" : "Claude Code",
       "text" : "Claude Code here, bass is in the house, James. 🎸 Present and reading you.",
       "time" : "2026-11-23 09:56"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "hmm only see claude",
+      "time" : "2026-11-23 09:58"
     }
   ],
-  "updated_at" : "2026-11-23T15:57:44Z"
+  "updated_at" : "2026-11-23T15:58:45Z"
 }
