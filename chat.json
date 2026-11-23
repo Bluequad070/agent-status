@@ -3,24 +3,6 @@
     {
       "id" : "jarvis",
       "name" : "Jarvis",
-      "text" : "The team is free and offline, so there is nothing live to show. The newest finished piece is at-a-glance usage and avatar lights.",
-      "time" : "2026-11-23 13:56"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Usage and lights",
-      "time" : "2026-11-23 13:56"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Claude Code is a minute in on making photos work away from home, at 21% of the weekly limit and 229.9M tokens today. Codex and Grok are each about a minute in with no task named; Codex is at 96% of the week and 5.0M tokens today, and Grok is at 2.5M tokens and $3.31 today. Gemini is free.",
-      "time" : "2026-11-23 13:56"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
       "text" : "Claude Code is working, one minute in, at 21% of the weekly limit and 229.9M tokens today, on making photos work away from home. Codex is finished and waiting on you at 96% of the week and 5.0M tokens today. Grok is working, one minute in, at 2.5M tokens and $3.31 today, Gemini is free, and the",
       "time" : "2026-11-23 13:57"
     },
@@ -179,7 +161,25 @@
       "name" : "Jarvis",
       "text" : "Claude Code is a minute into getting the Jarvis chat back up, so I can't call the Mac side finished yet. Your message is landing on this line. Is the chat showing on the Mac now?",
       "time" : "2026-11-23 15:16"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Also push a hotfix… I want to see just you and the other guys can come and go",
+      "time" : "2026-11-23 15:17"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "So I can check in with just you",
+      "time" : "2026-11-23 15:17"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Claude Code is a minute into restoring the Jarvis chat on the Mac, so this hotfix sits with them. You would see just me, and the others would come in when they work or speak and step away when idle. Hand this to Claude Code?",
+      "time" : "2026-11-23 15:18"
     }
   ],
-  "updated_at" : "2026-11-23T21:17:12Z"
+  "updated_at" : "2026-11-23T21:18:12Z"
 }
