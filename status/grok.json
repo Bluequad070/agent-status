@@ -28,8 +28,8 @@
   "note": "Action saw a new Index log line dated 2026-11-22.",
   "version": "0.1",
   "last_log_hash": "a7dc089fa228",
-  "activity": "ready",
-  "ready_note": "New note in the Project Index",
-  "updated_at": "2026-11-23T06:36:13Z",
+  "activity": "idle",
+  "ready_note": "",
+  "updated_at": "2026-11-23T08:25:36Z",
   "speaking": false
 }
