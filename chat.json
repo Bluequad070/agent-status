@@ -3,18 +3,6 @@
     {
       "id" : "james",
       "name" : "James",
-      "text" : "Let's go",
-      "time" : "2026-11-23 14:04"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Codex,",
-      "time" : "2026-11-23 14:04"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
       "text" : "Codex,",
       "time" : "2026-11-23 14:04"
     },
@@ -179,7 +167,19 @@
       "name" : "Claude Code",
       "text" : "while they're working or talking and drop out when they're done. Nothing for you to do; the new build is ready and shows up when Jarvis restarts the app.",
       "time" : "2026-11-23 15:20"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "help",
+      "time" : "2026-11-23 15:39"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Got it. Continuing Chat shows just Jarvis.",
+      "time" : "2026-11-23 15:39"
     }
   ],
-  "updated_at" : "2026-11-23T21:20:37Z"
+  "updated_at" : "2026-11-23T21:39:58Z"
 }
