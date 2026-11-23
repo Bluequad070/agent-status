@@ -1,12 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "james",
-      "name" : "James",
-      "text" : ";ok guys just a heads up im at work… i may be slower to respond… just be patient with me is all",
-      "time" : "2026-11-23 08:16"
-    },
-    {
       "id" : "codex",
       "name" : "Codex",
       "text" : "Take your time, James. I’ll keep the soldering iron on standby.",
@@ -179,7 +173,13 @@
       "name" : "Claude Code",
       "text" : "Claude Code: Totally fair, James, the plus might not show in this app. Try the menu bar at the very top of your screen and click File, then look for Import or Open, or tell me the app's name and I'll point you to it.",
       "time" : "2026-11-23 08:42"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Keyboard tip for James: holding fn lights only the shortcut keys and letting go goes dark, so the backlight is at zero or off (stored on the keyboard, not the Mac). Fix: hold fn and tap Y, U, G, H or J; the one with the small sun icon is brightness up, tap it a few times. If it's the wireless model it also dims when idle, and any key wakes it.",
+      "time" : "2026-11-23 08:44"
     }
   ],
-  "updated_at" : "2026-11-23T14:42:42Z"
+  "updated_at" : "2026-11-23T14:44:57Z"
 }
