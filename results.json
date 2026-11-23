@@ -1,33 +1,25 @@
 {
-  "checked_at": "2026-11-23T00:10:20Z",
+  "checked_at": "2026-11-23T01:50:18Z",
   "base": "https://bluequad070.github.io/agent-status/",
   "pause_seconds": 45,
-  "overall": "x",
-  "index_parse": "skipped: INDEX_TXT_URL not set",
+  "overall": "double-green",
+  "index_parse": "skipped: no Index access configured",
   "agents": {
     "claude-chat": {
-      "state": "x",
+      "state": "double-green",
       "first": {
-        "ok": false,
+        "ok": true,
         "stale": false,
-        "reasons": [
-          "last_seen missing",
-          "no session log date",
-          "handoff_authority is UNKNOWN, not CANONICAL"
-        ],
-        "at": "2026-11-23T00:09:34Z"
+        "reasons": [],
+        "at": "2026-11-23T01:49:32Z"
       },
       "second": {
-        "ok": false,
+        "ok": true,
         "stale": false,
-        "reasons": [
-          "last_seen missing",
-          "no session log date",
-          "handoff_authority is UNKNOWN, not CANONICAL"
-        ],
-        "at": "2026-11-23T00:10:19Z"
+        "reasons": [],
+        "at": "2026-11-23T01:50:18Z"
       },
-      "last_seen": "",
+      "last_seen": "2026-11-22T22:59:53Z",
       "current_project": "none"
     },
     "claude-code": {
@@ -36,109 +28,81 @@
         "ok": true,
         "stale": false,
         "reasons": [],
-        "at": "2026-11-23T00:09:34Z"
+        "at": "2026-11-23T01:49:32Z"
       },
       "second": {
         "ok": true,
         "stale": false,
         "reasons": [],
-        "at": "2026-11-23T00:10:19Z"
+        "at": "2026-11-23T01:50:18Z"
       },
       "last_seen": "2026-11-22T09:02:43Z",
       "current_project": "Agent Status System"
     },
     "codex": {
-      "state": "x",
+      "state": "double-green",
       "first": {
-        "ok": false,
+        "ok": true,
         "stale": false,
-        "reasons": [
-          "last_seen missing",
-          "no session log date",
-          "handoff_authority is UNKNOWN, not CANONICAL"
-        ],
-        "at": "2026-11-23T00:09:34Z"
+        "reasons": [],
+        "at": "2026-11-23T01:49:33Z"
       },
       "second": {
-        "ok": false,
+        "ok": true,
         "stale": false,
-        "reasons": [
-          "last_seen missing",
-          "no session log date",
-          "handoff_authority is UNKNOWN, not CANONICAL"
-        ],
-        "at": "2026-11-23T00:10:19Z"
+        "reasons": [],
+        "at": "2026-11-23T01:50:18Z"
       },
-      "last_seen": "",
+      "last_seen": "2026-11-22T20:21:41Z",
       "current_project": "none"
     },
     "chatgpt": {
-      "state": "x",
+      "state": "double-green",
       "first": {
-        "ok": false,
+        "ok": true,
         "stale": false,
-        "reasons": [
-          "last_seen missing",
-          "no session log date",
-          "handoff_authority is UNKNOWN, not CANONICAL"
-        ],
-        "at": "2026-11-23T00:09:34Z"
+        "reasons": [],
+        "at": "2026-11-23T01:49:33Z"
       },
       "second": {
-        "ok": false,
+        "ok": true,
         "stale": false,
-        "reasons": [
-          "last_seen missing",
-          "no session log date",
-          "handoff_authority is UNKNOWN, not CANONICAL"
-        ],
-        "at": "2026-11-23T00:10:20Z"
+        "reasons": [],
+        "at": "2026-11-23T01:50:18Z"
       },
-      "last_seen": "",
+      "last_seen": "2026-11-23T01:15:23Z",
       "current_project": "none"
     },
     "gemini": {
-      "state": "x",
+      "state": "double-green",
       "first": {
-        "ok": false,
+        "ok": true,
         "stale": false,
-        "reasons": [
-          "last_seen missing",
-          "no session log date",
-          "handoff_authority is UNKNOWN, not CANONICAL"
-        ],
-        "at": "2026-11-23T00:09:34Z"
+        "reasons": [],
+        "at": "2026-11-23T01:49:33Z"
       },
       "second": {
-        "ok": false,
+        "ok": true,
         "stale": false,
-        "reasons": [
-          "last_seen missing",
-          "no session log date",
-          "handoff_authority is UNKNOWN, not CANONICAL"
-        ],
-        "at": "2026-11-23T00:10:20Z"
+        "reasons": [],
+        "at": "2026-11-23T01:50:18Z"
       },
-      "last_seen": "",
+      "last_seen": "2026-11-22T20:21:41Z",
       "current_project": "none"
     },
     "grok": {
-      "state": "x",
+      "state": "double-green",
       "first": {
-        "ok": false,
+        "ok": true,
         "stale": false,
-        "reasons": [
-          "handoff_authority is UNKNOWN, not CANONICAL"
-        ],
-        "at": "2026-11-23T00:09:34Z"
+        "reasons": [],
+        "at": "2026-11-23T01:49:33Z"
       },
       "second": {
-        "ok": false,
+        "ok": true,
         "stale": false,
-        "reasons": [
-          "handoff_authority is UNKNOWN, not CANONICAL"
-        ],
-        "at": "2026-11-23T00:10:20Z"
+        "reasons": [],
+        "at": "2026-11-23T01:50:18Z"
       },
       "last_seen": "2026-11-22T09:02:43Z",
       "current_project": "none"
@@ -148,109 +112,85 @@
     "claude-chat": [
       {
         "state": "x",
-        "at": "2026-11-22T21:14:24Z"
-      },
-      {
-        "state": "x",
-        "at": "2026-11-22T22:12:12Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-22T23:11:42Z"
       },
       {
         "state": "x",
         "at": "2026-11-23T00:10:20Z"
+      },
+      {
+        "state": "double-green",
+        "at": "2026-11-23T01:50:18Z"
       }
     ],
     "claude-code": [
       {
         "state": "double-green",
-        "at": "2026-11-22T21:14:24Z"
-      },
-      {
-        "state": "double-green",
-        "at": "2026-11-22T22:12:12Z"
-      },
-      {
-        "state": "double-green",
         "at": "2026-11-22T23:11:42Z"
       },
       {
         "state": "double-green",
         "at": "2026-11-23T00:10:20Z"
+      },
+      {
+        "state": "double-green",
+        "at": "2026-11-23T01:50:18Z"
       }
     ],
     "codex": [
       {
         "state": "x",
-        "at": "2026-11-22T21:14:24Z"
-      },
-      {
-        "state": "x",
-        "at": "2026-11-22T22:12:12Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-22T23:11:42Z"
       },
       {
         "state": "x",
         "at": "2026-11-23T00:10:20Z"
+      },
+      {
+        "state": "double-green",
+        "at": "2026-11-23T01:50:18Z"
       }
     ],
     "chatgpt": [
       {
         "state": "x",
-        "at": "2026-11-22T21:14:24Z"
-      },
-      {
-        "state": "x",
-        "at": "2026-11-22T22:12:12Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-22T23:11:42Z"
       },
       {
         "state": "x",
         "at": "2026-11-23T00:10:20Z"
+      },
+      {
+        "state": "double-green",
+        "at": "2026-11-23T01:50:18Z"
       }
     ],
     "gemini": [
       {
         "state": "x",
-        "at": "2026-11-22T21:14:24Z"
-      },
-      {
-        "state": "x",
-        "at": "2026-11-22T22:12:12Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-22T23:11:42Z"
       },
       {
         "state": "x",
         "at": "2026-11-23T00:10:20Z"
+      },
+      {
+        "state": "double-green",
+        "at": "2026-11-23T01:50:18Z"
       }
     ],
     "grok": [
       {
         "state": "x",
-        "at": "2026-11-22T21:14:24Z"
-      },
-      {
-        "state": "x",
-        "at": "2026-11-22T22:12:12Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-22T23:11:42Z"
       },
       {
         "state": "x",
         "at": "2026-11-23T00:10:20Z"
+      },
+      {
+        "state": "double-green",
+        "at": "2026-11-23T01:50:18Z"
       }
     ]
   },
