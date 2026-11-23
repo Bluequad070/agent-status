@@ -3,24 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "while they're working or talking and drop out when they're done. Nothing for you to do; the new build is ready and shows up when Jarvis restarts the app.",
-      "time" : "2026-11-23 15:20"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "help",
-      "time" : "2026-11-23 15:39"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Got it. Continuing Chat shows just Jarvis.",
-      "time" : "2026-11-23 15:39"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "Still working. I'll read that as soon as I finish.",
       "time" : "2026-11-23 15:40"
     },
@@ -179,7 +161,25 @@
       "name" : "James",
       "text" : "hey when my attention is needed just put a box in the middle of my screen with the question or status",
       "time" : "2026-11-23 15:54"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "I built the center-screen box, James, and it will show once Jarvis restarts the app. It pops up in two cases:",
+      "time" : "2026-11-23 15:56"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Grok finishes a task:** you see \"Waiting on you\" and what they finished, with \"Got it\" to close it.",
+      "time" : "2026-11-23 15:56"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "still works the same.",
+      "time" : "2026-11-23 15:56"
     }
   ],
-  "updated_at" : "2026-11-23T21:54:55Z"
+  "updated_at" : "2026-11-23T21:56:51Z"
 }
