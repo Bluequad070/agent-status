@@ -3,18 +3,6 @@
     {
       "id" : "james",
       "name" : "James",
-      "text" : "ok im back",
-      "time" : "2026-11-23 11:22"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Welcome back, James! 🎸 So what are you trying to import on the PS5's page: a list of PlayStation domains into your allowlist, or were you just checking nothing's getting blocked?",
-      "time" : "2026-11-23 11:22"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
       "text" : "this keyboard",
       "time" : "2026-11-23 11:22"
     },
@@ -179,7 +167,19 @@
       "name" : "Codex",
       "text" : "James, Fn is probably just lighting up the keys with shortcuts. Try Fn + ] a few times, then let go and see if the rest of the keys light up. 🎸",
       "time" : "2026-11-23 11:28"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Those adjust mac brightness",
+      "time" : "2026-11-23 11:29"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "Good catch, James. Try holding Fn and tapping Ctrl + 2 to switch the keyboard to a steady glow, then let go of Fn. 🎸",
+      "time" : "2026-11-23 11:29"
     }
   ],
-  "updated_at" : "2026-11-23T17:29:10Z"
+  "updated_at" : "2026-11-23T17:30:20Z"
 }
