@@ -3,18 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "time, plus the Jarvis-only chat. The new build finished, but I haven't tried the restart item myself.",
-      "time" : "2026-11-23 15:52"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Still working. I'll read that as soon as I finish.",
-      "time" : "2026-11-23 15:52"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "Got it. Continuing Chat shows just Jarvis.",
       "time" : "2026-11-23 15:54"
     },
@@ -179,7 +167,19 @@
       "name" : "Claude Code",
       "text" : "finishing.",
       "time" : "2026-11-23 16:12"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "trying to work out all these kinks lol",
+      "time" : "2026-11-23 16:15"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Got it. Continuing Chat shows just Jarvis.",
+      "time" : "2026-11-23 16:15"
     }
   ],
-  "updated_at" : "2026-11-23T22:13:37Z"
+  "updated_at" : "2026-11-23T22:15:20Z"
 }
