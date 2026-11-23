@@ -1,18 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "You don't need to do anything once Jarvis restarts the app, then just talk to Jarvis as usual.",
-      "time" : "2026-11-23 17:10"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Handed to Gemini: Clean public chat copy. I'll tell you when it's done.",
-      "time" : "2026-11-23 17:11"
-    },
-    {
       "id" : "gemini",
       "name" : "Gemini",
       "text" : "On it: Clean public chat copy.",
@@ -179,7 +167,19 @@
       "name" : "Codex",
       "text" : "On it: Show the whole band.",
       "time" : "2026-11-23 17:42"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "hey guys",
+      "time" : "2026-11-23 17:43"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "Done: I updated the Team Usage page to keep Claude Code, Codex, Grok, and Gemini visible together, with longer usage details scrolling inside each card. The change is local and still needs to be deployed before James can verify it at the shared link.",
+      "time" : "2026-11-23 17:43"
     }
   ],
-  "updated_at" : "2026-11-23T23:42:08Z"
+  "updated_at" : "2026-11-23T23:43:13Z"
 }
