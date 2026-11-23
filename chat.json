@@ -1,12 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "james",
-      "name" : "James",
-      "text" : "I don’t wanna add more noise to work it out and need a good place to feed my input to",
-      "time" : "2026-11-23 17:00"
-    },
-    {
       "id" : "claude-code",
       "name" : "Claude Code",
       "text" : "Use your private Jarvis chat as the one place for all your input, James. Click Jarvis at the top of the strip and just dump thoughts there: ideas, bugs, \"fix this later\". The team doesn't see it, so it adds no noise, and Jarvis puts each item on the to-do list and offers to hand it to a teammate when you're ready. On your phone the private chat isn't there yet, so start messages with \"Jarvis,\" in the team chat. If you want, I can bring the private chat to the iPhone later.",
@@ -179,7 +173,13 @@
       "name" : "James",
       "text" : "Ship it",
       "time" : "2026-11-23 17:13"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Gemini's cleaned chat copy is ready, with your number removed and the 14:35 Grok line rewritten. Claude Code can drop it into the Mac, iPhone, and web apps. Hand this to Claude Code?",
+      "time" : "2026-11-23 17:14"
     }
   ],
-  "updated_at" : "2026-11-23T23:13:44Z"
+  "updated_at" : "2026-11-23T23:14:44Z"
 }
