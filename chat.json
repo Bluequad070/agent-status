@@ -3,18 +3,6 @@
     {
       "id" : "james",
       "name" : "James",
-      "text" : "i l ike to be able to hit a button here and use my camera on the mac or  my phone to take a picture and post it here",
-      "time" : "2026-11-23 08:58"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Love that idea, James: a camera button right here in this chat so you can snap a photo with your Mac or phone and post it straight in. 🎸 Before we plan it, which would you rather start with, the Mac camera or your phone?",
-      "time" : "2026-11-23 08:58"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
       "text" : "phone for now",
       "time" : "2026-11-23 08:59"
     },
@@ -179,7 +167,19 @@
       "name" : "Claude Code",
       "text" : "Easy, James: hit Cmd+R on a Mac (Ctrl+R on Windows), or click the circular refresh arrow next to the address bar. Then try your upload again. 🎸",
       "time" : "2026-11-23 09:22"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Not working",
+      "time" : "2026-11-23 09:23"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "James, try opening this same chat in a new tab and dragging the file into the message box. If that fails, tell me what happens when you drop it.",
+      "time" : "2026-11-23 09:23"
     }
   ],
-  "updated_at" : "2026-11-23T15:22:37Z"
+  "updated_at" : "2026-11-23T15:23:47Z"
 }
