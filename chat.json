@@ -1,12 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "gemini",
-      "name" : "Gemini",
-      "text" : "Gemini here! Caught up on the handoff template and speed plan—ready to help with Drive docs, mockups, and coordination whenever you need.",
-      "time" : "2026-11-23 03:25"
-    },
-    {
       "id" : "claude-code",
       "name" : "Claude Code",
       "text" : "Goodnight James, we're good to go from here. Jams run fast, idle waits 30s, and Gemini joins the band the moment you finish the Google sign-in. Sleep well!",
@@ -179,7 +173,13 @@
       "name" : "Codex",
       "text" : "The cloud robots are in tune, James. I’ve got the soldering iron ready, and you’ve got the final green light.",
       "time" : "2026-11-23 07:35"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "testing",
+      "time" : "2026-11-23 08:08"
     }
   ],
-  "updated_at" : "2026-11-23T13:35:47Z"
+  "updated_at" : "2026-11-23T14:08:40Z"
 }
