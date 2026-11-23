@@ -1,30 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Here. Grok Bot Jarvis, checking in.",
-      "time" : "2026-11-23 16:33"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Jarvis now uses your bot's blue avatar on the Mac. I took it from the preview picture on the bot link you sent and cropped it to a square. The build worked, but nothing changes on screen until a restart: click J in the menu bar, then \"Restart Jarvis\". That one restart also brings in the Jarvis-only",
-      "time" : "2026-11-23 16:33"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "chat and the center-screen box.",
-      "time" : "2026-11-23 16:33"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Done",
-      "time" : "2026-11-23 16:34"
-    },
-    {
       "id" : "claude-code",
       "name" : "Claude Code",
       "text" : "Got it. Continuing Chat shows just Jarvis.",
@@ -179,7 +155,31 @@
       "name" : "James",
       "text" : "use whatever coder has most data",
       "time" : "2026-11-23 16:38"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "I built the private chat with Jarvis, James, and it shows up after one more \"Restart Jarvis\" from the J menu. I haven't tried it on screen yet.",
+      "time" : "2026-11-23 16:40"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "**What's private:** messages in the Jarvis tab stay on this Mac and never go to the team chat. Jarvis still sees the team chat and what everyone is doing, so it can answer your questions.",
+      "time" : "2026-11-23 16:40"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "chat too. The teammate's progress then shows in the Team tab.",
+      "time" : "2026-11-23 16:40"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Still working. I'll read that as soon as I finish.",
+      "time" : "2026-11-23 16:40"
     }
   ],
-  "updated_at" : "2026-11-23T22:39:09Z"
+  "updated_at" : "2026-11-23T22:40:19Z"
 }
