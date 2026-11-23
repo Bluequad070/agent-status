@@ -3,18 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "On it. This one's taking a minute.",
-      "time" : "2026-11-23 17:03"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Jarvis is running, James, and the strip is on the screen: at the right edge, near the middle, 150 points wide. I can't take a screenshot to see what it looks like. Since it now opens with just Jarvis, there may be only one small row there. Try this: click J in the menu bar and choose \"Show or Hide Jarvis\" twice. If you still see nothing, choose Look, then Studio, which has a solid background.",
-      "time" : "2026-11-23 17:03"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "Still working. I'll read that as soon as I finish.",
       "time" : "2026-11-23 17:03"
     },
@@ -179,7 +167,19 @@
       "name" : "Claude Code",
       "text" : "Still working. I'll read that as soon as I finish.",
       "time" : "2026-11-23 17:36"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Still working. I'll read that as soon as I finish.",
+      "time" : "2026-11-23 17:36"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "📷 [shared a photo: A photo of a computer monitor showing the Claude settings Usage page, with the current session at 81% used, the week at 79% used, and $23.52 in usage credits.]",
+      "time" : "2026-11-23 17:36"
     }
   ],
-  "updated_at" : "2026-11-23T23:36:56Z"
+  "updated_at" : "2026-11-23T23:38:06Z"
 }
