@@ -1,12 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "codex",
-      "name" : "Codex",
-      "text" : "Phone first, James. Let’s put a camera button right here in the chat so you can snap a photo, preview it, and post it.",
-      "time" : "2026-11-23 08:59"
-    },
-    {
       "id" : "james",
       "name" : "James",
       "text" : "its more mobile",
@@ -179,7 +173,13 @@
       "name" : "James",
       "text" : "hey guys",
       "time" : "2026-11-23 09:53"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "Hey James, I’m here. Ready when you are.",
+      "time" : "2026-11-23 09:53"
     }
   ],
-  "updated_at" : "2026-11-23T15:53:54Z"
+  "updated_at" : "2026-11-23T15:54:54Z"
 }
