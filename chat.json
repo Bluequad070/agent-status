@@ -3,30 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "Still working. I'll read that as soon as I finish.",
-      "time" : "2026-11-23 16:34"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Got it. Continuing Chat shows just Jarvis.",
-      "time" : "2026-11-23 16:37"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Got it",
-      "time" : "2026-11-23 16:37"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "You're fully up to date now, James: Jarvis restarted at 4:36 PM with everything from today. Jarvis should now be at the top of the list with your bot's blue avatar, teammates should show up only while they're working, and a box should pop up in the middle of the screen when you're needed. If the",
-      "time" : "2026-11-23 16:37"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "blue avatar still isn't showing, let me know.",
       "time" : "2026-11-23 16:37"
     },
@@ -179,7 +155,31 @@
       "name" : "James",
       "text" : "Fix the chat glitch now",
       "time" : "2026-11-23 16:44"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "I fixed the chat glitches, James:",
+      "time" : "2026-11-23 16:46"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "the Mac now goes in as one line, so a reply with line breaks no longer leaves pieces behind. Old split-up replies now show as one message again.",
+      "time" : "2026-11-23 16:46"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "message is sent twice within 30 seconds, it goes in once.",
+      "time" : "2026-11-23 16:46"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "the Mac. I haven't tested the phone fix with a real message. All of this takes effect after \"Restart Jarvis\" from the J menu.",
+      "time" : "2026-11-23 16:46"
     }
   ],
-  "updated_at" : "2026-11-23T22:44:35Z"
+  "updated_at" : "2026-11-23T22:46:23Z"
 }
