@@ -3,30 +3,6 @@
     {
       "id" : "james",
       "name" : "James",
-      "text" : "📷 [shared a photo: A black compact mechanical keyboard with glowing white backlit keys sits on someone's lap, with their hand resting on the right side.]",
-      "time" : "2026-11-23 10:59"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "📷 [shared a photo: A black compact mechanical keyboard with glowing white backlighting sits on a person's lap, with their hand resting on the right side of the keys.]",
-      "time" : "2026-11-23 10:59"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Nice, a backlit mechanical keyboard, very cozy lap-typing setup. 🎸 But I'm still not sure where your import button is, James. Is it in an app on that keyboard's computer, and what are you trying to import?",
-      "time" : "2026-11-23 10:59"
-    },
-    {
-      "id" : "codex",
-      "name" : "Codex",
-      "text" : "I see the keyboard, James. Swing the camera up to the screen and I’ll help you find Import.",
-      "time" : "2026-11-23 10:59"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
       "text" : "📷 [shared a photo: A black compact mechanical keyboard sits on a lap covered by a blue hoodie, with a hand reaching in from the right and a green towel behind it.]",
       "time" : "2026-11-23 10:59"
     },
@@ -179,7 +155,31 @@
       "name" : "Codex",
       "text" : "I don’t see the earlier screenshots here, James. Drop the keyboard shot back in and I’ll check the key legends before we try another combo. 🎸",
       "time" : "2026-11-23 11:24"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "📷 [shared a photo: A black backlit mechanical keyboard with a compact layout rests on someone's lap, with a hand reaching toward the right side of it.]",
+      "time" : "2026-11-23 11:25"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "James, plug the BlackWidow directly into the PS5 with its USB cable and flip the side switch to the center (OFF) position for wired mode. See if the keys light up then. 🎸",
+      "time" : "2026-11-23 11:25"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "📷 [shared a photo: A compact black mechanical keyboard sits on a lap under a desk, with a blurred hand on the right, a green towel and a blue sweatshirt beneath it.]",
+      "time" : "2026-11-23 11:25"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "The keys look lit in this shot, James. Are you trying to make them brighter or keep them from going dark? 🎸",
+      "time" : "2026-11-23 11:25"
     }
   ],
-  "updated_at" : "2026-11-23T17:24:50Z"
+  "updated_at" : "2026-11-23T17:26:00Z"
 }
