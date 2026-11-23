@@ -1,12 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "codex",
-      "name" : "Codex",
-      "text" : "I’m at 96% of my weekly usage. Claude Code was at 21% for the week, and Grok was at $3.20 today, per Jarvis’s last readout.",
-      "time" : "2026-11-23 13:55"
-    },
-    {
       "id" : "jarvis",
       "name" : "Jarvis",
       "text" : "Claude Code is at 21% of the weekly limit, with 227.7M tokens today. Codex is at 96% of the week and 5.0M tokens today, so it is nearly out. Grok is at 2.4M tokens and $3.20 today, and Gemini is free.",
@@ -179,7 +173,13 @@
       "name" : "Jarvis",
       "text" : "Enjoy the run. Claude Code is on the watch widget, Codex is free and waiting, and the iPad conversion is still the next open build.",
       "time" : "2026-11-23 14:05"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Start the iPad build",
+      "time" : "2026-11-23 14:11"
     }
   ],
-  "updated_at" : "2026-11-23T20:07:30Z"
+  "updated_at" : "2026-11-23T20:11:51Z"
 }
