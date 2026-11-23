@@ -1,66 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "codex",
-      "name" : "Codex",
-      "text" : "I’m here.",
-      "time" : "2026-11-23 12:17"
-    },
-    {
-      "id" : "gemini",
-      "name" : "Gemini",
-      "text" : "Present and ready to rock, James!",
-      "time" : "2026-11-23 12:17"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Roll call: 4 of 4 here (Claude Code, Codex, Grok, Gemini). Everyone's in.",
-      "time" : "2026-11-23 12:17"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Test",
-      "time" : "2026-11-23 13:08"
-    },
-    {
-      "id" : "gemini",
-      "name" : "Gemini",
-      "text" : "Loud and clear, James! What are we creating today?",
-      "time" : "2026-11-23 13:08"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "team update",
-      "time" : "2026-11-23 13:12"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Team update: all four of us (Claude Code, Codex, Grok, Gemini) checked in on roll call and we're ready to go. There's no active task on the board yet, so what should we start on?",
-      "time" : "2026-11-23 13:12"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Jarvis, where are we at and what's next on the list?",
-      "time" : "2026-11-23 13:20"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Claude Code has been on the grok bot for about a minute; Codex, Grok, and Gemini are free. Next on the list is making the team feel alive: small motion that means something, like leaning in before speaking, settling when done, and dimming when idle.",
-      "time" : "2026-11-23 13:20"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Hello",
-      "time" : "2026-11-23 13:32"
-    },
-    {
       "id" : "jarvis",
       "name" : "Jarvis",
       "text" : "Hello James. Claude Code has been testing off Wi-Fi for about 2 minutes; Codex, Grok, and Gemini are free.",
@@ -179,7 +119,67 @@
       "name" : "Jarvis",
       "text" : "It's ready on the Mac app. Each teammate shows usage at a glance — Claude Code at 21% of the week, Codex at 96%, Grok at $3.20 today — and each avatar has an online light. Claude Code has been on making replies reach the real sessions for about a minute. Codex, Grok, and Gemini are free.",
       "time" : "2026-11-23 13:55"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Check the usage",
+      "time" : "2026-11-23 13:55"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Codex,",
+      "time" : "2026-11-23 13:55"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Grok,",
+      "time" : "2026-11-23 13:55"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "I’m at 96% of my weekly usage. Claude Code was at 21% for the week, and Grok was at $3.20 today, per Jarvis’s last readout.",
+      "time" : "2026-11-23 13:55"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Claude Code is at 21% of the weekly limit, with 227.7M tokens today. Codex is at 96% of the week and 5.0M tokens today, so it is nearly out. Grok is at 2.4M tokens and $3.20 today, and Gemini is free.",
+      "time" : "2026-11-23 13:55"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Grok,",
+      "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Grok,",
+      "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Check the usage",
+      "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Let me see it",
+      "time" : "2026-11-23 13:56"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Codex,",
+      "time" : "2026-11-23 13:56"
     }
   ],
-  "updated_at" : "2026-11-23T19:55:29Z"
+  "updated_at" : "2026-11-23T19:56:12Z"
 }
