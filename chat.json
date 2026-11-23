@@ -3,48 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "Your test message didn't reach the Mac, James. It isn't in the team chat or in your private Jarvis chat; the last things there are \"K\" and \"Just sent it\". So the phone message never arrived, and that's not the line-break fix failing. Where did you send it from?",
-      "time" : "2026-11-23 16:50"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Got it. Continuing Chat shows just Jarvis.",
-      "time" : "2026-11-23 16:50"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "iPhone Jarvis app",
-      "time" : "2026-11-23 16:50"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Your test never reached the Mac, James. The Mac keeps a record of everything the iPhone app sends while you're away from home, and it shows nothing from your phone since at least 4:31 PM, so the message was lost between your phone and the Mac. Your other messages, like \"K\", must have come in some other way. Fixing the iPhone app is outside the Mac app I'm cleared to work on. Jarvis can hand me \"fix iPhone app messages not reaching the Mac\" as a new task, or you can retry the test once you're home on Wi-Fi.",
-      "time" : "2026-11-23 16:50"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Hand me the fix",
-      "time" : "2026-11-23 16:51"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Got it. Continuing Chat shows just Jarvis.",
-      "time" : "2026-11-23 16:51"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "I still can't start it from here, James. This task only clears me for the Mac app's folder, and the fix is in the iPhone app. The handoff has to come from Jarvis: in your private Jarvis chat, say \"Hand Claude Code the iPhone message fix\", tap \"Hand it off\", and I'll start right away.",
-      "time" : "2026-11-23 16:51"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "Got it. Continuing Chat shows just Jarvis.",
       "time" : "2026-11-23 16:51"
     },
@@ -179,7 +137,49 @@
       "name" : "James",
       "text" : "Tapped your name",
       "time" : "2026-11-23 16:58"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "On it. This one's taking a minute.",
+      "time" : "2026-11-23 16:58"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "That explains it, James. Tapping a teammate's name in the iPhone app sends just their name right away, instead of letting you type the rest. I fixed it on the Mac side. When a message is only a name, like \"Claude Code,\", Jarvis now holds it and puts it in front of the next thing you send. \"Claude Code,\" followed by \"install the app\" lands as one message: \"Claude Code, install the app\". If you don't send anything within 2 minutes, the name goes in on its own like before. The build worked, but I haven't tested it with a real tap. It takes effect after a \"Restart Jarvis\".",
+      "time" : "2026-11-23 16:59"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "The proper fix (tapping a name should just start your message) is in the iPhone app, which Jarvis would need to hand me.",
+      "time" : "2026-11-23 16:59"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Still working. I'll read that as soon as I finish.",
+      "time" : "2026-11-23 16:59"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Sounds good",
+      "time" : "2026-11-23 16:59"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Good, James. The name fix is built but waits for your next \"Restart Jarvis\". Still open for later: the iPhone app's own fixes, which Jarvis can hand me as a new task.",
+      "time" : "2026-11-23 16:59"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Still working. I'll read that as soon as I finish.",
+      "time" : "2026-11-23 16:59"
     }
   ],
-  "updated_at" : "2026-11-23T22:58:34Z"
+  "updated_at" : "2026-11-23T22:59:32Z"
 }
