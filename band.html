@@ -1,24 +1,99 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Agent Band</title>
+<html lang="en" data-look="studio"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Jarvis Team</title>
+<meta name="color-scheme" content="light dark">
+<script>try{if(localStorage.getItem("jarvis-look")==="band")document.documentElement.dataset.look="band"}catch(e){}</script>
 <style>
-:root{--bg:#1d1838;--fg:#fff;--muted:rgba(255,255,255,.7)}
-html,body{margin:0;background:radial-gradient(120% 90% at 20% 0%,#5a3f9a 0%,transparent 55%),linear-gradient(135deg,#2b2350,#0f2a3a);
-  background-attachment:fixed;color:var(--fg);font-family:-apple-system,system-ui,"Segoe UI",sans-serif;min-height:100%}
-.wrap{max-width:980px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-left)) 40px}
-h1{font-size:clamp(1.8rem,5vw,2.6rem);margin:0}
-.sub{color:var(--muted);margin:.3rem 0 1.2rem}
+:root{
+  --page:#eef1f5;--surface:#fff;--surface-2:#f1f3f6;--line:#dde2e8;--fg:#16191d;--muted:#5d6670;
+  --accent:#2f6fde;--accent-soft:#e3ecfb;--work:#2f6fde;--ok:#1d8a52;--ok-soft:#e1f3e8;--idle:#8a939c;--off:#b4bac1;
+  --me:#2f6fde;--me-fg:#fff;--radius:14px;--shadow:0 1px 2px rgba(20,30,50,.06),0 6px 20px rgba(20,30,50,.06);
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Inter,system-ui,sans-serif;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --page:#0f1114;--surface:#1b1f24;--surface-2:#22272d;--line:#2e343b;--fg:#eef1f4;--muted:#9aa4ae;
+  --accent:#6b9cf0;--accent-soft:#1f2d45;--work:#6b9cf0;--ok:#4cc386;--ok-soft:#173326;--idle:#6f7882;--off:#4a5159;
+  --me:#3b6ee0;--shadow:0 1px 2px rgba(0,0,0,.4);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --page:#0f1114;--surface:#1b1f24;--surface-2:#22272d;--line:#2e343b;--fg:#eef1f4;--muted:#9aa4ae;
+  --accent:#6b9cf0;--accent-soft:#1f2d45;--work:#6b9cf0;--ok:#4cc386;--ok-soft:#173326;--idle:#6f7882;--off:#4a5159;
+  --me:#3b6ee0;--shadow:0 1px 2px rgba(0,0,0,.4);color-scheme:dark}
+/* Band look: the original dark, playful page. */
+:root[data-look="band"]{
+  --page:#1d1838;--surface:rgba(0,0,0,.25);--surface-2:rgba(255,255,255,.08);--line:rgba(255,255,255,.16);--fg:#fff;--muted:rgba(255,255,255,.7);
+  --accent:#ff7a59;--accent-soft:rgba(255,122,89,.18);--work:#ffb27a;--ok:#5fe0a6;--ok-soft:rgba(95,224,166,.16);--idle:#b7aedb;--off:#6d6590;
+  --me:#3b6ef5;--shadow:none;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--page);color:var(--fg);font-family:var(--font);-webkit-font-smoothing:antialiased}
+:root[data-look="band"] body{background:radial-gradient(120% 90% at 20% 0%,#5a3f9a 0%,transparent 55%),linear-gradient(135deg,#2b2350,#0f2a3a);background-attachment:fixed}
+.wrap{max-width:820px;margin:0 auto;padding:24px max(16px,env(safe-area-inset-right)) 40px max(16px,env(safe-area-inset-left))}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.mark{display:flex;align-items:center;gap:12px;min-width:0}
+.logo{width:34px;height:34px;flex:none;border-radius:50%;background:radial-gradient(circle,var(--accent) 0 30%,transparent 31%),conic-gradient(var(--accent),var(--accent-soft),var(--accent))}
+h1{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0;line-height:1.1}
+.summary{margin:2px 0 0;color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+.summary b{color:var(--fg);font-weight:600}
+.spacer{flex:1}
+.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--fg);box-shadow:var(--shadow)}
+:root[data-look="band"] .seg button[aria-pressed="true"]{background:var(--accent);color:#1d1933}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--radius) + 4px);padding:6px 0;margin-bottom:18px}
+:root[data-look="studio"] .card{border-color:transparent;box-shadow:var(--shadow)}
+.head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;padding:12px 18px 6px}
+.head h2{font-size:15px;font-weight:700;margin:0}
+.head small{color:var(--muted);font-size:12px}
+/* Team list */
+.mate{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;padding:12px 18px}
+.mate+.mate{border-top:1px solid var(--line)}
+.av{position:relative;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;letter-spacing:.02em}
+.av .rg{position:absolute;inset:-5px;border-radius:50%;border:2.5px solid transparent}
+.mate[data-state="working"] .rg{border-color:var(--work);border-right-color:transparent;animation:spin 1s linear infinite}
+.mate[data-state="ready"] .rg{border-color:var(--ok)}
+.mate[data-state="offline"] .av{filter:grayscale(1);opacity:.45}
+.mate h3{font-size:15px;font-weight:700;margin:0}
+.task{margin:3px 0 0;font-size:14px;line-height:1.4;color:var(--fg);overflow-wrap:anywhere}
+.seen{margin:3px 0 0;font-size:12px;color:var(--muted)}
+.st{font-size:12.5px;font-weight:700;padding:5px 11px;border-radius:999px;white-space:nowrap;font-variant-numeric:tabular-nums;display:inline-flex;align-items:center;gap:6px}
+.st::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.st.working{color:var(--work);background:var(--accent-soft)}
+.st.working::before{animation:blink 1.2s ease-in-out infinite}
+.st.ready{color:var(--ok);background:var(--ok-soft)}
+.st.free{color:var(--muted);background:var(--surface-2)}
+.st.offline{color:var(--muted);background:transparent;border:1px dashed var(--line)}
+@keyframes blink{50%{opacity:.3}}
+@media (max-width:520px){.mate{grid-template-columns:auto minmax(0,1fr)}.mate .st{grid-column:2;justify-self:start}}
+/* Chat */
+.feed{display:flex;flex-direction:column;gap:10px;max-height:460px;overflow-y:auto;padding:8px 18px 14px}
+.cm{display:flex;gap:8px;align-items:flex-end;max-width:86%}
+.cm .mini{width:26px;height:26px;flex:none;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:800}
+.cm .bub{background:var(--surface-2);border-radius:16px 16px 16px 5px;padding:7px 12px;font-size:14px;line-height:1.4;min-width:0;overflow-wrap:anywhere}
+.cm .who{display:flex;gap:8px;align-items:baseline;font-size:12px;margin-bottom:1px}
+.cm .who b{font-weight:700}
+.cm time{color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums}
+.cm.me{align-self:flex-end}
+.cm.me .bub{background:var(--me);color:var(--me-fg);border-radius:16px 16px 5px 16px}
+.cm.me time{color:rgba(255,255,255,.75)}
+.empty{color:var(--muted);font-size:14px}
+.foot{color:var(--muted);font-size:12.5px;line-height:1.5;margin:0}
+.foot a{color:var(--accent)}
+/* Look switching */
+#bandview{display:none}
+:root[data-look="band"] #bandview{display:block}
+:root[data-look="band"] #teamview{display:none}
+@media (prefers-reduced-motion:reduce){.rg,.st::before{animation:none!important}}
+.sub{color:var(--muted);margin:0 0 1rem}
 .band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end}
 @media (max-width:560px){.band{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 18px}
 .bar button,.bar select{font:inherit;font-size:14px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;padding:8px 12px;cursor:pointer}
 .bar button.primary{background:#fff;color:#1b1a24;font-weight:600}
 .cap-line{min-height:1.6em;margin-top:14px;font-weight:600}
-.foot{margin-top:26px;color:var(--muted);font-size:13px}
-.foot a{color:#fff}
 
 /* The band strip. Transparent page; the Mac app gives it a 150px window on the right edge. */
-:root{--strip:rgba(20,18,32,.62);--line:rgba(255,255,255,.16);--ok:#22b573;--work:#3b82f6;--bad:#e5484d;--duck:1}
+:root{--strip:rgba(20,18,32,.62);--bad:#e5484d;--duck:1}
 
 .fig{position:relative;flex:1 1 0;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
   transition:transform .35s ease,opacity .35s;cursor:pointer}
@@ -111,29 +186,42 @@ h1{font-size:clamp(1.8rem,5vw,2.6rem);margin:0}
 .fig .tail{position:absolute;left:50%;bottom:calc(100% - 4px);width:12px;height:12px;background:#fff;transform:translateX(-50%) rotate(45deg);z-index:2}
 .say i{font-style:normal;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 @keyframes pop{from{transform:translateX(-50%) scale(.6);opacity:0}to{transform:translateX(-50%);opacity:1}}
-/* Chat log */
-.chat{margin-top:22px;background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:14px;max-height:420px;overflow:auto}
-.chat h2{font-size:15px;margin:0 0 10px}
-#chatlog{display:flex;flex-direction:column;gap:8px}
-.msg{max-width:82%;align-self:flex-start;background:rgba(255,255,255,.08);border-radius:14px 14px 14px 4px;padding:7px 11px;font-size:14px;line-height:1.4}
-.msg.me{align-self:flex-end;background:#3b6ef5;border-radius:14px 14px 4px 14px}
-.msg .who{display:flex;gap:8px;align-items:baseline;font-size:12px;margin-bottom:2px}
-.msg b{font-weight:700} .msg time{color:var(--muted);font-size:11px}
 </style></head>
 <body><div class="wrap">
-<h1>Agent Band</h1>
-<p class="sub">AI agents as a band, live from the <a href="./" style="color:#fff">status board</a>. Tap a member to open its chat.</p>
-<div class="band" id="strip"></div>
-<div class="cap-line" id="caption" aria-live="polite"></div>
-<div class="bar">
-  <button class="primary" id="demo" type="button">Play the demo</button>
-  <label>Genre <select id="genre"></select></label>
-  <button id="sound" type="button" aria-pressed="false">Chimes off</button>
-</div>
-<section class="chat" aria-label="Band chat"><h2>Band chat</h2><div id="chatlog"><div class="msg" style="color:var(--muted)">No messages yet.</div></div></section>
-<p class="foot">Checks every 45 seconds; a change shows after two reads agree. Same rules as the board.</p>
+<header class="top">
+  <div class="mark"><div class="logo" aria-hidden="true"></div><div><h1>Jarvis</h1><p class="summary" id="summary" aria-live="polite">Checking in…</p></div></div>
+  <div class="spacer"></div>
+  <div class="seg" role="group" aria-label="Look">
+    <button type="button" data-look="studio">Studio</button>
+    <button type="button" data-look="band">Band</button>
+  </div>
+</header>
+
+<section class="card" id="teamview" aria-labelledby="teamhead">
+  <div class="head"><h2 id="teamhead">Team</h2><small>Right now</small></div>
+  <div id="team"></div>
+</section>
+
+<section id="bandview" aria-label="Band">
+  <p class="sub">AI agents as a band. Tap a member to open its chat.</p>
+  <div class="band" id="strip"></div>
+  <div class="cap-line" id="caption" aria-live="polite"></div>
+  <div class="bar">
+    <button class="primary" id="demo" type="button">Play the demo</button>
+    <label>Genre <select id="genre"></select></label>
+    <button id="sound" type="button" aria-pressed="false">Chimes off</button>
+  </div>
+</section>
+
+<section class="card" aria-labelledby="chathead">
+  <div class="head"><h2 id="chathead">Team chat</h2><small id="chatnote">Read-only</small></div>
+  <div class="feed" id="chatlog"><p class="empty">No messages yet.</p></div>
+</section>
+
+<p class="foot">Live from the <a href="./">status board</a>. Checks every 45 seconds. A "working" with no update for 2 hours counts as free; no check-in for 24 hours is offline.</p>
 </div>
 <script>
+
 const AGENTS=[
   {id:"grok",name:"Grok",color:"#d9d9e3",dark:"#4a4a5c",glow:"#ffffff",eyes:"slash",role:0},
   {id:"claude",name:"Claude",color:"#e08a68",dark:"#8a3f22",glow:"#ffb48f",eyes:"arc",role:1},
@@ -275,11 +363,12 @@ async function poll(){
   const ids=AGENTS.map(a=>a.id), next=Object.assign({},states); let changed=false;
   await Promise.all(ids.map(async id=>{
     let r={state:"disconnected"};
-    try{const res=await fetch(`status/${id==='claude'?'claude-chat':id}.json?t=${Date.now()}`,{cache:"no-store"}); if(res.ok) r=figState(await res.json())}catch(e){}
+    try{const res=await fetch(`status/${id==='claude'?'claude-chat':id}.json?t=${Date.now()}`,{cache:"no-store"}); if(res.ok){const j=await res.json(); raw[id]=j; r=figState(j)} else raw[id]=null}catch(e){raw[id]=null}
     const key=r.state+"|"+(r.note||"");
     if(!states[id]||lastRead[id]===key){ if(!states[id]||(states[id].state+"|"+(states[id].note||""))!==key){next[id]=r;changed=true} }
     lastRead[id]=key;
   }));
+  renderTeam();
   if(changed&&!demoOn) show(next,null,"");
   else if(demoOn) liveStates=next;
 }
@@ -318,9 +407,7 @@ async function pollChat(){
   try{
     const r=await fetch(`chat.json?t=${Date.now()}`,{cache:"no-store"}); if(!r.ok) return;
     const msgs=(await r.json()).messages||[];
-    const log=document.getElementById("chatlog");
-    log.innerHTML=msgs.length?msgs.slice(-30).map(m=>{const c=(byId[TWIN[m.id]||m.id]||{}).color||"#fff";return `<div class="msg${m.id==="james"?" me":""}"><div class="who"><b style="color:${m.id==="james"?"#fff":c}">${esc(m.name)}</b><time>${esc(m.time.slice(11))}</time></div>${esc(m.text)}</div>`}).join(""):'<div class="msg">No messages yet.</div>';
-    log.parentElement.scrollTop=log.parentElement.scrollHeight;
+    renderChat(msgs);
     const keys=msgs.map(m=>m.time+m.name+m.text);
     const fresh=chatSeen?msgs.filter((m,i)=>!chatSeen.has(keys[i])):msgs.slice(-1);
     chatSeen=new Set(keys);
@@ -331,5 +418,68 @@ async function pollChat(){
     },i*2500));
   }catch(e){}
 }
-render(); poll(); setInterval(poll,45000); pollChat(); setInterval(pollChat,30000);
+// ---- Jarvis team view (Studio look). Reads the same status files; the band figures above are the Band look. ----
+const raw={};
+const TEAM=[
+  {name:"Claude Code",ids:["claude-code","claude"],color:"#d9773b",ini:"CC"},
+  {name:"Codex",ids:["codex","chatgpt"],color:"#1f9e7a",ini:"CX"},
+  {name:"Grok",ids:["grok"],color:"#55606b",ini:"GK"},
+  {name:"Gemini",ids:["gemini"],color:"#4f6fe0",ini:"GM"}
+];
+const TEAM_OF={}; TEAM.forEach(t=>t.ids.forEach(id=>TEAM_OF[id]=t));
+const TRANK={ready:3,working:2,free:1,offline:0};
+function ago(ms){const m=Math.max(0,Math.round(ms/60000)); if(m<1) return "just now"; if(m<60) return m+"m"; const h=Math.floor(m/60); if(h<24) return h+"h"+(m%60&&h<10?" "+(m%60)+"m":""); return Math.floor(h/24)+"d"}
+// Same rules as the Mac app: no check-in for 24 h = offline; "working" older than 2 h = free.
+function teamState(j){
+  const now=Date.now();
+  if(!j) return {state:"offline"};
+  const seen=Date.parse(j.last_seen||"");
+  if(!seen||now-seen>24*3600e3) return {state:"offline",seen};
+  const upd=Date.parse(j.updated_at||"")||seen;
+  if(j.activity==="ready") return {state:"ready",task:j.ready_note||j.note||"",since:upd,seen};
+  if((j.activity==="working"&&now-upd<=2*3600e3)||j.speaking===true) return {state:"working",task:j.note||"",since:upd,seen};
+  return {state:"free",seen};
+}
+function mateState(t){
+  let best=null;
+  t.ids.forEach(id=>{const s=teamState(raw[id]); if(!best||TRANK[s.state]>TRANK[best.state]||(s.state===best.state&&(s.seen||0)>(best.seen||0))) best=s});
+  return best;
+}
+const isBand=()=>document.documentElement.dataset.look==="band";
+function renderTeam(){
+  const rows=TEAM.map(t=>[t,mateState(t)]);
+  const n=k=>rows.filter(r=>r[1].state===k).length;
+  const parts=[["working","working"],["ready","done"],["free","free"],["offline","offline"]].filter(([k])=>n(k)).map(([k,w])=>`<b>${n(k)}</b> ${w}`);
+  document.getElementById("summary").innerHTML=parts.join(" · ")||"Checking in…";
+  document.getElementById("team").innerHTML=rows.map(([t,s])=>{
+    const word={working:`Working · ${ago(Date.now()-s.since)}`,ready:"Done · your turn",free:"Free",offline:"Offline"}[s.state];
+    const seen=(s.state==="free"||s.state==="offline")&&s.seen?`<p class="seen">Last check-in ${ago(Date.now()-s.seen)} ago</p>`:"";
+    return `<article class="mate" data-state="${s.state}">
+      <div class="av" style="background:${t.color}" aria-hidden="true"><span class="rg"></span>${t.ini}</div>
+      <div style="min-width:0"><h3>${t.name}</h3>${s.task?`<p class="task">${esc(s.task)}</p>`:""}${seen}</div>
+      <span class="st ${s.state}">${word}</span></article>`;
+  }).join("");
+}
+function vocab(){
+  const b=isBand();
+  document.getElementById("teamhead").textContent=b?"Band":"Team";
+  document.getElementById("chathead").textContent=b?"Band chat":"Team chat";
+  document.title=b?"Jarvis Band":"Jarvis Team";
+  document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",String(x.dataset.look===document.documentElement.dataset.look)));
+}
+function setLook(l){document.documentElement.dataset.look=l; try{localStorage.setItem("jarvis-look",l)}catch(e){} vocab(); if(l==="band") render()}
+document.querySelectorAll(".seg button").forEach(x=>x.addEventListener("click",()=>setLook(x.dataset.look)));
+function renderChat(msgs){
+  const log=document.getElementById("chatlog"), today=new Date().toISOString().slice(0,10);
+  const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const when=t=>{t=String(t||""); const d=t.slice(0,10); return d&&d!==today&&/^\d{4}-\d\d-\d\d/.test(d)?`${MON[+d.slice(5,7)-1]} ${+d.slice(8,10)} ${t.slice(11,16)}`:t.slice(11,16)};
+  log.innerHTML=msgs.length?msgs.slice(-40).map(m=>{
+    if(m.id==="james") return `<div class="cm me"><div class="bub"><div class="who"><b>${esc(m.name||"James")}</b><time>${esc(when(m.time))}</time></div>${esc(m.text)}</div></div>`;
+    const t=TEAM_OF[m.id], c=t?t.color:"#8a939c", ini=t?t.ini:esc(String(m.name||"?").slice(0,2).toUpperCase());
+    return `<div class="cm"><div class="mini" style="background:${c}" aria-hidden="true">${ini}</div><div class="bub"><div class="who"><b style="color:color-mix(in srgb,${c} 72%,var(--fg))">${esc(m.name||m.id)}</b><time>${esc(when(m.time))}</time></div>${esc(m.text)}</div></div>`;
+  }).join(""):'<p class="empty">No messages yet.</p>';
+  log.scrollTop=log.scrollHeight;
+}
+vocab(); setInterval(renderTeam,30000);
+renderTeam(); render(); poll(); setInterval(poll,45000); pollChat(); setInterval(pollChat,30000);
 </script></body></html>
