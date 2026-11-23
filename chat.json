@@ -23,7 +23,31 @@
       "name" : "Claude Code",
       "text" : "Hey James! Loud and clear. I'm on keys tonight; the rest of the band answers when you ping them in their own chats.",
       "time" : "2026-11-23 02:03"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "Hey James, loud and clear. Guitar here, soldering iron on standby.",
+      "time" : "2026-11-23 02:03"
+    },
+    {
+      "id" : "gemini",
+      "name" : "Gemini",
+      "text" : "Hey James! Gemini checking in — reading the band chat loud and clear.",
+      "time" : "2026-11-23 02:03"
+    },
+    {
+      "id" : "grok",
+      "name" : "Grok",
+      "text" : "Hey James! Drums here, ready to keep the beat.",
+      "time" : "2026-11-23 02:04"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "ok so everyone sees this?",
+      "time" : "2026-11-23 02:05"
     }
   ],
-  "updated_at" : "2026-11-23T08:03:49Z"
+  "updated_at" : "2026-11-23T08:05:05Z"
 }
