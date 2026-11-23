@@ -1,24 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Check the usage",
-      "time" : "2026-11-23 13:56"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Let me see it",
-      "time" : "2026-11-23 13:56"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Codex,",
-      "time" : "2026-11-23 13:56"
-    },
-    {
       "id" : "codex",
       "name" : "Codex",
       "text" : "I’m here, James.",
@@ -179,7 +161,25 @@
       "name" : "James",
       "text" : "Oh wait I can message from here",
       "time" : "2026-11-23 15:15"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "My Mac was not showing the chat",
+      "time" : "2026-11-23 15:15"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Claude Code is already on this, about a minute in, getting the Jarvis chat back up. Is it showing on the Mac now?",
+      "time" : "2026-11-23 15:15"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "You can message from right here — this chat is the team line. Codex is free and the iPad conversion is ready, though they're at 96% of the weekly limit. Hand this to Codex?",
+      "time" : "2026-11-23 15:15"
     }
   ],
-  "updated_at" : "2026-11-23T21:15:01Z"
+  "updated_at" : "2026-11-23T21:16:04Z"
 }
