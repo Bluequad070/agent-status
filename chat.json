@@ -3,18 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "Got it. Continuing Chat shows just Jarvis.",
-      "time" : "2026-11-23 16:48"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "I ran the new code on test messages, and Jarvis is already running the fixed version (you restarted it at 4:46 PM). - **Phone message with a line break:** \"Codex,\" then \"Phone is unlocked\" on the next line now comes through whole as \"Codex, Phone is unlocked\", including when it arrives in two",
-      "time" : "2026-11-23 16:48"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "pieces. - **Reply with bullet points and line breaks:** now goes into the chat as one clean line, with no stray pieces. - **Today's chat:** the stuck-together and split-up messages from earlier now show correctly. I couldn't send a real message from your phone myself. To check it end to end, send",
       "time" : "2026-11-23 16:48"
     },
@@ -179,7 +167,19 @@
       "name" : "James",
       "text" : "It’s adding to confusion",
       "time" : "2026-11-23 16:52"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Testing helps, James. Your tests turned up one more piece of clutter: \"Got it. Continuing Chat shows just Jarvis.\" appeared every time I replied. I removed it; now a short \"On it\" note appears only if a reply takes longer than 20 seconds. The build worked, and it takes effect after a \"Restart Jarvis\".",
+      "time" : "2026-11-23 16:52"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Still working. I'll read that as soon as I finish.",
+      "time" : "2026-11-23 16:52"
     }
   ],
-  "updated_at" : "2026-11-23T22:52:53Z"
+  "updated_at" : "2026-11-23T22:53:17Z"
 }
