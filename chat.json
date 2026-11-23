@@ -3,12 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "Got it. Continuing Chat shows just Jarvis.",
-      "time" : "2026-11-23 16:49"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "Your test message didn't reach the Mac, James. It isn't in the team chat or in your private Jarvis chat; the last things there are \"K\" and \"Just sent it\". So the phone message never arrived, and that's not the line-break fix failing. Where did you send it from?",
       "time" : "2026-11-23 16:50"
     },
@@ -179,7 +173,13 @@
       "name" : "Claude Code",
       "text" : "Still working. I'll read that as soon as I finish.",
       "time" : "2026-11-23 16:56"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Tapped your name",
+      "time" : "2026-11-23 16:58"
     }
   ],
-  "updated_at" : "2026-11-23T22:56:35Z"
+  "updated_at" : "2026-11-23T22:58:34Z"
 }
