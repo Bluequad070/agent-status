@@ -21,13 +21,13 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "No worries, James. Here's where things stand:",
+      "text" : "No worries, James. Here's where things stand: - **Done today on the Mac:** Jarvis sits at the top of the team list with your bot's blue avatar. Teammates show up only while they're working. A box pops up in the middle of your screen when someone needs you. \"Restart Jarvis\" is in the J menu. -",
       "time" : "2026-11-23 16:37"
     },
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "**Codex:** building the iPad version of Jarvis (Band look by default). It was near its weekly limit earlier today, so it may stall.",
+      "text" : "**Codex:** building the iPad version of Jarvis (Band look by default). It was near its weekly limit earlier today, so it may stall. - **Next for me:** fixing the chat glitches (repeated messages, lines running together, stray text), but only once Jarvis hands it to me as a new task. - **Your",
       "time" : "2026-11-23 16:37"
     },
     {
@@ -87,19 +87,19 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "I built the private chat with Jarvis, James, and it shows up after one more \"Restart Jarvis\" from the J menu. I haven't tried it on screen yet.",
+      "text" : "I built the private chat with Jarvis, James, and it shows up after one more \"Restart Jarvis\" from the J menu. I haven't tried it on screen yet. - **How to get there:** click Jarvis at the top of the strip, or the 💬 button. The chat box now has two tabs, \"Jarvis\" and \"Team\", and opens on Jarvis. -",
       "time" : "2026-11-23 16:40"
     },
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "**What's private:** messages in the Jarvis tab stay on this Mac and never go to the team chat. Jarvis still sees the team chat and what everyone is doing, so it can answer your questions.",
+      "text" : "**What's private:** messages in the Jarvis tab stay on this Mac and never go to the team chat. Jarvis still sees the team chat and what everyone is doing, so it can answer your questions. - **Handing off work:** if Jarvis offers to give a job to a teammate, its answer buttons work in the private",
       "time" : "2026-11-23 16:40"
     },
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "chat too. The teammate's progress then shows in the Team tab.",
+      "text" : "chat too. The teammate's progress then shows in the Team tab. - **Limits:** the private chat is Mac only for now, not on your phone. The Band look still has just the one shared chat.",
       "time" : "2026-11-23 16:40"
     },
     {
@@ -159,19 +159,19 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "I fixed the chat glitches, James:",
+      "text" : "I fixed the chat glitches, James: - **Cut-off messages:** when a phone message sent over home Wi-Fi had a line break, the Mac kept only the first line, so \"Codex,\" was all that got through and the rest was lost. The whole message now gets through. - **Stray text in the chat:** anything posted from",
       "time" : "2026-11-23 16:46"
     },
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "the Mac now goes in as one line, so a reply with line breaks no longer leaves pieces behind. Old split-up replies now show as one message again.",
+      "text" : "the Mac now goes in as one line, so a reply with line breaks no longer leaves pieces behind. Old split-up replies now show as one message again. - **Lines running together:** when a message gets glued onto the end of the one before it, the chat now separates them. - **Repeats:** if the exact same",
       "time" : "2026-11-23 16:46"
     },
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "message is sent twice within 30 seconds, it goes in once.",
+      "text" : "message is sent twice within 30 seconds, it goes in once. I tested the new reading against the real chat, and the stuck-together and split-up messages from today now show correctly. The repeated \"Codex,\" lines already in the chat stay, because the rest of those messages was lost before it reached",
       "time" : "2026-11-23 16:46"
     },
     {
@@ -181,5 +181,5 @@
       "time" : "2026-11-23 16:46"
     }
   ],
-  "updated_at" : "2026-11-23T22:46:23Z"
+  "updated_at" : "2026-11-23T22:46:42Z"
 }
