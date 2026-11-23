@@ -3,30 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "Done, James. Jarvis restarted at 4:53 PM, after the last build at 4:52, so all of today's Mac fixes are running now. Still open: the iPhone app's cut-off and missing messages, which Jarvis needs to hand me as a new task.",
-      "time" : "2026-11-23 16:53"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Box is gone now",
-      "time" : "2026-11-23 16:54"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Which box do you mean, James? If it's the box in the middle of the screen, that's expected: it closes on restart and pops up again only when a teammate asks you something or finishes a task. If it's the strip or the chat box on the right edge, that's a problem; click J in the menu bar, then \"Show or Hide Jarvis\" to bring the strip back.",
-      "time" : "2026-11-23 16:54"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "Middle box",
-      "time" : "2026-11-23 16:55"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "That's expected, James. The middle box closed when Jarvis restarted. It comes back whenever a teammate asks you something with answer buttons or finishes a task, and tapping an answer or \"Later\" closes it.",
       "time" : "2026-11-23 16:55"
     },
@@ -179,7 +155,31 @@
       "name" : "Claude Code",
       "text" : "That message came to me, James, but the handoff has to come from Jarvis, and I can't start the iPhone work from here. In the Jarvis tab of the chat box, send exactly: \"Hand Claude Code the iPhone app: Jarvis tab, name-tap fix, missing messages\". Jarvis will ask \"Hand this to Claude Code?\"; tap \"Hand it off\" and I'll start right away.",
       "time" : "2026-11-23 17:02"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Also I can’t see the Mac app now",
+      "time" : "2026-11-23 17:03"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Still working. I'll read that as soon as I finish.",
+      "time" : "2026-11-23 17:03"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "It’s there",
+      "time" : "2026-11-23 17:03"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "On it. This one's taking a minute.",
+      "time" : "2026-11-23 17:03"
     }
   ],
-  "updated_at" : "2026-11-23T23:02:37Z"
+  "updated_at" : "2026-11-23T23:03:37Z"
 }
