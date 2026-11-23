@@ -14,6 +14,7 @@ Env:
   INDEX_TXT_URL   optional fallback: a plain-text export URL of the Index.
   Neither set: the Index step is skipped.
 """
+import hashlib
 import json
 import os
 import re
@@ -146,37 +147,61 @@ def agent_for_name(name):
     return None
 
 
-def newest_log_dates(text):
+def newest_log_lines(text):
+    """agent -> (date, sha1 of its newest dated log line). The line text itself is never kept."""
     newest = {}
-    for date, name in LOG_LINE.findall(text):
+    for line in text.splitlines():
+        m = LOG_LINE.search(line)
+        if not m:
+            continue
+        date, name = m.group(1), m.group(2)
         agent = agent_for_name(name)
-        if agent and date > newest.get(agent, ""):
-            newest[agent] = date
+        if agent and date >= newest.get(agent, ("", ""))[0]:
+            newest[agent] = (date, hashlib.sha1(line.strip().encode()).hexdigest()[:12])
     return newest
 
 
+READY_MINUTES = 30  # spec v0.2: a chat agent shows ready for 30 minutes after a new Index line
+
+
 def update_chat_agents(text, now):
-    """Write newer log dates into chat agents' status files. Returns changed ids."""
+    """New Index line -> that chat agent is ready for 30 minutes. Returns changed ids."""
     changed = []
-    for agent, date in sorted(newest_log_dates(text).items()):
+    newest = newest_log_lines(text)
+    for agent in CHAT_AGENTS:
         path = os.path.join(ROOT, "status", agent + ".json")
         try:
             with open(path) as f:
                 s = json.load(f)
         except (OSError, ValueError):
             continue
-        if date <= (s.get("last_session_log_date") or ""):
-            continue
-        s["last_session_log_date"] = date
-        s["last_seen"] = iso(now)  # when the Action first saw the new log line
-        s["writer"] = "action"
-        s["checks"] = [c for c in s.get("checks", []) if c.get("id") != "wrote_session_log"]
-        s["checks"].append({"id": "wrote_session_log", "ok": True, "at": iso(now)})
-        s["note"] = "Action saw an Index log line dated %s." % date
-        with open(path, "w") as f:
-            json.dump(s, f, indent=2)
-            f.write("\n")
-        changed.append(agent)
+        before = json.dumps(s, sort_keys=True)
+        if agent in newest:
+            date, digest = newest[agent]
+            if digest != s.get("last_log_hash"):
+                s["last_log_hash"] = digest
+                s["last_session_log_date"] = max(date, s.get("last_session_log_date") or "")
+                s["last_seen"] = iso(now)  # when the Action first saw the new log line
+                s["writer"] = "action"
+                s["activity"] = "ready"
+                s["ready_note"] = "New note in the Project Index"
+                s["updated_at"] = iso(now)
+                s["checks"] = [c for c in s.get("checks", []) if c.get("id") != "wrote_session_log"]
+                s["checks"].append({"id": "wrote_session_log", "ok": True, "at": iso(now)})
+                s["note"] = "Action saw a new Index log line dated %s." % date
+        if s.get("activity") == "ready":
+            since = parse_iso(s.get("updated_at"))
+            if since is None or now - since > timedelta(minutes=READY_MINUTES):
+                s["activity"] = "idle"
+                s["ready_note"] = ""
+                s["updated_at"] = iso(now)
+        s.setdefault("activity", "idle")
+        s.setdefault("speaking", False)
+        if json.dumps(s, sort_keys=True) != before:
+            with open(path, "w") as f:
+                json.dump(s, f, indent=2)
+                f.write("\n")
+            changed.append(agent)
     return changed
 
 
