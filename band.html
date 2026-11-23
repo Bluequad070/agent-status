@@ -262,7 +262,7 @@ async function poll(){
   const ids=AGENTS.map(a=>a.id), next=Object.assign({},states); let changed=false;
   await Promise.all(ids.map(async id=>{
     let r={state:"disconnected"};
-    try{const res=await fetch(`status/${id}.json?t=${Date.now()}`,{cache:"no-store"}); if(res.ok) r=figState(await res.json())}catch(e){}
+    try{const res=await fetch(`status/${id==='claude'?'claude-chat':id}.json?t=${Date.now()}`,{cache:"no-store"}); if(res.ok) r=figState(await res.json())}catch(e){}
     const key=r.state+"|"+(r.note||"");
     if(!states[id]||lastRead[id]===key){ if(!states[id]||(states[id].state+"|"+(states[id].note||""))!==key){next[id]=r;changed=true} }
     lastRead[id]=key;
