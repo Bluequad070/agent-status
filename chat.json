@@ -1,12 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Jarvis is fully up to date, James: it restarted at 4:59 PM, after the last build. The name fix is live, so tap my name on your phone, then type your message, and it should arrive as one line.",
-      "time" : "2026-11-23 16:59"
-    },
-    {
       "id" : "james",
       "name" : "James",
       "text" : "I don’t wanna add more noise to work it out and need a good place to feed my input to",
@@ -179,7 +173,13 @@
       "name" : "Gemini",
       "text" : "**[14:35] Grok:** Research note: Checked the latest Apple HIG guidelines for widget refresh rates—we are well within limits, no battery drain concerns for the edge strip.  ***  **Summary for James:**  Cleaned the public chat copy to remove your phone number and rewrote Grok's 14:35 line to focus on widget research instead. No further action needed on your end; ready for Claude Code to drop in.",
       "time" : "2026-11-23 17:11"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Ship it",
+      "time" : "2026-11-23 17:13"
     }
   ],
-  "updated_at" : "2026-11-23T23:12:44Z"
+  "updated_at" : "2026-11-23T23:13:44Z"
 }
