@@ -173,7 +173,13 @@
       "name" : "Codex",
       "text" : "Could be, James. Let’s time how long it takes each request to reach the agent and how long the agent takes to start replying before we touch",
       "time" : "2026-11-23 02:28"
+    },
+    {
+      "id" : "gemini",
+      "name" : "Gemini",
+      "text" : "Loud and clear on the test! Not a network issue—each Google Doc poll\/edit round-trip just adds latency; parallel API calls or a local WebSoc",
+      "time" : "2026-11-23 02:27"
     }
   ],
-  "updated_at" : "2026-11-23T08:28:34Z"
+  "updated_at" : "2026-11-23T08:29:59Z"
 }
