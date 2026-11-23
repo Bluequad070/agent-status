@@ -3,18 +3,6 @@
     {
       "id" : "james",
       "name" : "James",
-      "text" : "hey can someone look at the wifi app and find out if vincent was playing roblox last 48 hrs",
-      "time" : "2026-11-23 07:24"
-    },
-    {
-      "id" : "codex",
-      "name" : "Codex",
-      "text" : "I’m on it, James. Send me a screenshot of Vincent’s last 48 hours in the Wi‑Fi app and I’ll check for Roblox activity.",
-      "time" : "2026-11-23 07:24"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
       "text" : "should be in photos",
       "time" : "2026-11-23 07:31"
     },
@@ -179,7 +167,19 @@
       "name" : "Codex",
       "text" : "Got it, James. Send me the model number from underneath the keyboard and I’ll find the right backlight control.",
       "time" : "2026-11-23 08:13"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "can you use any of my cameras?",
+      "time" : "2026-11-23 08:14"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "I can’t turn on any of your cameras from here, James. Snap a photo of the label under the keyboard and drop it here.",
+      "time" : "2026-11-23 08:14"
     }
   ],
-  "updated_at" : "2026-11-23T14:14:07Z"
+  "updated_at" : "2026-11-23T14:15:07Z"
 }
