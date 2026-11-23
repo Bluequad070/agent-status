@@ -3,18 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "blue avatar still isn't showing, let me know.",
-      "time" : "2026-11-23 16:37"
-    },
-    {
-      "id" : "james",
-      "name" : "James",
-      "text" : "ok so whats cooking im still lost lol",
-      "time" : "2026-11-23 16:37"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "Got it. Continuing Chat shows just Jarvis.",
       "time" : "2026-11-23 16:37"
     },
@@ -179,7 +167,19 @@
       "name" : "Claude Code",
       "text" : "the Mac. I haven't tested the phone fix with a real message. All of this takes effect after \"Restart Jarvis\" from the J menu.",
       "time" : "2026-11-23 16:46"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Test it now",
+      "time" : "2026-11-23 16:48"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Got it. Continuing Chat shows just Jarvis.",
+      "time" : "2026-11-23 16:48"
     }
   ],
-  "updated_at" : "2026-11-23T22:46:42Z"
+  "updated_at" : "2026-11-23T22:48:13Z"
 }
