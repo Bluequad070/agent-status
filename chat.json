@@ -3,30 +3,6 @@
     {
       "id" : "claude-code",
       "name" : "Claude Code",
-      "text" : "On it. This one's taking a minute.",
-      "time" : "2026-11-23 17:04"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "The strip is now easier to see over busy windows, James. Jarvis and each teammate now sit on their own frosted card, dark in Workspace and light in Studio, instead of floating with no background. Jarvis's card has a blue edge, and a teammate who's done gets a green one. The build worked, but I couldn't look at it on your screen. It shows after a \"Restart Jarvis\".",
-      "time" : "2026-11-23 17:04"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Still working. I'll read that as soon as I finish.",
-      "time" : "2026-11-23 17:04"
-    },
-    {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Handed to Claude Code: Convert Jarvis to Grok bot. I'll tell you when it's done.",
-      "time" : "2026-11-23 17:06"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
       "text" : "On it: Convert Jarvis to Grok bot.",
       "time" : "2026-11-23 17:06"
     },
@@ -179,7 +155,31 @@
       "name" : "Codex",
       "text" : "On it: Team usage web dashboard.",
       "time" : "2026-11-23 17:39"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Done: I made the iPhone app keep trying until a message gets through, and added a \"landed\" sign on both devices. Both apps build and the new phone build is installed on the connected iPhone (\"Preston\"), but I haven't seen a phone message reach Jarvis yet. That only works once Jarvis restarts the Mac app. - **iPhone:** every message, reply button, notification reply and Siri message is saved before it's sent. It keeps retrying until the Mac confirms it, so nothing is lost to a bad signal or a closed app.",
+      "time" : "2026-11-23 17:40"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Under the message it shows \"Sending…\", \"No connection · will keep trying\", \"Sent · waiting for your Mac\" or \"Landed ✓\". If one gives up, it shows \"Didn't send · tap to try again\". - **Mac:** a phone message shows a green banner on the strip for 30 seconds (\"📱 ✓ Landed from your phone\"), and the menu bar shows \"J 📱✓\" for 10 minutes. Messages sent while the Mac was asleep or offline are picked up when it reconnects, as long as it's within 12 hours.",
+      "time" : "2026-11-23 17:40"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "A message that gets sent twice is only posted once. Messages from the phone still go to the team chat, where Jarvis reads them. Once Jarvis has restarted the Mac app, James should send one message from his phone on mobile data (Wi-Fi off) and check for the green banner on the Mac and \"Landed ✓\" on the phone.",
+      "time" : "2026-11-23 17:40"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "Still working. I'll read that as soon as I finish.",
+      "time" : "2026-11-23 17:40"
     }
   ],
-  "updated_at" : "2026-11-23T23:39:16Z"
+  "updated_at" : "2026-11-23T23:40:24Z"
 }
