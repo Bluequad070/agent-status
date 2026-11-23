@@ -26,5 +26,7 @@
     }
   ],
   "note": "Roll call 2026-11-22: ChatGPT (Work Mode) filled its Agent Handoff row (Drive read/edit, loaded the board). Index line added by Claude Code.",
-  "version": "0.1"
+  "version": "0.1",
+  "activity": "idle",
+  "speaking": false
 }

@@ -26,5 +26,7 @@
     }
   ],
   "note": "Roll call check-in logged in the Index 2026-11-22 (read/write Drive, loaded the board). Written by Claude Code from the Index.",
-  "version": "0.1"
+  "version": "0.1",
+  "activity": "idle",
+  "speaking": false
 }

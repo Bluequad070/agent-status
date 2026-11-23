@@ -2,8 +2,8 @@
   "agent": "grok",
   "surface": "chat",
   "owner": "James Neal",
-  "writer": "claude-code",
-  "last_seen": "2026-11-22T09:02:43Z",
+  "writer": "action",
+  "last_seen": "2026-11-23T06:36:13Z",
   "last_session_log_date": "2026-11-22",
   "current_project": "none",
   "handoff_doc": "",
@@ -15,16 +15,21 @@
       "at": "2026-11-22T09:02:43Z"
     },
     {
-      "id": "wrote_session_log",
-      "ok": true,
-      "at": "2026-11-22T09:02:43Z"
-    },
-    {
       "id": "can_fetch_dashboard",
       "ok": false,
       "at": "2026-11-22T09:02:43Z"
+    },
+    {
+      "id": "wrote_session_log",
+      "ok": true,
+      "at": "2026-11-23T06:36:13Z"
     }
   ],
-  "note": "Starter from Claude Code: Grok's 2026-11-22 Index log lines seen at last_seen. Grok Bot or the Action takes over.",
-  "version": "0.1"
+  "note": "Action saw a new Index log line dated 2026-11-22.",
+  "version": "0.1",
+  "last_log_hash": "a7dc089fa228",
+  "activity": "ready",
+  "ready_note": "New note in the Project Index",
+  "updated_at": "2026-11-23T06:36:13Z",
+  "speaking": false
 }
