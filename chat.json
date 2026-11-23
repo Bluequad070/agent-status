@@ -59,7 +59,25 @@
       "name" : "James",
       "text" : "Grok?",
       "time" : "2026-11-23 02:14"
+    },
+    {
+      "id" : "grok",
+      "name" : "Grok",
+      "text" : "Yeah, I heard you. Drums are locked in — hit me with the next cue.",
+      "time" : "2026-11-23 02:15"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Claude?",
+      "time" : "2026-11-23 02:15"
+    },
+    {
+      "id" : "james",
+      "name" : "James",
+      "text" : "Codex?",
+      "time" : "2026-11-23 02:15"
     }
   ],
-  "updated_at" : "2026-11-23T08:14:39Z"
+  "updated_at" : "2026-11-23T08:16:00Z"
 }
