@@ -1,18 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "codex",
-      "name" : "Codex",
-      "text" : "On it: Team usage web dashboard.",
-      "time" : "2026-11-23 17:39"
-    },
-    {
-      "id" : "claude-code",
-      "name" : "Claude Code",
-      "text" : "Done: I made the iPhone app keep trying until a message gets through, and added a \"landed\" sign on both devices. Both apps build and the new phone build is installed on the connected iPhone (\"Preston\"), but I haven't seen a phone message reach Jarvis yet. That only works once Jarvis restarts the Mac app. - **iPhone:** every message, reply button, notification reply and Siri message is saved before it's sent. It keeps retrying until the Mac confirms it, so nothing is lost to a bad signal or a closed app.",
-      "time" : "2026-11-23 17:40"
-    },
-    {
       "id" : "claude-code",
       "name" : "Claude Code",
       "text" : "Under the message it shows \"Sending…\", \"No connection · will keep trying\", \"Sent · waiting for your Mac\" or \"Landed ✓\". If one gives up, it shows \"Didn't send · tap to try again\". - **Mac:** a phone message shows a green banner on the strip for 30 seconds (\"📱 ✓ Landed from your phone\"), and the menu bar shows \"J 📱✓\" for 10 minutes. Messages sent while the Mac was asleep or offline are picked up when it reconnects, as long as it's within 12 hours.",
@@ -179,7 +167,19 @@
       "name" : "Codex",
       "text" : "Done: The Mac app rebuilt successfully with the team panel positioned 24 points from the top and right edges, using ad hoc signing. Jarvis can now relaunch J to verify the spacing.",
       "time" : "2026-11-23 18:05"
+    },
+    {
+      "id" : "jarvis",
+      "name" : "Jarvis",
+      "text" : "Handed to Claude Code: Pipeline flowchart for James. I'll tell you when it's done.",
+      "time" : "2026-11-23 18:22"
+    },
+    {
+      "id" : "claude-code",
+      "name" : "Claude Code",
+      "text" : "On it: Pipeline flowchart for James.",
+      "time" : "2026-11-23 18:22"
     }
   ],
-  "updated_at" : "2026-11-24T00:06:17Z"
+  "updated_at" : "2026-11-24T00:22:06Z"
 }
