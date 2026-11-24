@@ -1,0 +1,1026 @@
+<!doctype html>
+<html lang="en" data-mode="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Agent Band">
+<meta name="theme-color" content="#090d16">
+<meta name="color-scheme" content="dark">
+<title>The Agent Band — Live Dashboard</title>
+<style>
+  :root {
+    --bg: #090d16;
+    --bg-elev: #0d1320;
+    --card: #121929;
+    --card-2: #161e2e;
+    --line: #1e2740;
+    --line-strong: #2a3658;
+    --fg: #f2f5ff;
+    --muted: #8b97b3;
+    --dim: #5d6a86;
+    --green: #34d399;
+    --green-dim: rgba(52, 211, 153, 0.16);
+    --green-line: rgba(52, 211, 153, 0.45);
+    --blue: #7dd3fc;
+    --blue-dim: rgba(125, 211, 252, 0.14);
+    --blue-line: rgba(125, 211, 252, 0.42);
+    --amber: #fbbf24;
+    --amber-dim: rgba(251, 191, 36, 0.14);
+    --amber-line: rgba(251, 191, 36, 0.5);
+    --slate: #94a3b8;
+    --slate-dim: rgba(148, 163, 184, 0.12);
+    --rose: #fb7185;
+    --rose-dim: rgba(251, 113, 133, 0.14);
+    --title: clamp(1.35rem, 1.1rem + 1.6vw, 3rem);
+    --name: clamp(1.05rem, 0.85rem + 1vw, 2.125rem);
+    --body: clamp(0.95rem, 0.8rem + 0.55vw, 1.5rem);
+    --label: clamp(0.68rem, 0.58rem + 0.28vw, 0.9rem);
+    --pad: clamp(10px, 1.2vw, 18px);
+    --radius: 18px;
+    --gap: clamp(10px, 1.1vw, 16px);
+    --safe-t: env(safe-area-inset-top, 0px);
+    --safe-r: env(safe-area-inset-right, 0px);
+    --safe-b: env(safe-area-inset-bottom, 0px);
+    --safe-l: env(safe-area-inset-left, 0px);
+  }
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background:
+      radial-gradient(1200px 500px at 50% -10%, rgba(56, 120, 255, 0.10), transparent 60%),
+      radial-gradient(800px 400px at 100% 100%, rgba(52, 211, 153, 0.05), transparent 55%),
+      var(--bg);
+  }
+
+  .stage {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    padding:
+      max(16px, calc(2vh + var(--safe-t)))
+      max(16px, calc(2vw + var(--safe-r)))
+      max(16px, calc(2vh + var(--safe-b)))
+      max(16px, calc(2vw + var(--safe-l)));
+  }
+
+  header.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+  }
+  h1 {
+    margin: 0;
+    font-size: var(--title);
+    font-weight: 750;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .live {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 11px 5px 9px;
+    border-radius: 999px;
+    background: var(--green-dim);
+    border: 1px solid var(--green-line);
+    color: var(--green);
+    font-size: var(--label);
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    line-height: 1;
+  }
+  .live .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+    animation: pulse 1.8s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.65); }
+    70% { box-shadow: 0 0 0 8px rgba(52, 211, 153, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .live .dot { animation: none; }
+  }
+
+  .clock {
+    font-size: var(--title);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .clock .tz { color: var(--muted); font-weight: 600; letter-spacing: 0.06em; font-size: 0.55em; margin-left: 6px; vertical-align: 0.12em; }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-left: auto;
+  }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 11px;
+    border-radius: 999px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    color: var(--fg);
+    font-size: var(--label);
+    font-weight: 650;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  .pill .n { font-variant-numeric: tabular-nums; font-weight: 800; }
+  .pill.active { background: var(--green-dim); border-color: var(--green-line); color: var(--green); }
+  .pill.flight { background: var(--blue-dim); border-color: var(--blue-line); color: var(--blue); }
+  .pill.wait { background: var(--amber-dim); border-color: var(--amber-line); color: var(--amber); }
+  .pill.sync { color: var(--muted); font-weight: 550; }
+  .pill.sync.stale { color: var(--amber); border-color: var(--amber-line); }
+  .refresh-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--dim);
+  }
+  .refresh-dot.on { background: var(--blue); }
+
+  .mode-toggle {
+    display: inline-flex;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 3px;
+    gap: 2px;
+  }
+  .mode-toggle button {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: var(--muted);
+    font: inherit;
+    font-size: var(--label);
+    font-weight: 650;
+    padding: 6px 11px;
+    border-radius: 999px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .mode-toggle button[aria-pressed="true"] {
+    background: #1c2742;
+    color: var(--fg);
+  }
+  button:focus-visible, a:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 3px;
+  }
+
+  .board {
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.92fr);
+    gap: var(--gap);
+    min-height: 0;
+  }
+  section.panel { display: flex; flex-direction: column; min-height: 0; min-width: 0; }
+  .sec-label {
+    margin: 0 2px 8px;
+    font-size: var(--label);
+    font-weight: 750;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .roster {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: var(--gap);
+    flex: 1;
+    min-height: 0;
+  }
+  .card {
+    background: linear-gradient(180deg, var(--card-2), var(--card));
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--pad);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-height: 0;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: var(--accent, var(--slate));
+  }
+  .card.online { border-color: var(--green-line); }
+  .card.chatty { border-color: var(--blue-line); }
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .status-dot {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--accent, var(--slate));
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent, var(--slate)) 22%, transparent);
+    flex-shrink: 0;
+  }
+  .card.online .status-dot { animation: pulse 2.2s ease-out infinite; }
+  @media (prefers-reduced-motion: reduce) {
+    .card.online .status-dot { animation: none; }
+  }
+  .who {
+    font-size: var(--name);
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .badge {
+    margin-left: auto;
+    font-size: var(--label);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent, var(--slate));
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .task {
+    margin: 2px 0 0;
+    font-size: var(--body);
+    line-height: 1.3;
+    color: var(--fg);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    flex: 1 1 auto;
+  }
+  .task.none { color: var(--dim); }
+  .seen {
+    font-size: var(--label);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    margin-top: auto;
+    padding-top: 4px;
+  }
+  .note-tag {
+    display: inline-block;
+    margin-top: 2px;
+    font-size: var(--label);
+    color: var(--blue);
+    font-weight: 650;
+  }
+
+  .pipe-col { min-height: 0; }
+  .waiting-box {
+    background: var(--amber-dim);
+    border: 1px solid var(--amber-line);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    margin-bottom: var(--gap);
+    flex-shrink: 0;
+  }
+  .waiting-box h3 {
+    margin: 0 0 8px;
+    color: var(--amber);
+    font-size: var(--body);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+  .ask {
+    font-size: var(--body);
+    line-height: 1.3;
+    padding: 6px 0;
+    border-top: 1px solid color-mix(in srgb, var(--amber) 28%, transparent);
+    overflow-wrap: anywhere;
+  }
+  .ask:first-of-type { border-top: 0; padding-top: 0; }
+  .ask .who { font-size: inherit; display: inline; letter-spacing: 0; }
+  .ask .age { color: var(--muted); font-size: var(--label); white-space: nowrap; }
+
+  .jobs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  .job {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 12px 14px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas: "stage agent time" "stage title time";
+    column-gap: 12px;
+    row-gap: 2px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  .stage-pill {
+    grid-area: stage;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 7.2em;
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-size: var(--label);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .stage-pill.working { background: var(--green-dim); color: var(--green); border: 1px solid var(--green-line); }
+  .stage-pill.queued { background: var(--blue-dim); color: var(--blue); border: 1px solid var(--blue-line); }
+  .stage-pill.done { background: var(--slate-dim); color: var(--slate); border: 1px solid var(--line); }
+  .stage-pill.waiting { background: var(--amber-dim); color: var(--amber); border: 1px solid var(--amber-line); }
+  .stage-pill.failed { background: var(--rose-dim); color: var(--rose); border: 1px solid rgba(251,113,133,0.45); }
+  .job-agent {
+    grid-area: agent;
+    font-size: var(--label);
+    font-weight: 750;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .job-title {
+    grid-area: title;
+    font-size: var(--body);
+    font-weight: 650;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+  }
+  .job-time {
+    grid-area: time;
+    font-size: var(--label);
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+  }
+  .empty {
+    color: var(--muted);
+    font-size: var(--body);
+    padding: 18px 8px;
+  }
+
+  .toast {
+    position: sticky;
+    bottom: 0;
+    align-self: center;
+    background: #3a2a10;
+    color: var(--amber);
+    border: 1px solid var(--amber-line);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: var(--label);
+    font-weight: 650;
+  }
+
+  footer.fine {
+    flex-shrink: 0;
+    text-align: center;
+    color: var(--dim);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
+  footer.fine a { color: var(--muted); text-decoration: none; }
+
+  /* ---- Large landscape / Auto TV-like: 16:9, no scroll ---- */
+  @media (min-width: 1100px) and (min-aspect-ratio: 14/10) {
+    html[data-mode="auto"] .stage {
+      height: 100vh;
+      height: 100dvh;
+      min-height: 0;
+      overflow: hidden;
+      padding:
+        max(18px, calc(3vh + var(--safe-t)))
+        max(22px, calc(3vw + var(--safe-r)))
+        max(18px, calc(3vh + var(--safe-b)))
+        max(22px, calc(3vw + var(--safe-l)));
+    }
+    html[data-mode="auto"] { --title: clamp(36px, 3.1vw, 48px); --name: clamp(26px, 2.1vw, 34px); --body: clamp(20px, 1.45vw, 24px); --label: clamp(11px, 0.85vw, 15px); }
+    html[data-mode="auto"] footer.fine { display: none; }
+    html[data-mode="auto"] .jobs { overflow: hidden; }
+  }
+
+  /* Forced TV Mode */
+  html[data-mode="tv"] {
+    --title: clamp(32px, 3.1vw, 48px);
+    --name: clamp(22px, 2.1vw, 34px);
+    --body: clamp(18px, 1.45vw, 24px);
+    --label: clamp(11px, 0.85vw, 15px);
+    --pad: clamp(12px, 1.3vw, 20px);
+    --radius: 20px;
+  }
+  html[data-mode="tv"] .stage {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+    padding:
+      max(16px, calc(3vh + var(--safe-t)))
+      max(18px, calc(3vw + var(--safe-r)))
+      max(16px, calc(3vh + var(--safe-b)))
+      max(18px, calc(3vw + var(--safe-l)));
+  }
+  html[data-mode="tv"] .board { grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.92fr); }
+  html[data-mode="tv"] .roster { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+  html[data-mode="tv"] footer.fine { display: none; }
+  html[data-mode="tv"] .jobs { overflow: hidden; }
+
+  /* Standard: comfortable, may scroll */
+  html[data-mode="standard"] .stage { height: auto; overflow: visible; }
+  html[data-mode="standard"] .roster { grid-template-rows: auto; }
+  html[data-mode="standard"] .jobs { overflow: visible; }
+
+  /* Desktop / tablet stacked when narrow */
+  @media (max-width: 1099px) {
+    html[data-mode="auto"] .board,
+    html[data-mode="standard"] .board { grid-template-columns: 1fr; }
+    html[data-mode="auto"] .roster,
+    html[data-mode="standard"] .roster { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; }
+    html[data-mode="auto"] .stage,
+    html[data-mode="standard"] .stage { height: auto; overflow: visible; }
+    .clock { font-size: clamp(1.5rem, 4vw, 2.4rem); }
+  }
+
+  /* iPhone / small mobile */
+  @media (max-width: 620px) {
+    html[data-mode="auto"] .roster,
+    html[data-mode="standard"] .roster { grid-template-columns: 1fr; }
+    h1 { font-size: clamp(1.15rem, 6.2vw, 1.6rem); letter-spacing: 0.03em; }
+    .clock { width: 100%; }
+    .header-right { margin-left: 0; width: 100%; }
+    .job { grid-template-columns: auto 1fr; grid-template-areas: "stage agent" "stage title" "stage time"; }
+    .job-time { text-align: left; }
+    .card { padding: 14px 16px 14px 18px; }
+    .who { font-size: 1.28rem; }
+    .task { font-size: 1.05rem; -webkit-line-clamp: 3; }
+    .badge, .seen, .pill, .mode-toggle button { font-size: 12px; }
+    .mode-toggle button { padding: 8px 12px; min-height: 40px; }
+  }
+
+  /* If TV mode is forced on a phone, allow scroll rather than clipping */
+  @media (max-width: 900px) {
+    html[data-mode="tv"] .stage { height: auto; min-height: 100dvh; overflow: auto; }
+    html[data-mode="tv"] .board { grid-template-columns: 1fr; }
+    html[data-mode="tv"] .roster { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: auto; }
+    html[data-mode="tv"] .jobs { overflow: visible; }
+  }
+  @media (max-width: 620px) {
+    html[data-mode="tv"] .roster { grid-template-columns: 1fr; }
+  }
+
+  /* Slightly tighter type on short 1080p rows so six cards stay on-screen */
+  @media (max-height: 800px) and (min-width: 1100px) {
+    html[data-mode="auto"], html[data-mode="tv"] {
+      --title: clamp(28px, 3.4vh, 40px);
+      --name: clamp(20px, 3vh, 28px);
+      --body: clamp(16px, 2.4vh, 20px);
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="stage">
+    <header class="top">
+      <div class="brand">
+        <h1>THE AGENT BAND</h1>
+        <span class="live" aria-label="Live"><span class="dot" aria-hidden="true"></span>LIVE</span>
+      </div>
+      <div class="clock" id="clock" aria-live="polite">--:-- <span class="tz">CT</span></div>
+      <div class="header-right">
+        <div class="pills">
+          <span class="pill active" id="pill-active"><span class="n" id="n-active">–</span> Active</span>
+          <span class="pill flight" id="pill-flight"><span class="n" id="n-flight">–</span> In flight</span>
+          <span class="pill wait" id="pill-wait"><span class="n" id="n-wait">–</span> Waiting</span>
+          <span class="pill sync" id="pill-sync"><span class="refresh-dot" id="refresh-dot" aria-hidden="true"></span><span id="sync-label">Syncing…</span></span>
+        </div>
+        <div class="mode-toggle" role="radiogroup" aria-label="Display mode">
+          <button type="button" data-mode="auto" aria-pressed="true">Auto</button>
+          <button type="button" data-mode="tv" aria-pressed="false">TV Mode</button>
+          <button type="button" data-mode="standard" aria-pressed="false">Standard</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="board">
+      <section class="panel" aria-label="Agent roster">
+        <h2 class="sec-label">Agent Roster</h2>
+        <div class="roster" id="roster"></div>
+      </section>
+      <section class="panel pipe-col" aria-label="Live pipeline">
+        <h2 class="sec-label">Live Pipeline</h2>
+        <div class="waiting-box" id="waiting" hidden>
+          <h3>Waiting on James</h3>
+          <div id="asks"></div>
+        </div>
+        <div class="jobs" id="jobs"><div class="empty">Loading live status…</div></div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" hidden></div>
+    <footer class="fine">Live from the Agent Status board, status files, and band chat · refreshes every 30s · <a href="index.html">Status</a> · <a href="pipeline.html">Pipeline</a></footer>
+  </div>
+
+<script>
+(function () {
+  "use strict";
+
+  var TZ = "America/Chicago";
+  var TWO_H = 2 * 3600e3;
+  var TWELVE_H = 12 * 3600e3;
+  var REFRESH_MS = 30000;
+  var AGENTS = [
+    { id: "claude-code", name: "Claude Code" },
+    { id: "claude-chat", name: "Claude Chat" },
+    { id: "codex", name: "Codex" },
+    { id: "chatgpt", name: "ChatGPT" },
+    { id: "gemini", name: "Gemini" },
+    { id: "grok", name: "Grok" }
+  ];
+  var NAMES = {
+    "james": "James",
+    "jarvis": "Jarvis",
+    "claude-code": "Claude Code",
+    "claude-chat": "Claude Chat",
+    "codex": "Codex",
+    "chatgpt": "ChatGPT",
+    "gemini": "Gemini",
+    "grok": "Grok"
+  };
+
+  var state = {
+    results: null,
+    chat: null,
+    statuses: {},
+    fetchedAt: 0,
+    lastError: null,
+    refreshing: false,
+    nextRefresh: 0
+  };
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function idFor(name) { return String(name || "").trim().toLowerCase().replace(/\s+/g, "-"); }
+  function nameFor(id) { return NAMES[id] || id; }
+  function short(s, n) {
+    s = String(s || "").replace(/\s+/g, " ").trim();
+    return s.length > n ? s.slice(0, n - 1) + "…" : s;
+  }
+
+  function chicagoOffsetMinutes(utcMs) {
+    var fmt = new Intl.DateTimeFormat("en-US", {
+      timeZone: TZ,
+      year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", second: "2-digit",
+      hourCycle: "h23"
+    });
+    var o = {};
+    fmt.formatToParts(new Date(utcMs)).forEach(function (p) { o[p.type] = p.value; });
+    var asUtc = Date.UTC(+o.year, +o.month - 1, +o.day, +o.hour, +o.minute, +o.second);
+    return (asUtc - utcMs) / 60000;
+  }
+
+  /* chat.json times are the Mac's local (America/Chicago) wall clock: "yyyy-MM-dd HH:mm" */
+  function parseChicagoWall(t) {
+    var m = /^(\d+)-(\d+)-(\d+)[ T](\d+):(\d+)/.exec(t || "");
+    if (!m) return NaN;
+    var guess = Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], 0);
+    var off = chicagoOffsetMinutes(guess);
+    var instant = guess - off * 60000;
+    var off2 = chicagoOffsetMinutes(instant);
+    if (off2 !== off) instant = guess - off2 * 60000;
+    return instant;
+  }
+
+  function parseUtc(t) {
+    if (!t) return NaN;
+    var ms = Date.parse(t);
+    return isFinite(ms) ? ms : NaN;
+  }
+
+  function tzParts(ms) {
+    var fmt = new Intl.DateTimeFormat("en-US", {
+      timeZone: TZ,
+      weekday: "short",
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true
+    });
+    var o = {};
+    fmt.formatToParts(new Date(ms)).forEach(function (p) { o[p.type] = p.value; });
+    return o;
+  }
+
+  function chicagoYMD(ms) {
+    var fmt = new Intl.DateTimeFormat("en-CA", {
+      timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit"
+    });
+    return fmt.format(new Date(ms));
+  }
+
+  function formatTimeCT(ms) {
+    var p = tzParts(ms);
+    var ap = (p.dayPeriod || "").replace(/\./g, "").toUpperCase();
+    return p.hour + ":" + p.minute + " " + ap + " CT";
+  }
+
+  function formatClock(ms) {
+    var p = tzParts(ms);
+    var ap = (p.dayPeriod || "").replace(/\./g, "").toUpperCase();
+    return p.hour + ":" + p.minute + " " + ap;
+  }
+
+  function formatLastSeen(ms, now) {
+    if (!isFinite(ms)) return "Last seen unknown";
+    var today = chicagoYMD(now);
+    var day = chicagoYMD(ms);
+    var yestDate = new Date(now - 24 * 3600e3);
+    var yest = chicagoYMD(yestDate);
+    if (day === yest) return "Yesterday · " + formatTimeCT(ms);
+    if (day !== today) {
+      var p = tzParts(ms);
+      return p.month + " " + p.day + " · " + formatTimeCT(ms);
+    }
+    var mins = Math.max(0, Math.round((now - ms) / 60000));
+    var rel;
+    if (mins < 1) rel = "Just now";
+    else if (mins < 60) rel = mins + "m ago";
+    else {
+      var h = Math.floor(mins / 60);
+      var m = mins % 60;
+      rel = h + "h" + (m ? " " + m + "m" : "") + " ago";
+    }
+    return rel + " · " + formatTimeCT(ms);
+  }
+
+  /* Proven pipeline.html job / Waiting-on-James parser, with Chicago-safe timestamps. */
+  function parseChat(rawMsgs) {
+    var msgs = (rawMsgs || []).map(function (m, i) {
+      return { i: i, id: m.id, name: m.name, text: m.text || "", at: parseChicagoWall(m.time) };
+    });
+    var jobs = [];
+    msgs.forEach(function (m) {
+      if (m.id !== "jarvis") return;
+      var h = /^Handed to (.+?):\s*(.+?)\.?\s*I'll tell you when it's done/i.exec(m.text);
+      if (h) jobs.push({ worker: idFor(h[1]), title: h[2].replace(/\.$/, ""), handed: m, onIt: null, end: null, failed: false });
+    });
+    jobs.forEach(function (j, k) {
+      var next = jobs.slice(k + 1).filter(function (o) { return o.worker === j.worker; })[0];
+      var limit = next ? next.handed.i : Infinity;
+      msgs.forEach(function (m) {
+        if (m.i <= j.handed.i || m.i >= limit || m.id !== j.worker || j.end) return;
+        if (/^On it:/i.test(m.text)) { if (!j.onIt) j.onIt = m; }
+        else if (/^Done:/i.test(m.text)) j.end = m;
+        else if (/couldn't finish/i.test(m.text)) { j.end = m; j.failed = true; }
+      });
+    });
+    var lastJames = -1;
+    msgs.forEach(function (m) { if (m.id === "james") lastJames = m.i; });
+    var asks = msgs.filter(function (m) {
+      if (m.id === "james" || m.i < lastJames || Date.now() - m.at > TWELVE_H) return false;
+      if (msgs.some(function (o) {
+        return o.i > m.i && (o.id === m.id || (o.id === "jarvis" && /^Handed to /i.test(o.text)));
+      })) return false;
+      var t = m.text.replace(/\s*\**Options:.*$/i, "").trim();
+      return /\?$/.test(t) || /Options:/i.test(m.text) || /\b(James (should|must|needs to)|needs James|James, (please|can you))\b/i.test(m.text);
+    });
+    return { msgs: msgs, jobs: jobs, asks: asks, lastJames: lastJames };
+  }
+
+  function latestChatAt(msgs, id) {
+    for (var i = msgs.length - 1; i >= 0; i--) {
+      if (msgs[i].id === id && isFinite(msgs[i].at)) return msgs[i].at;
+    }
+    return NaN;
+  }
+
+  function latestTask(id, jobs, msgs, status) {
+    var open = jobs.filter(function (j) { return j.worker === id && !j.end; });
+    if (open.length) return { label: open[open.length - 1].title, kind: "working" };
+    var i, m, ont, don;
+    for (i = msgs.length - 1; i >= 0; i--) {
+      m = msgs[i];
+      if (m.id !== id) continue;
+      ont = /^On it:\s*(.+)/i.exec(m.text);
+      if (ont) return { label: ont[1].replace(/\.$/, ""), kind: "onit" };
+      don = /^Done:\s*(.+)/i.exec(m.text);
+      if (don) return { label: don[1], kind: "done" };
+    }
+    if (status && status.current_project && status.current_project !== "none") {
+      return { label: status.current_project, kind: "project" };
+    }
+    if (status && status.note) return { label: status.note, kind: "note" };
+    return { label: "No active task", kind: "none" };
+  }
+
+  function maxTime() {
+    var best = NaN, i, v;
+    for (i = 0; i < arguments.length; i++) {
+      v = arguments[i];
+      if (isFinite(v) && (!isFinite(best) || v > best)) best = v;
+    }
+    return best;
+  }
+
+  function boardGreen(stateName) {
+    return stateName === "green" || stateName === "double-green";
+  }
+
+  function classifyAgent(id, now, parsed) {
+    var resA = (state.results && state.results.agents && state.results.agents[id]) || {};
+    var st = state.statuses[id] || {};
+    var boardSeen = parseUtc(resA.last_seen || st.last_seen);
+    var updated = parseUtc(st.updated_at);
+    var chatSeen = latestChatAt(parsed.msgs, id);
+    var lastSeen = maxTime(boardSeen, updated, chatSeen);
+    var boardOk = boardGreen(resA.state);
+    var chatFresh = isFinite(chatSeen) && (now - chatSeen) <= TWO_H;
+    var chatRecent = isFinite(chatSeen) && (now - chatSeen) <= TWELVE_H;
+    var boardStale = !isFinite(boardSeen) || (now - boardSeen) > TWO_H;
+    var tone, label, hint = "";
+    if (boardOk || chatFresh) {
+      tone = "online";
+      if (chatFresh && (!boardOk || boardStale)) {
+        label = "ONLINE · ACTIVE IN CHAT";
+        hint = "Active in chat";
+      } else if (st.activity === "working" || latestTask(id, parsed.jobs, parsed.msgs, st).kind === "working") {
+        label = "ONLINE · ACTIVE";
+      } else {
+        label = "ONLINE";
+      }
+    } else if (chatRecent) {
+      tone = "chatty";
+      label = "RECENT IN CHAT";
+    } else {
+      tone = "quiet";
+      label = "QUIET";
+    }
+    return {
+      lastSeen: lastSeen,
+      boardOk: boardOk,
+      tone: tone,
+      label: label,
+      hint: hint,
+      task: latestTask(id, parsed.jobs, parsed.msgs, st)
+    };
+  }
+
+  /* ---- mode toggle ---- */
+  function loadMode() {
+    try {
+      var m = localStorage.getItem("ab-dash-mode");
+      if (m === "tv" || m === "standard" || m === "auto") return m;
+    } catch (e) {}
+    return "auto";
+  }
+  function saveMode(m) {
+    try { localStorage.setItem("ab-dash-mode", m); } catch (e) {}
+  }
+  function applyMode(m) {
+    document.documentElement.setAttribute("data-mode", m);
+    var btns = document.querySelectorAll(".mode-toggle button");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute("aria-pressed", btns[i].getAttribute("data-mode") === m ? "true" : "false");
+    }
+    saveMode(m);
+  }
+
+  function tickClock() {
+    var node = document.getElementById("clock");
+    node.textContent = "";
+    node.appendChild(document.createTextNode(formatClock(Date.now()) + " "));
+    var tz = el("span", "tz", "CT");
+    node.appendChild(tz);
+  }
+
+  function render() {
+    tickClock();
+    var now = Date.now();
+    var roster = document.getElementById("roster");
+    var jobsEl = document.getElementById("jobs");
+    var waiting = document.getElementById("waiting");
+    var asksEl = document.getElementById("asks");
+    var toast = document.getElementById("toast");
+
+    if (!state.results && !state.chat) {
+      if (state.lastError) {
+        toast.hidden = false;
+        toast.textContent = "Couldn’t load live status. Will retry…";
+      }
+      return;
+    }
+
+    var parsed = parseChat((state.chat && state.chat.messages) || []);
+    var activeCount = 0;
+    var inFlight = parsed.jobs.filter(function (j) { return !j.end; }).length;
+    var waitCount = parsed.asks.length;
+
+    roster.textContent = "";
+    AGENTS.forEach(function (a) {
+      var info = classifyAgent(a.id, now, parsed);
+      if (info.tone === "online") activeCount += 1;
+      var card = el("article", "card " + info.tone);
+      card.style.setProperty("--accent", info.tone === "online" ? "#34d399" : info.tone === "chatty" ? "#7dd3fc" : "#94a3b8");
+      var top = el("div", "card-top");
+      top.appendChild(el("span", "status-dot", null));
+      top.appendChild(el("div", "who", a.name));
+      top.appendChild(el("div", "badge", info.label.replace("ONLINE · ", "").replace("RECENT IN CHAT", "RECENT")));
+      card.appendChild(top);
+      if (info.hint) card.appendChild(el("div", "note-tag", info.hint));
+      var task = el("div", "task" + (info.task.kind === "none" ? " none" : ""), short(info.task.label, 160));
+      card.appendChild(task);
+      card.appendChild(el("div", "seen", "Last seen " + formatLastSeen(info.lastSeen, now)));
+      roster.appendChild(card);
+    });
+
+    document.getElementById("n-active").textContent = String(activeCount);
+    document.getElementById("n-flight").textContent = String(inFlight);
+    document.getElementById("n-wait").textContent = String(waitCount);
+    document.getElementById("pill-wait").style.opacity = waitCount ? "1" : "0.65";
+
+    asksEl.textContent = "";
+    waiting.hidden = !parsed.asks.length;
+    parsed.asks.forEach(function (m) {
+      var row = el("div", "ask");
+      row.appendChild(el("span", "who", nameFor(m.id) + ": "));
+      row.appendChild(document.createTextNode(short(m.text.replace(/\s*\**Options:\**\s*/i, " · Answers: "), 220) + " "));
+      row.appendChild(el("span", "age", "· " + formatLastSeen(m.at, now)));
+      asksEl.appendChild(row);
+    });
+
+    jobsEl.textContent = "";
+    var recent = parsed.jobs.slice().reverse().slice(0, 6);
+    if (!recent.length) {
+      jobsEl.appendChild(el("div", "empty", "No handoffs in the recent chat."));
+    }
+    recent.forEach(function (j) {
+      var stage, stageCls, whenMs;
+      if (j.end && j.failed) { stage = "FAILED"; stageCls = "failed"; whenMs = j.end.at; }
+      else if (j.end) { stage = "DONE"; stageCls = "done"; whenMs = j.end.at; }
+      else if (j.onIt) { stage = "WORKING"; stageCls = "working"; whenMs = j.onIt.at; }
+      else { stage = "QUEUED"; stageCls = "queued"; whenMs = j.handed.at; }
+      var row = el("article", "job");
+      row.appendChild(el("span", "stage-pill " + stageCls, stage));
+      row.appendChild(el("div", "job-agent", nameFor(j.worker)));
+      row.appendChild(el("div", "job-title", j.title));
+      row.appendChild(el("div", "job-time", isFinite(whenMs) ? formatTimeCT(whenMs) : ""));
+      jobsEl.appendChild(row);
+    });
+
+    /* Sync label */
+    var syncPill = document.getElementById("pill-sync");
+    var syncLabel = document.getElementById("sync-label");
+    var boardAt = parseUtc(state.results && state.results.checked_at);
+    var chatAt = parseUtc(state.chat && state.chat.updated_at);
+    var parts = [];
+    if (isFinite(boardAt)) parts.push("Board " + formatTimeCT(boardAt));
+    if (isFinite(chatAt)) {
+      if (!isFinite(boardAt) || Math.abs(boardAt - chatAt) > 120000) parts.push("Chat " + formatTimeCT(chatAt));
+    }
+    if (!parts.length && state.fetchedAt) parts.push("Loaded " + formatTimeCT(state.fetchedAt));
+    var remain = Math.max(0, Math.ceil((state.nextRefresh - now) / 1000));
+    parts.push(state.refreshing ? "Refreshing…" : remain + "s");
+    syncLabel.textContent = parts.join(" · ");
+    var staleChat = isFinite(chatAt) && (now - chatAt) > TWO_H;
+    syncPill.classList.toggle("stale", !!staleChat);
+    document.getElementById("refresh-dot").classList.toggle("on", !!state.refreshing);
+
+    if (state.lastError && (state.results || state.chat)) {
+      toast.hidden = false;
+      toast.textContent = "Live update missed — showing last good snapshot.";
+    } else {
+      toast.hidden = true;
+      toast.textContent = "";
+    }
+  }
+
+  function fetchJson(url) {
+    return fetch(url + (url.indexOf("?") >= 0 ? "&" : "?") + "t=" + Date.now(), { cache: "no-store" })
+      .then(function (r) {
+        if (!r.ok) throw new Error(url + " " + r.status);
+        return r.json();
+      });
+  }
+
+  function load() {
+    if (state.refreshing) return;
+    state.refreshing = true;
+    render();
+    var statusFetches = AGENTS.map(function (a) {
+      return fetchJson("./status/" + a.id + ".json").then(function (j) {
+        return { id: a.id, data: j };
+      }).catch(function () {
+        return { id: a.id, data: state.statuses[a.id] || null };
+      });
+    });
+    Promise.all([
+      fetchJson("./results.json").then(function (j) { return { ok: true, data: j }; }).catch(function (e) { return { ok: false, error: e, data: state.results }; }),
+      fetchJson("./chat.json").then(function (j) { return { ok: true, data: j }; }).catch(function (e) { return { ok: false, error: e, data: state.chat }; }),
+      Promise.all(statusFetches)
+    ]).then(function (pack) {
+      var res = pack[0], chat = pack[1], statuses = pack[2];
+      var err = null;
+      if (res.ok) state.results = res.data; else err = res.error;
+      if (chat.ok) state.chat = chat.data; else err = err || chat.error;
+      var map = {};
+      statuses.forEach(function (s) { if (s.data) map[s.id] = s.data; });
+      state.statuses = map;
+      state.lastError = err;
+      if (res.ok || chat.ok) state.fetchedAt = Date.now();
+      state.refreshing = false;
+      state.nextRefresh = Date.now() + REFRESH_MS;
+      render();
+    }).catch(function (e) {
+      state.lastError = e;
+      state.refreshing = false;
+      state.nextRefresh = Date.now() + REFRESH_MS;
+      render();
+    });
+  }
+
+  applyMode(loadMode());
+  var modeBtns = document.querySelectorAll(".mode-toggle button");
+  for (var i = 0; i < modeBtns.length; i++) {
+    modeBtns[i].addEventListener("click", function (ev) {
+      applyMode(ev.currentTarget.getAttribute("data-mode"));
+    });
+  }
+
+  tickClock();
+  setInterval(tickClock, 1000);
+  setInterval(function () {
+    if (!state.refreshing) render();
+  }, 1000);
+
+  load();
+  setInterval(load, REFRESH_MS);
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden) load();
+  });
+})();
+</script>
+</body>
+</html>
