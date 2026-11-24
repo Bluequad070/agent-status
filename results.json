@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-24T03:21:55Z",
+  "checked_at": "2026-11-24T04:32:01Z",
   "base": "https://bluequad070.github.io/agent-status/",
   "pause_seconds": 45,
   "overall": "x",
@@ -13,7 +13,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T03:21:09Z"
+        "at": "2026-11-24T04:31:15Z"
       },
       "second": {
         "ok": false,
@@ -21,24 +21,28 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T03:21:55Z"
+        "at": "2026-11-24T04:32:01Z"
       },
       "last_seen": "2026-11-22T22:59:53Z",
       "current_project": "none"
     },
     "claude-code": {
-      "state": "double-green",
+      "state": "x",
       "first": {
-        "ok": true,
+        "ok": false,
         "stale": false,
-        "reasons": [],
-        "at": "2026-11-24T03:21:09Z"
+        "reasons": [
+          "last_seen older than 24h"
+        ],
+        "at": "2026-11-24T04:31:15Z"
       },
       "second": {
-        "ok": true,
+        "ok": false,
         "stale": false,
-        "reasons": [],
-        "at": "2026-11-24T03:21:55Z"
+        "reasons": [
+          "last_seen older than 24h"
+        ],
+        "at": "2026-11-24T04:32:01Z"
       },
       "last_seen": "2026-11-23T04:11:38Z",
       "current_project": "Agent Status System"
@@ -51,7 +55,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T03:21:09Z"
+        "at": "2026-11-24T04:31:15Z"
       },
       "second": {
         "ok": false,
@@ -59,7 +63,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T03:21:55Z"
+        "at": "2026-11-24T04:32:01Z"
       },
       "last_seen": "2026-11-22T20:21:41Z",
       "current_project": "none"
@@ -72,7 +76,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T03:21:09Z"
+        "at": "2026-11-24T04:31:15Z"
       },
       "second": {
         "ok": false,
@@ -80,7 +84,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T03:21:55Z"
+        "at": "2026-11-24T04:32:01Z"
       },
       "last_seen": "2026-11-23T01:15:23Z",
       "current_project": "none"
@@ -93,7 +97,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T03:21:09Z"
+        "at": "2026-11-24T04:31:15Z"
       },
       "second": {
         "ok": false,
@@ -101,7 +105,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T03:21:55Z"
+        "at": "2026-11-24T04:32:01Z"
       },
       "last_seen": "2026-11-22T20:21:41Z",
       "current_project": "none"
@@ -112,13 +116,13 @@
         "ok": true,
         "stale": false,
         "reasons": [],
-        "at": "2026-11-24T03:21:10Z"
+        "at": "2026-11-24T04:31:15Z"
       },
       "second": {
         "ok": true,
         "stale": false,
         "reasons": [],
-        "at": "2026-11-24T03:21:55Z"
+        "at": "2026-11-24T04:32:01Z"
       },
       "last_seen": "2026-11-23T06:36:13Z",
       "current_project": "none"
@@ -128,85 +132,85 @@
     "claude-chat": [
       {
         "state": "x",
-        "at": "2026-11-24T00:50:42Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-24T02:09:22Z"
       },
       {
         "state": "x",
         "at": "2026-11-24T03:21:55Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-24T04:32:01Z"
       }
     ],
     "claude-code": [
       {
         "state": "double-green",
-        "at": "2026-11-24T00:50:42Z"
-      },
-      {
-        "state": "double-green",
         "at": "2026-11-24T02:09:22Z"
       },
       {
         "state": "double-green",
         "at": "2026-11-24T03:21:55Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-24T04:32:01Z"
       }
     ],
     "codex": [
       {
         "state": "x",
-        "at": "2026-11-24T00:50:42Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-24T02:09:22Z"
       },
       {
         "state": "x",
         "at": "2026-11-24T03:21:55Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-24T04:32:01Z"
       }
     ],
     "chatgpt": [
       {
-        "state": "double-green",
-        "at": "2026-11-24T00:50:42Z"
-      },
-      {
         "state": "x",
         "at": "2026-11-24T02:09:22Z"
       },
       {
         "state": "x",
         "at": "2026-11-24T03:21:55Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-24T04:32:01Z"
       }
     ],
     "gemini": [
       {
         "state": "x",
-        "at": "2026-11-24T00:50:42Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-24T02:09:22Z"
       },
       {
         "state": "x",
         "at": "2026-11-24T03:21:55Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-24T04:32:01Z"
       }
     ],
     "grok": [
       {
         "state": "double-green",
-        "at": "2026-11-24T00:50:42Z"
-      },
-      {
-        "state": "double-green",
         "at": "2026-11-24T02:09:22Z"
       },
       {
         "state": "double-green",
         "at": "2026-11-24T03:21:55Z"
+      },
+      {
+        "state": "double-green",
+        "at": "2026-11-24T04:32:01Z"
       }
     ]
   },
