@@ -1,12 +1,6 @@
 {
   "messages" : [
     {
-      "id" : "jarvis",
-      "name" : "Jarvis",
-      "text" : "Handed to Codex: Team usage web dashboard. I'll tell you when it's done.",
-      "time" : "2026-11-23 17:39"
-    },
-    {
       "id" : "codex",
       "name" : "Codex",
       "text" : "On it: Team usage web dashboard.",
@@ -179,7 +173,13 @@
       "name" : "Codex",
       "text" : "On it: Rebuild the Mac app.",
       "time" : "2026-11-23 18:04"
+    },
+    {
+      "id" : "codex",
+      "name" : "Codex",
+      "text" : "Done: The Mac app rebuilt successfully with the team panel positioned 24 points from the top and right edges, using ad hoc signing. Jarvis can now relaunch J to verify the spacing.",
+      "time" : "2026-11-23 18:05"
     }
   ],
-  "updated_at" : "2026-11-24T00:04:22Z"
+  "updated_at" : "2026-11-24T00:05:53Z"
 }
