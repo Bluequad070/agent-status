@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-24T17:49:12Z",
+  "checked_at": "2026-11-24T18:49:20Z",
   "base": "https://bluequad070.github.io/agent-status/",
   "pause_seconds": 45,
   "overall": "x",
@@ -13,7 +13,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:48:26Z"
+        "at": "2026-11-24T18:48:35Z"
       },
       "second": {
         "ok": false,
@@ -21,7 +21,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:49:11Z"
+        "at": "2026-11-24T18:49:20Z"
       },
       "last_seen": "2026-11-22T22:59:53Z",
       "current_project": "none"
@@ -34,7 +34,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:48:26Z"
+        "at": "2026-11-24T18:48:35Z"
       },
       "second": {
         "ok": false,
@@ -42,7 +42,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:49:11Z"
+        "at": "2026-11-24T18:49:20Z"
       },
       "last_seen": "2026-11-23T04:11:38Z",
       "current_project": "Agent Status System"
@@ -55,7 +55,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:48:26Z"
+        "at": "2026-11-24T18:48:35Z"
       },
       "second": {
         "ok": false,
@@ -63,7 +63,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:49:11Z"
+        "at": "2026-11-24T18:49:20Z"
       },
       "last_seen": "2026-11-22T20:21:41Z",
       "current_project": "none"
@@ -76,7 +76,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:48:26Z"
+        "at": "2026-11-24T18:48:35Z"
       },
       "second": {
         "ok": false,
@@ -84,7 +84,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:49:11Z"
+        "at": "2026-11-24T18:49:20Z"
       },
       "last_seen": "2026-11-23T01:15:23Z",
       "current_project": "none"
@@ -97,7 +97,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:48:26Z"
+        "at": "2026-11-24T18:48:35Z"
       },
       "second": {
         "ok": false,
@@ -105,7 +105,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:49:12Z"
+        "at": "2026-11-24T18:49:20Z"
       },
       "last_seen": "2026-11-22T20:21:41Z",
       "current_project": "none"
@@ -118,7 +118,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:48:26Z"
+        "at": "2026-11-24T18:48:35Z"
       },
       "second": {
         "ok": false,
@@ -126,95 +126,118 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-24T17:49:12Z"
+        "at": "2026-11-24T18:49:20Z"
       },
       "last_seen": "2026-11-23T06:36:13Z",
       "current_project": "none"
+    },
+    "gazlowe": {
+      "state": "double-green",
+      "first": {
+        "ok": true,
+        "stale": false,
+        "reasons": [],
+        "at": "2026-11-24T18:48:35Z"
+      },
+      "second": {
+        "ok": true,
+        "stale": false,
+        "reasons": [],
+        "at": "2026-11-24T18:49:20Z"
+      },
+      "last_seen": "2026-11-24T17:56:35Z",
+      "current_project": "Maintenance"
     }
   },
   "history": {
     "claude-chat": [
       {
         "state": "x",
-        "at": "2026-11-24T15:31:14Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-24T16:57:29Z"
       },
       {
         "state": "x",
         "at": "2026-11-24T17:49:12Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-24T18:49:20Z"
       }
     ],
     "claude-code": [
       {
         "state": "x",
-        "at": "2026-11-24T15:31:14Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-24T16:57:29Z"
       },
       {
         "state": "x",
         "at": "2026-11-24T17:49:12Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-24T18:49:20Z"
       }
     ],
     "codex": [
       {
         "state": "x",
-        "at": "2026-11-24T15:31:14Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-24T16:57:29Z"
       },
       {
         "state": "x",
         "at": "2026-11-24T17:49:12Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-24T18:49:20Z"
       }
     ],
     "chatgpt": [
       {
         "state": "x",
-        "at": "2026-11-24T15:31:14Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-24T16:57:29Z"
       },
       {
         "state": "x",
         "at": "2026-11-24T17:49:12Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-24T18:49:20Z"
       }
     ],
     "gemini": [
       {
         "state": "x",
-        "at": "2026-11-24T15:31:14Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-24T16:57:29Z"
       },
       {
         "state": "x",
         "at": "2026-11-24T17:49:12Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-24T18:49:20Z"
       }
     ],
     "grok": [
       {
         "state": "x",
-        "at": "2026-11-24T15:31:14Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-24T16:57:29Z"
       },
       {
         "state": "x",
         "at": "2026-11-24T17:49:12Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-24T18:49:20Z"
+      }
+    ],
+    "gazlowe": [
+      {
+        "state": "double-green",
+        "at": "2026-11-24T18:49:20Z"
       }
     ]
   },
