@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Team pipeline</title>
+<style>
+  :root { color-scheme: light dark;
+    --bg:#f7f7f5; --fg:#1b1b1b; --muted:#6b6b6b; --line:#e3e3df; --card:#fff;
+    --wait:#b26a00; --waitbg:#fff3df; --work:#1d5fd1; --workbg:#e7efff; --done:#1e7d3f; --donebg:#e5f5ea;
+    --fail:#b3261e; }
+  @media (prefers-color-scheme: dark) { :root {
+    --bg:#111; --fg:#ececec; --muted:#9a9a9a; --line:#2a2a2a; --card:#1b1b1b;
+    --wait:#ffb547; --waitbg:#3a2a10; --work:#7aa7ff; --workbg:#16243f; --done:#6fd08f; --donebg:#12301c; --fail:#ff7b72; } }
+  * { box-sizing:border-box; }
+  body { margin:0 auto; max-width:760px; padding:14px 12px calc(14px + env(safe-area-inset-bottom));
+         background:var(--bg); color:var(--fg); font:15px/1.35 -apple-system, system-ui, sans-serif; }
+  header { display:flex; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:10px; }
+  h1 { font-size:19px; margin:0; }
+  #updated { color:var(--muted); font-size:12px; }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); margin:16px 2px 6px; }
+
+  /* Waiting on James pile */
+  #pile { background:var(--waitbg); border:1px solid var(--wait); border-radius:12px; padding:8px 12px; }
+  #pile h2 { color:var(--wait); margin:4px 0 6px; }
+  .ask { padding:6px 0; border-top:1px solid color-mix(in srgb, var(--wait) 30%, transparent); font-size:14px; }
+  .ask:first-of-type { border-top:0; }
+  .ask .who { font-weight:600; }
+  .ask .age { color:var(--muted); font-size:12px; white-space:nowrap; }
+
+  /* Stage row: James → Jarvis → Teammate → Reported back */
+  .flow { display:grid; grid-template-columns:1fr 14px 1fr 14px 1fr 14px 1fr; align-items:stretch; }
+  .arrow { display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:13px; }
+  .node { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:8px 7px; min-width:0; }
+  .node .stage { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; }
+  .node .who { font-weight:650; font-size:14px; margin:1px 0 4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .node .task { font-size:12px; color:var(--muted); display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:anywhere; }
+  .node .dur { font-size:12px; margin-top:3px; font-variant-numeric:tabular-nums; }
+  .pill { display:inline-block; font-size:11px; font-weight:650; padding:1px 7px; border-radius:99px; }
+  .waiting { color:var(--wait); background:var(--waitbg); }
+  .working { color:var(--work); background:var(--workbg); }
+  .done    { color:var(--done); background:var(--donebg); }
+  .node.working { border-color:var(--work); }
+  .node.waiting { border-color:var(--wait); }
+
+  /* Job lanes */
+  .lane { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:8px 10px; margin-bottom:8px; }
+  .lane .top { display:flex; justify-content:space-between; gap:8px; align-items:baseline; }
+  .lane .title { font-weight:600; font-size:14px; overflow-wrap:anywhere; }
+  .lane .meta { color:var(--muted); font-size:12px; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  .track { display:grid; grid-template-columns:1fr 14px 1fr 14px 1fr 14px 1fr; margin-top:6px; align-items:center; }
+  .step { font-size:11px; text-align:center; padding:3px 2px; border-radius:7px; color:var(--muted); background:transparent;
+          border:1px dashed var(--line); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .step.done, .step.working, .step.waiting { border-style:solid; border-color:transparent; }
+  .step.fail { color:var(--fail); }
+  .lane .report { font-size:12px; color:var(--muted); margin-top:6px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .lane.open .report { -webkit-line-clamp:unset; display:block; }
+  .empty { color:var(--muted); font-size:13px; padding:8px 2px; }
+  footer { color:var(--muted); font-size:12px; text-align:center; margin-top:14px; }
+  footer a { color:inherit; }
+  @media (max-width:420px) { .node { padding:7px 5px; } .node .who { font-size:13px; } .flow, .track { grid-template-columns:1fr 10px 1fr 10px 1fr 10px 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Team pipeline</h1>
+  <span id="updated">Loading…</span>
+</header>
+
+<div id="pile" hidden><h2>Waiting on James</h2><div id="asks"></div></div>
+
+<h2>Right now</h2>
+<div class="flow" id="flow"></div>
+
+<h2>Jobs</h2>
+<div id="lanes"><div class="empty">Loading…</div></div>
+
+<footer>Live from the team chat · refreshes every 30 s · <a href="index.html">Status</a> · <a href="usage.html">Usage</a></footer>
+
+<script>
+(function () {
+  var NAMES = { "james":"James", "jarvis":"Jarvis", "claude-code":"Claude Code", "codex":"Codex", "gemini":"Gemini", "grok":"Grok" };
+  var STAGES = ["James", "Jarvis", "Teammate", "Reported back"];
+  var data = null, fetchedAt = 0;
+
+  function idFor(name) { return name.trim().toLowerCase().replace(/\s+/g, "-"); }
+  function nameFor(id) { return NAMES[id] || id; }
+  // chat.json times are the Mac's local time, "yyyy-MM-dd HH:mm".
+  function when(t) { var m = /^(\d+)-(\d+)-(\d+)[ T](\d+):(\d+)/.exec(t || ""); return m ? new Date(+m[1], m[2] - 1, +m[3], +m[4], +m[5]).getTime() : NaN; }
+  function dur(ms) {
+    if (!(ms >= 0)) return "";
+    var m = Math.round(ms / 60000);
+    if (m < 1) return "under 1 min";
+    if (m < 60) return m + " min";
+    var h = Math.floor(m / 60); m = m % 60;
+    if (h < 48) return h + " h" + (m ? " " + m + " min" : "");
+    return Math.round(h / 24) + " days";
+  }
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function short(s, n) { s = (s || "").replace(/\s+/g, " ").trim(); return s.length > n ? s.slice(0, n - 1) + "…" : s; }
+
+  function parse(msgs) {
+    msgs = msgs.map(function (m, i) { return { i:i, id:m.id, name:m.name, text:m.text || "", at:when(m.time) }; });
+    var jobs = [];
+    msgs.forEach(function (m) {
+      if (m.id !== "jarvis") return;
+      var h = /^Handed to (.+?):\s*(.+?)\.?\s*I'll tell you when it's done/i.exec(m.text);
+      if (h) jobs.push({ worker:idFor(h[1]), title:h[2].replace(/\.$/, ""), handed:m, onIt:null, end:null, failed:false });
+    });
+    jobs.forEach(function (j, k) {
+      var next = jobs.slice(k + 1).filter(function (o) { return o.worker === j.worker; })[0];
+      var limit = next ? next.handed.i : Infinity;
+      msgs.forEach(function (m) {
+        if (m.i <= j.handed.i || m.i >= limit || m.id !== j.worker || j.end) return;
+        if (/^On it:/i.test(m.text)) { if (!j.onIt) j.onIt = m; }
+        else if (/^Done:/i.test(m.text)) j.end = m;
+        else if (/couldn't finish/i.test(m.text)) { j.end = m; j.failed = true; }
+      });
+    });
+
+    // Waiting on James: questions or asks to James with no James message after them (last 12 h).
+    var lastJames = -1;
+    msgs.forEach(function (m) { if (m.id === "james") lastJames = m.i; });
+    // A question also counts as settled once its asker speaks again or Jarvis hands off new work.
+    var asks = msgs.filter(function (m) {
+      if (m.id === "james" || m.i < lastJames || Date.now() - m.at > 12 * 3600e3) return false;
+      if (msgs.some(function (o) { return o.i > m.i && (o.id === m.id || (o.id === "jarvis" && /^Handed to /i.test(o.text))); })) return false;
+      var t = m.text.replace(/\s*\**Options:.*$/i, "").trim();
+      return /\?$/.test(t) || /Options:/i.test(m.text) || /\b(James (should|must|needs to)|needs James|James, (please|can you))\b/i.test(m.text);
+    });
+    return { msgs:msgs, jobs:jobs, asks:asks, lastJames:lastJames };
+  }
+
+  function node(stage, who, state, task, d) {
+    var n = el("div", "node " + state);
+    n.appendChild(el("div", "stage", stage));
+    n.appendChild(el("div", "who", who));
+    n.appendChild(el("span", "pill " + state, state));
+    if (task) n.appendChild(el("div", "task", task));
+    if (d) n.appendChild(el("div", "dur", d));
+    return n;
+  }
+  function arrow(box) { box.appendChild(el("div", "arrow", "→")); }
+
+  function render() {
+    if (!data) return;
+    var p = parse(data.messages || []);
+    var now = Date.now();
+    var msgs = p.msgs, last = function (f) { for (var i = msgs.length - 1; i >= 0; i--) if (f(msgs[i])) return msgs[i]; return null; };
+
+    // Pile
+    var pile = document.getElementById("pile"), asks = document.getElementById("asks");
+    asks.innerHTML = "";
+    pile.hidden = !p.asks.length;
+    p.asks.forEach(function (m) {
+      var a = el("div", "ask");
+      a.appendChild(el("span", "who", nameFor(m.id) + ": "));
+      a.appendChild(document.createTextNode(short(m.text.replace(/\s*\**Options:\**\s*/i, " · Answers: "), 220) + " "));
+      a.appendChild(el("span", "age", "· " + dur(now - m.at) + " ago"));
+      asks.appendChild(a);
+    });
+
+    // Right now
+    var flow = document.getElementById("flow"); flow.innerHTML = "";
+    var jm = last(function (m) { return m.id === "james"; });
+    var jv = last(function (m) { return m.id === "jarvis"; });
+    flow.appendChild(p.asks.length
+      ? node("Asks", "James", "waiting", p.asks.length + (p.asks.length === 1 ? " item needs" : " items need") + " your answer", dur(now - p.asks[0].at))
+      : node("Asks", "James", "done", jm ? "“" + short(jm.text, 80) + "”" : "Nothing asked yet", jm ? dur(now - jm.at) + " ago" : ""));
+    arrow(flow);
+    var jvWorking = jm && (!jv || jv.i < jm.i);
+    flow.appendChild(jvWorking
+      ? node("Manager", "Jarvis", "working", "Answering: “" + short(jm.text, 60) + "”", dur(now - jm.at))
+      : p.asks.length && p.asks.some(function (a) { return a.id === "jarvis"; })
+        ? node("Manager", "Jarvis", "waiting", "Waiting for your answer", dur(now - p.asks[0].at))
+        : node("Manager", "Jarvis", "done", jv ? short(jv.text, 80) : "Quiet", jv ? dur(now - jv.at) + " ago" : ""));
+    arrow(flow);
+    var active = p.jobs.filter(function (j) { return !j.end; });
+    var lastJob = p.jobs[p.jobs.length - 1];
+    if (active.length) {
+      var a0 = active[active.length - 1];
+      var names = active.map(function (j) { return nameFor(j.worker); }).filter(function (v, i, s) { return s.indexOf(v) === i; }).join(", ");
+      flow.appendChild(node("Teammate", names, "working", a0.title + (active.length > 1 ? " (+" + (active.length - 1) + " more)" : ""), dur(now - a0.handed.at)));
+    } else if (lastJob) {
+      flow.appendChild(node("Teammate", nameFor(lastJob.worker), "done", lastJob.title, "took " + dur(lastJob.end.at - lastJob.handed.at)));
+    } else flow.appendChild(node("Teammate", "Nobody", "waiting", "No handoffs yet", ""));
+    arrow(flow);
+    var reported = p.jobs.filter(function (j) { return j.end; });
+    var lr = reported[reported.length - 1];
+    flow.appendChild(lr
+      ? node("Reported back", nameFor(lr.worker), active.length ? "waiting" : "done", (lr.failed ? "Couldn't finish: " : "") + lr.title, dur(now - lr.end.at) + " ago")
+      : node("Reported back", "—", "waiting", "No reports yet", ""));
+
+    // Lanes, newest first
+    var lanes = document.getElementById("lanes"); lanes.innerHTML = "";
+    if (!p.jobs.length) lanes.appendChild(el("div", "empty", "No handoffs in the recent chat."));
+    p.jobs.slice().reverse().forEach(function (j) {
+      var L = el("div", "lane");
+      var top = el("div", "top");
+      top.appendChild(el("span", "title", j.title));
+      top.appendChild(el("span", "meta", nameFor(j.worker) + " · " + (j.end ? (j.failed ? "stopped after " : "took ") + dur(j.end.at - j.handed.at) : "working " + dur(now - j.handed.at))));
+      L.appendChild(top);
+      var tr = el("div", "track");
+      var steps = [
+        ["James ✓", "done"],
+        ["Jarvis ✓", "done"],
+        [nameFor(j.worker) + (j.end ? " ✓" : ""), j.end ? "done" : "working"],
+        [j.end ? (j.failed ? "Stopped" : "Reported ✓") : "Reported", j.end ? "done" + (j.failed ? " fail" : "") : "waiting"]
+      ];
+      steps.forEach(function (s, i) { if (i) arrow(tr); tr.appendChild(el("div", "step " + s[1], s[0])); });
+      L.appendChild(tr);
+      if (j.end) {
+        L.appendChild(el("div", "report", j.end.text.replace(/^Done:\s*/i, "")));
+        L.addEventListener("click", function () { L.classList.toggle("open"); });
+      }
+      lanes.appendChild(L);
+    });
+
+    var age = now - fetchedAt;
+    var upd = data.updated_at ? Date.parse(data.updated_at) : NaN;
+    document.getElementById("updated").textContent =
+      (isNaN(upd) ? "" : "Mac sent " + dur(now - upd) + " ago") + (age > 120e3 ? " · offline?" : "");
+  }
+
+  function load() {
+    fetch("chat.json?t=" + Date.now(), { cache:"no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (j) { data = j; fetchedAt = Date.now(); render(); })
+      .catch(function () { if (!data) document.getElementById("lanes").innerHTML = '<div class="empty">Couldn’t load the team chat.</div>'; render(); });
+  }
+  load();
+  setInterval(load, 30000);
+  setInterval(render, 15000); // keep durations ticking between fetches
+  document.addEventListener("visibilitychange", function () { if (!document.hidden) load(); });
+})();
+</script>
+</body>
+</html>
