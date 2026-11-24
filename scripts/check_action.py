@@ -23,7 +23,7 @@ import time
 import urllib.request
 from datetime import datetime, timedelta, timezone
 
-AGENTS = ["claude-chat", "claude-code", "codex", "chatgpt", "gemini", "grok"]
+AGENTS = ["claude-chat", "claude-code", "codex", "chatgpt", "gemini", "grok", "gazlowe"]
 CHAT_AGENTS = ["claude-chat", "chatgpt", "gemini", "grok"]
 FRESH_HOURS, STALE_HOURS, LOG_DAYS, FLAP_WINDOW_MIN = 24, 72, 7, 60
 HISTORY_KEEP_HOURS = 3

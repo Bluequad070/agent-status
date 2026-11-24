@@ -223,7 +223,7 @@
   .roster {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    grid-template-rows: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 1fr));
     gap: var(--gap);
     flex: 1;
     min-height: 0;
@@ -478,7 +478,7 @@
       max(18px, calc(3vw + var(--safe-l)));
   }
   html[data-mode="tv"] .board { grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.92fr); }
-  html[data-mode="tv"] .roster { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+  html[data-mode="tv"] .roster { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); }
   html[data-mode="tv"] footer.fine { display: none; }
   html[data-mode="tv"] .jobs { overflow: hidden; }
 
@@ -591,7 +591,8 @@
     { id: "codex", name: "Codex" },
     { id: "chatgpt", name: "ChatGPT" },
     { id: "gemini", name: "Gemini" },
-    { id: "grok", name: "Grok" }
+    { id: "grok", name: "Grok" },
+    { id: "gazlowe", name: "Gazlowe" }
   ];
   var NAMES = {
     "james": "James",
@@ -601,7 +602,8 @@
     "codex": "Codex",
     "chatgpt": "ChatGPT",
     "gemini": "Gemini",
-    "grok": "Grok"
+    "grok": "Grok",
+    "gazlowe": "Gazlowe"
   };
 
   var state = {

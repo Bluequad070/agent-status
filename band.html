@@ -85,8 +85,16 @@ h1{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0;line-height:1.1
 :root[data-look="band"] #teamview{display:none}
 @media (prefers-reduced-motion:reduce){.rg,.st::before{animation:none!important}}
 .sub{color:var(--muted);margin:0 0 1rem}
+.stage{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,.9fr);gap:12px 10px;align-items:end}
 .band{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end}
-@media (max-width:560px){.band{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.crew{min-width:0;max-width:100%;justify-self:stretch}
+.crew .fig{width:100%;max-width:100%;min-width:0}
+.crew .fig svg{width:100%;height:auto;max-width:100%;display:block}
+@media (max-width:560px){
+  .stage{grid-template-columns:1fr}
+  .band{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .crew{max-width:160px;margin:0 auto}
+}
 .bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:22px 0 18px}
 .bar button,.bar select{font:inherit;font-size:14px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;padding:8px 12px;cursor:pointer}
 .bar button.primary{background:#fff;color:#1b1a24;font-weight:600}
@@ -139,6 +147,8 @@ h1{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0;line-height:1.1
 .fig[data-agent="gemini"][data-state="disconnected"] .eye{display:inline}
 .fig[data-agent="claude-code"][data-state="disconnected"] .ball{animation:spin 1s linear infinite;transform-box:fill-box;transform-origin:50% 50%}
 .fig[data-agent="codex"][data-state="disconnected"] .ring{animation:smoke 2.4s ease-out infinite;transform-box:fill-box;transform-origin:50% 50%}
+.fig[data-agent="gazlowe"][data-state="disconnected"] .char{transform:rotate(6deg)}
+.fig[data-agent="gazlowe"][data-state="disconnected"] .lamp{animation:spark 1.2s steps(1) infinite}
 .fig[data-state="disconnected"]{opacity:.85}
 .fig.shake{animation:shake .6s ease}
 @keyframes breathe{50%{transform:scale(1.04,.97)}}
@@ -178,6 +188,7 @@ h1{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0;line-height:1.1
 .note{font-size:12px;max-width:none}
 .hidebtn,.dotline{display:none!important}
 .band{padding-top:84px;row-gap:96px}
+.crew{padding-top:84px}
 /* Speech bubble above the member's head; figures stay on one baseline. */
 .say{position:absolute;left:50%;bottom:calc(100% + 2px);transform:translateX(-50%);width:max-content;max-width:min(220px,96%);
   background:#fff;color:#1b1a24;font-size:12.5px;line-height:1.3;padding:7px 10px;border-radius:12px;text-align:left;
@@ -203,8 +214,11 @@ h1{font-size:24px;font-weight:800;letter-spacing:-.02em;margin:0;line-height:1.1
 </section>
 
 <section id="bandview" aria-label="Band">
-  <p class="sub">AI agents as a band. Tap a member to open its chat.</p>
-  <div class="band" id="strip"></div>
+  <p class="sub">AI agents as a band, with Gazlowe on crew. Tap a figure to open its chat.</p>
+  <div class="stage">
+    <div class="band" id="strip"></div>
+    <aside class="crew" id="crewstrip" aria-label="Crew"></aside>
+  </div>
   <div class="cap-line" id="caption" aria-live="polite"></div>
   <div class="bar">
     <button class="primary" id="demo" type="button">Play the demo</button>
@@ -228,14 +242,16 @@ const AGENTS=[
   {id:"chatgpt",name:"ChatGPT",color:"#3cc49b",dark:"#11674e",glow:"#7dffd6",eyes:"dot",role:2},
   {id:"gemini",name:"Gemini",color:"#7f9bff",dark:"#2c3f9e",glow:"#c7d3ff",eyes:"star",role:3,tap:"is this thing on?"},
   {id:"claude-code",name:"Claude Code",color:"#e08a68",dark:"#8a3f22",glow:"#ffb48f",eyes:"prompt",role:1,acc:"keyboard"},
-  {id:"codex",name:"Codex",color:"#3cc49b",dark:"#11674e",glow:"#7dffd6",eyes:"prompt",role:2,acc:"iron"}
+  {id:"codex",name:"Codex",color:"#3cc49b",dark:"#11674e",glow:"#7dffd6",eyes:"prompt",role:2,acc:"iron"},
+  {id:"gazlowe",name:"Gazlowe",color:"#c5d63a",dark:"#4a5a12",glow:"#f4ff8c",eyes:"plus",crew:true}
 ];
 const EYES={
   slash:'<path d="M38 55 l5 -6 M56 55 l5 -6"/>',
   arc:'<path d="M37 54 q4 -5 8 0 M55 54 q4 -5 8 0"/>',
   dot:'<path d="M41 51 h0.1 M59 51 h0.1" stroke-width="6"/>',
   star:'<path d="M41 47 v8 M37 51 h8 M59 47 v8 M55 51 h8"/>',
-  prompt:'<path d="M37 47 l5 4 l-5 4 M50 56 h12"/>'
+  prompt:'<path d="M37 47 l5 4 l-5 4 M50 56 h12"/>',
+  plus:'<path d="M38 48 h8 M42 44 v8 M56 48 h8 M60 44 v8"/>'
 };
 const GENRES={
   "Rock":[["drum kit","kit"],["electric bass","bass"],["electric guitar","guitar"],["lead vocals","mic"]],
@@ -275,6 +291,7 @@ function inst(fam){
     case "keys": return `<g class="inst"><rect x="20" y="80" width="60" height="14" rx="2" fill="#1b1a24"/>${[24,31,38,45,52,59,66,73].map(x=>`<rect x="${x}" y="82" width="5.5" height="10" fill="#fff"/>`).join("")}</g>`;
     case "pads": return `<g class="inst"><rect x="22" y="78" width="56" height="18" rx="3" fill="#24232f" ${s}/>${[0,1,2,3].map(i=>`<rect x="${26+i*13}" y="82" width="10" height="10" rx="2" fill="${["#ff5fa2","#5bd1ff","#ffd24a","#7cff8a"][i]}"/>`).join("")}</g>`;
     case "mic": return `<g class="inst"><line x1="74" y1="54" x2="74" y2="98" stroke="#555" stroke-width="2.5"/><line x1="66" y1="98" x2="82" y2="98" stroke="#555" stroke-width="2.5"/><circle cx="72" cy="52" r="5" fill="#2b2a33" ${s}/></g>`;
+    case "wrench": return `<g class="inst"><g class="rig"><line x1="88" y1="38" x2="88" y2="96" stroke="#5a5348" stroke-width="2"/><line x1="83" y1="96" x2="93" y2="96" stroke="#5a5348" stroke-width="2.5"/><circle class="lamp" cx="88" cy="34" r="5.5" fill="#e8c34a" ${s}/></g><g transform="rotate(-28 34 88)"><circle cx="30" cy="78" r="5" fill="none" stroke="#c5c8ce" stroke-width="2.6"/><circle cx="30" cy="78" r="2.2" fill="none" stroke="#1b1a24" stroke-width="1.1"/><rect x="28.6" y="83" width="2.8" height="12" rx="1" fill="#c5c8ce" ${s}/><path d="M26.8 95 h6.4 v2.4 h-2 v2.6 h-2.4 v-2.6 h-2z" fill="#c5c8ce" ${s}/></g></g>`;
   }
   return "";
 }
@@ -295,6 +312,7 @@ function gag(id){
   if(id==="claude") return `<g class="gag"><path d="M28 80 q-14 10 -6 18 q8 6 14 -2" fill="none" stroke="#111" stroke-width="2.5"/><g class="spark"><path d="M38 92 l3 -6 l1 5 l5 -2 l-4 5 l4 3 l-6 0z" fill="#ffd24a"/></g></g>`;
   if(id==="chatgpt") return `<g class="gag"><path d="M70 50 q6 6 0 10 q-6 4 2 10" fill="none" stroke="#ddd" stroke-width="1.5"/><text class="huh" x="76" y="34" fill="#fff" font-size="18" font-weight="700">?</text></g>`;
   if(id==="gemini") return `<g class="gag"><path d="M64 40 q4 -6 8 0 q4 6 8 0" fill="none" stroke="#ffd24a" stroke-width="2"/></g>`;
+  if(id==="gazlowe") return `<g class="gag"><text x="70" y="36" fill="#fff" font-size="16" font-weight="700">!</text></g>`;
   return "";
 }
 function figure(a,g){
@@ -317,7 +335,7 @@ function figure(a,g){
 }
 
 
-const CHAT={grok:"https://grok.com/",claude:"https://claude.ai/new","claude-code":"https://claude.ai/new",chatgpt:"https://chatgpt.com/",codex:"https://chatgpt.com/",gemini:"https://gemini.google.com/app"};
+const CHAT={grok:"https://grok.com/",claude:"https://claude.ai/new","claude-code":"https://claude.ai/new",chatgpt:"https://chatgpt.com/",codex:"https://chatgpt.com/",gemini:"https://gemini.google.com/app",gazlowe:"https://grok.com/"};
 const BAND=[{base:"grok"},{base:"claude",code:"claude-code"},{base:"chatgpt",code:"codex"},{base:"gemini"}];
 const RANKS={ready:4,speaking:3,working:2,idle:1,disconnected:0};
 const byId=Object.fromEntries(AGENTS.map(a=>[a.id,a]));
@@ -343,6 +361,22 @@ function render(prev){
     const was=prev&&prev[a.target]&&prev[a.target].state;
     if(was==="disconnected"&&st!=="disconnected"){f.classList.add("shake");setTimeout(()=>f.classList.remove("shake"),650)}
   });
+  renderCrew(prev);
+}
+function renderCrew(prev){
+  const crewEl=document.getElementById("crewstrip");
+  if(!crewEl) return;
+  crewEl.innerHTML="";
+  const a=byId.gazlowe; if(!a) return;
+  const s=states.gazlowe||{state:"idle"}, st=s.state||"idle";
+  const f=document.createElement("a"); f.className="fig"; f.dataset.agent="gazlowe"; f.dataset.state=st;
+  f.href=CHAT.gazlowe; f.target="_blank"; f.rel="noopener"; f.style.color="#fff"; f.style.textDecoration="none";
+  const n=s.note||"Crew: keeping the venue running";
+  const look=Object.assign({},a,{target:"gazlowe"});
+  f.innerHTML=`${figure(look,["lighting rig","wrench"])}<span class="cap">${a.name}<small>crew · lighting rig</small></span><span class="note">${esc(n)}</span>${saying.gazlowe?`<span class="tail"></span><span class="say"><i>${esc(saying.gazlowe)}</i></span>`:""}`;
+  crewEl.appendChild(f);
+  const was=prev&&prev.gazlowe&&prev.gazlowe.state;
+  if(was==="disconnected"&&st!=="disconnected"){f.classList.add("shake");setTimeout(()=>f.classList.remove("shake"),650)}
 }
 function show(s,g,text){
   const prev=states; states=s;
@@ -372,7 +406,7 @@ async function poll(){
   if(changed&&!demoOn) show(next,null,"");
   else if(demoOn) liveStates=next;
 }
-let ctx; const CH={grok:[196,247,294],claude:[262,330,392],chatgpt:[294,370,440],gemini:[392,494,587],"claude-code":[330,415,494],codex:[349,440,523]};
+let ctx; const CH={grok:[196,247,294],claude:[262,330,392],chatgpt:[294,370,440],gemini:[392,494,587],"claude-code":[330,415,494],codex:[349,440,523],gazlowe:[156,196,247]};
 function chime(id){ if(!sound) return; try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();const t0=ctx.currentTime;
   (CH[id]||CH.claude).forEach((f,i)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type="triangle";o.frequency.value=f*2;
   g.gain.setValueAtTime(0,t0+i*.09);g.gain.linearRampToValueAtTime(.18,t0+i*.09+.01);g.gain.exponentialRampToValueAtTime(.001,t0+i*.09+.5);
@@ -424,7 +458,8 @@ const TEAM=[
   {name:"Claude Code",ids:["claude-code","claude"],color:"#d9773b",ini:"CC"},
   {name:"Codex",ids:["codex","chatgpt"],color:"#1f9e7a",ini:"CX"},
   {name:"Grok",ids:["grok"],color:"#55606b",ini:"GK"},
-  {name:"Gemini",ids:["gemini"],color:"#4f6fe0",ini:"GM"}
+  {name:"Gemini",ids:["gemini"],color:"#4f6fe0",ini:"GM"},
+  {name:"Gazlowe",ids:["gazlowe"],color:"#8a9a22",ini:"GZ"}
 ];
 const TEAM_OF={}; TEAM.forEach(t=>t.ids.forEach(id=>TEAM_OF[id]=t));
 const TRANK={ready:3,working:2,free:1,offline:0};

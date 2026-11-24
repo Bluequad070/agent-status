@@ -1,0 +1,24 @@
+{
+  "agent": "gazlowe",
+  "surface": "chat",
+  "owner": "James Neal",
+  "writer": "gazlowe",
+  "last_seen": "2026-11-24T17:56:35Z",
+  "last_session_log_date": "2026-11-24",
+  "current_project": "Maintenance",
+  "handoff_doc": "",
+  "handoff_authority": "CANONICAL",
+  "checks": [
+    {
+      "id": "crew_online",
+      "ok": true,
+      "at": "2026-11-24T17:56:35Z"
+    }
+  ],
+  "note": "Gazlowe online as crew: cleaning, repairs, lighting, and venue upkeep.",
+  "version": "0.1",
+  "activity": "idle",
+  "ready_note": "Crew: keeping the venue running",
+  "updated_at": "2026-11-24T17:56:35Z",
+  "speaking": false
+}

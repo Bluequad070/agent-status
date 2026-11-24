@@ -10,7 +10,8 @@
     { id: "codex", name: "Codex", surface: "code" },
     { id: "chatgpt", name: "ChatGPT", surface: "chat" },
     { id: "gemini", name: "Gemini", surface: "chat" },
-    { id: "grok", name: "Grok", surface: "chat" }
+    { id: "grok", name: "Grok", surface: "chat" },
+    { id: "gazlowe", name: "Gazlowe", surface: "chat" }
   ];
 
   var RULES = {
