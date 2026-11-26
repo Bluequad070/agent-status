@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-26T05:54:33Z",
+  "checked_at": "2026-11-26T07:00:18Z",
   "base": "https://bluequad070.github.io/agent-status/",
   "pause_seconds": 45,
   "overall": "x",
@@ -13,7 +13,7 @@
         "reasons": [
           "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:53:47Z"
+        "at": "2026-11-26T06:59:32Z"
       },
       "second": {
         "ok": false,
@@ -21,7 +21,7 @@
         "reasons": [
           "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:54:33Z"
+        "at": "2026-11-26T07:00:17Z"
       },
       "last_seen": "2026-11-22T22:59:53Z",
       "current_project": "none"
@@ -34,7 +34,7 @@
         "reasons": [
           "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:53:47Z"
+        "at": "2026-11-26T06:59:32Z"
       },
       "second": {
         "ok": false,
@@ -42,7 +42,7 @@
         "reasons": [
           "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:54:33Z"
+        "at": "2026-11-26T07:00:17Z"
       },
       "last_seen": "2026-11-23T04:11:38Z",
       "current_project": "Agent Status System"
@@ -55,7 +55,7 @@
         "reasons": [
           "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:53:47Z"
+        "at": "2026-11-26T06:59:32Z"
       },
       "second": {
         "ok": false,
@@ -63,7 +63,7 @@
         "reasons": [
           "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:54:33Z"
+        "at": "2026-11-26T07:00:17Z"
       },
       "last_seen": "2026-11-22T20:21:41Z",
       "current_project": "none"
@@ -76,7 +76,7 @@
         "reasons": [
           "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:53:47Z"
+        "at": "2026-11-26T06:59:32Z"
       },
       "second": {
         "ok": false,
@@ -84,7 +84,7 @@
         "reasons": [
           "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:54:33Z"
+        "at": "2026-11-26T07:00:17Z"
       },
       "last_seen": "2026-11-23T01:15:23Z",
       "current_project": "none"
@@ -97,7 +97,7 @@
         "reasons": [
           "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:53:48Z"
+        "at": "2026-11-26T06:59:32Z"
       },
       "second": {
         "ok": false,
@@ -105,7 +105,7 @@
         "reasons": [
           "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:54:33Z"
+        "at": "2026-11-26T07:00:18Z"
       },
       "last_seen": "2026-11-22T20:21:41Z",
       "current_project": "none"
@@ -114,19 +114,19 @@
       "state": "x",
       "first": {
         "ok": false,
-        "stale": false,
+        "stale": true,
         "reasons": [
-          "last_seen older than 24h"
+          "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:53:48Z"
+        "at": "2026-11-26T06:59:32Z"
       },
       "second": {
         "ok": false,
-        "stale": false,
+        "stale": true,
         "reasons": [
-          "last_seen older than 24h"
+          "last_seen older than 72h (stale)"
         ],
-        "at": "2026-11-26T05:54:33Z"
+        "at": "2026-11-26T07:00:18Z"
       },
       "last_seen": "2026-11-23T06:36:13Z",
       "current_project": "none"
@@ -139,7 +139,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-26T05:53:48Z"
+        "at": "2026-11-26T06:59:32Z"
       },
       "second": {
         "ok": false,
@@ -147,7 +147,7 @@
         "reasons": [
           "last_seen older than 24h"
         ],
-        "at": "2026-11-26T05:54:33Z"
+        "at": "2026-11-26T07:00:18Z"
       },
       "last_seen": "2026-11-24T17:56:35Z",
       "current_project": "Maintenance"
@@ -157,99 +157,99 @@
     "claude-chat": [
       {
         "state": "x",
-        "at": "2026-11-26T03:28:19Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-26T04:38:51Z"
       },
       {
         "state": "x",
         "at": "2026-11-26T05:54:33Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-26T07:00:18Z"
       }
     ],
     "claude-code": [
       {
         "state": "x",
-        "at": "2026-11-26T03:28:19Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-26T04:38:51Z"
       },
       {
         "state": "x",
         "at": "2026-11-26T05:54:33Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-26T07:00:18Z"
       }
     ],
     "codex": [
       {
         "state": "x",
-        "at": "2026-11-26T03:28:19Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-26T04:38:51Z"
       },
       {
         "state": "x",
         "at": "2026-11-26T05:54:33Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-26T07:00:18Z"
       }
     ],
     "chatgpt": [
       {
         "state": "x",
-        "at": "2026-11-26T03:28:19Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-26T04:38:51Z"
       },
       {
         "state": "x",
         "at": "2026-11-26T05:54:33Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-26T07:00:18Z"
       }
     ],
     "gemini": [
       {
         "state": "x",
-        "at": "2026-11-26T03:28:19Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-26T04:38:51Z"
       },
       {
         "state": "x",
         "at": "2026-11-26T05:54:33Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-26T07:00:18Z"
       }
     ],
     "grok": [
       {
         "state": "x",
-        "at": "2026-11-26T03:28:19Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-26T04:38:51Z"
       },
       {
         "state": "x",
         "at": "2026-11-26T05:54:33Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-26T07:00:18Z"
       }
     ],
     "gazlowe": [
       {
         "state": "x",
-        "at": "2026-11-26T03:28:19Z"
-      },
-      {
-        "state": "x",
         "at": "2026-11-26T04:38:51Z"
       },
       {
         "state": "x",
         "at": "2026-11-26T05:54:33Z"
+      },
+      {
+        "state": "x",
+        "at": "2026-11-26T07:00:18Z"
       }
     ]
   },
